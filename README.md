@@ -45,7 +45,7 @@ The official landing page for **Houati Moto Guelma**, the #1 destination for mot
 
 You can deploy this project to Vercel with a single click after exporting it to your GitHub account:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F%3Cyour-username%3E%2F%3Cyour-repo-name%3E)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F%3Cmdouaour%3E%2F%3CHouatiMotoGuelma%3E)
 
 > **Note**: Replace `<your-username>` and `<your-repo-name>` in the URL above with your actual GitHub details after exporting.
 
