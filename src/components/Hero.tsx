@@ -1,0 +1,137 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { Star, MessageCircle, Phone, ArrowUpRight } from 'lucide-react';
+import { CONFIG } from '../constants';
+
+interface HeroProps {
+  t: any;
+}
+
+export const Hero = ({ t }: HeroProps) => {
+  return (
+    <header className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-white">
+      {/* Subtle Background Textures */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-mesh opacity-40" />
+        <div className="absolute inset-0 bg-[radial-gradient(#E31E2405_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10 w-full py-16 md:py-24">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-12 lg:space-y-16"
+        >
+          <div className="space-y-6 md:space-y-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="inline-flex items-center gap-3 bg-brand/5 border border-brand/10 px-5 py-2 rounded-full"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_#E31E24]" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand/80">{t.hero.tag}</span>
+            </motion.div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-[100px] font-extrabold leading-[0.9] tracking-tighter font-display uppercase">
+              {t.hero.title.split(' ').map((word, i) => (
+                <span key={i} className={i === 1 ? 'text-brand block italic translate-x-4' : 'block text-zinc-900'}>{word}</span>
+              ))}
+            </h1>
+            
+            <div className="flex items-center gap-4 py-2">
+              <div className="h-px w-12 bg-zinc-200" />
+              <p className="text-zinc-400 text-[10px] font-bold uppercase tracking-[0.3em]">Precision Engineering / Expert Support</p>
+            </div>
+            
+            <p className="text-lg md:text-xl text-zinc-500 max-w-lg leading-relaxed font-medium">
+              {t.hero.sub}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+            <motion.a 
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              href={`https://wa.me/${CONFIG.whatsapp}`}
+              className="flex items-center gap-4 bg-brand text-white px-10 py-5 rounded-2xl font-bold text-sm transition-all shadow-elegant hover:shadow-brand/20 group"
+            >
+              <MessageCircle size={20} className="group-hover:rotate-12 transition-transform" /> 
+              <span className="uppercase tracking-widest">{t.hero.ctaWA}</span>
+            </motion.a>
+            <motion.a 
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              href={`tel:${CONFIG.phone}`}
+              className="flex items-center gap-4 bg-zinc-100 text-zinc-900 px-10 py-5 rounded-2xl font-bold text-sm transition-all border border-transparent hover:border-zinc-200"
+            >
+              <Phone size={20} /> 
+              <span className="uppercase tracking-widest">{CONFIG.phone}</span>
+            </motion.a>
+          </div>
+
+          {/* Stats Summary */}
+          <div className="flex items-center gap-10 pt-4 border-t border-zinc-100">
+             <div className="space-y-1">
+                <span className="text-3xl font-black text-zinc-900 italic font-display">{CONFIG.stats.satisfied}</span>
+                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none">{t.sections.testimonials}</p>
+             </div>
+             <div className="w-px h-10 bg-zinc-100" />
+             <div className="space-y-1">
+                <span className="text-3xl font-black text-zinc-900 italic font-display">{CONFIG.stats.experience}</span>
+                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none">{t.trust.exp}</p>
+             </div>
+          </div>
+        </motion.div>
+
+        {/* Visual Side */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="relative lg:block hidden"
+        >
+          <div className="absolute -inset-20 bg-brand/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <div className="relative z-10 glass p-5 rounded-[4rem] shadow-elegant overflow-hidden group">
+            <div className="rounded-[3rem] overflow-hidden aspect-[4/5] relative">
+              <img 
+                src={CONFIG.images.hero} 
+                alt="Expert Moto Guerlma" 
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
+              
+              {/* Technical Labels */}
+              <div className="absolute top-10 left-10 flex flex-col gap-3">
+                 <div className="w-12 h-1 bg-brand" />
+                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white font-display mix-blend-difference opacity-50">HOUATI_QUALITY_CO</span>
+              </div>
+              
+              <div className="absolute bottom-10 right-10 flex items-center justify-center w-20 h-20 glass rounded-full border border-black/5 group-hover:bg-brand group-hover:text-white transition-all duration-500 cursor-pointer shadow-xl">
+                 <ArrowUpRight size={32} />
+              </div>
+            </div>
+          </div>
+
+          {/* Floating badge */}
+          <motion.div 
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -right-8 top-1/4 glass p-6 rounded-3xl shadow-elegant z-20 border-brand/10"
+          >
+             <div className="flex gap-1 text-brand mb-2">
+                <Star size={12} fill="currentColor" />
+                <Star size={12} fill="currentColor" />
+                <Star size={12} fill="currentColor" />
+                <Star size={12} fill="currentColor" />
+                <Star size={12} fill="currentColor" />
+             </div>
+             <p className="text-[9px] font-black text-zinc-400 uppercase tracking-widest leading-none">Reputation_Score</p>
+             <p className="text-2xl font-black text-zinc-900 italic font-display uppercase tracking-tight">4.9/5.0</p>
+          </motion.div>
+        </motion.div>
+      </div>
+    </header>
+  );
+};

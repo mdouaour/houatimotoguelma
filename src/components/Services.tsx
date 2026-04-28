@@ -1,0 +1,149 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { Bike, Zap, ShoppingBag, Settings, Star, Package, ShieldCheck } from 'lucide-react';
+import { CONFIG } from '../constants';
+
+interface ServicesProps {
+  t: any;
+  isRtl: boolean;
+}
+
+export const Services = ({ t, isRtl }: ServicesProps) => {
+  const products = [
+    {
+      title: t.sections.moto,
+      desc: t.sections.motoRepair,
+      icon: <Bike size={28} />,
+      img: CONFIG.images.moto,
+      size: "large",
+      accent: "brand"
+    },
+    {
+      title: t.sections.electric,
+      desc: t.sections.electricRepair,
+      icon: <Zap size={28} />,
+      img: CONFIG.images.escooter,
+      size: "medium",
+      accent: "yellow-400"
+    },
+    {
+      title: t.sections.tricycle,
+      desc: t.sections.tricycleRepair,
+      icon: <Zap size={28} />,
+      img: CONFIG.images.tricycle,
+      size: "medium",
+      accent: "yellow-500"
+    },
+    {
+      title: t.sections.bicycle,
+      desc: t.sections.bicycleRepair,
+      icon: <Star size={28} />,
+      img: CONFIG.images.bicycle,
+      size: "small",
+      accent: "blue-500"
+    },
+    {
+      title: "e-Trotinettes",
+      desc: t.sections.bicycleRepair,
+      icon: <Zap size={28} />,
+      img: CONFIG.images.trotinet,
+      size: "small",
+      accent: "purple-500"
+    },
+    {
+      title: t.sections.parts,
+      desc: t.sections.partsDesc,
+      icon: <Settings size={28} />,
+      img: CONFIG.images.parts,
+      size: "small",
+      accent: "zinc-400"
+    },
+    {
+      title: t.sections.articles,
+      desc: t.sections.articlesDesc,
+      icon: <Package size={28} />,
+      img: CONFIG.images.accessories,
+      size: "small",
+      accent: "zinc-400"
+    },
+    {
+      title: t.sections.repair,
+      desc: t.sections.repairDesc,
+      icon: <ShieldCheck size={28} />,
+      img: CONFIG.images.atelier,
+      size: "large",
+      accent: "brand"
+    }
+  ];
+
+  return (
+    <section id="services" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20"
+        >
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 text-brand">
+              <Star size={12} fill="currentColor" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Specialized_Solutions</span>
+            </div>
+            <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-zinc-900 leading-[0.9]">
+              {t.sections.products}
+            </h2>
+          </div>
+          <p className="text-zinc-500 max-w-sm font-semibold leading-relaxed uppercase text-[10px] tracking-[0.2em]">
+            Since 2018. Delivering premium motorcycles and professional technical support in Guelma.
+          </p>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8">
+          {products.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-zinc-50 min-h-[350px] lg:min-h-0 shadow-soft hover:shadow-elegant border border-black/5 transition-all duration-700
+                ${item.size === 'large' ? 'lg:col-span-8 lg:row-span-2' : ''}
+                ${item.size === 'medium' ? 'lg:col-span-4 lg:row-span-1' : ''}
+                ${item.size === 'small' ? 'lg:col-span-4 lg:row-span-1' : ''}
+              `}
+            >
+              <img 
+                src={item.img} 
+                className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-1000" 
+                alt={item.title} 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent group-hover:from-white/10 group-hover:via-transparent transition-all duration-700" />
+
+              <div className="relative h-full p-10 md:p-14 flex flex-col justify-between z-10">
+                <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-zinc-900 border border-black/5 group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-soft">
+                  {item.icon}
+                </div>
+                
+                <div className="space-y-4 mb-4">
+                  <h3 className="text-2xl md:text-3xl font-extrabold font-display uppercase tracking-tight text-zinc-900 italic group-hover:text-brand transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-zinc-500 font-medium text-xs md:text-sm leading-relaxed max-w-xs group-hover:text-zinc-700 transition-colors">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* Decorative Number */}
+              <div className="absolute bottom-6 right-8 p-4 text-black/5 font-display text-7xl md:text-8xl font-black pointer-events-none group-hover:text-brand/5 transition-colors">
+                 {i+1}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

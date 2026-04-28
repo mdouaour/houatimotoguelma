@@ -1,11 +1,56 @@
-<div align="center">
+# Houati Moto Guelma
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+The official landing page for **Houati Moto Guelma**, the #1 destination for motorcycles, scooters, electric bikes, and professional repair services in Guelma since 2018.
 
-  <h1>Built with AI Studio</h2>
+## 🚀 Features
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- **Multilingual Support**: Fully localized in Arabic and French.
+- **RTL Support**: Optimized layout for Arabic language.
+- **Responsive Design**: Professional UI that works on all devices.
+- **Services Showcase**: Detailed sections for Motos, e-Scooters, e-Bikes, Bicycles, and Spare Parts.
+- **Expert Workshop**: Highlighted engineering and repair capabilities.
+- **Modern Tech Stack**: React 18, Vite, Tailwind CSS, and Motion for animations.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## 🛠️ Tech Stack
 
-</div>
+- **Framework**: [React](https://reactjs.org/)
+- **Bundler**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Motion](https://motion.dev/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+## 📦 Getting Started
+
+1. **Clone the repository**:
+   ```bash
+   git clone <your-github-repo-url>
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+## 🌐 Deployment to Vercel
+
+You can deploy this project to Vercel with a single click after exporting it to your GitHub account:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F%3Cyour-username%3E%2F%3Cyour-repo-name%3E)
+
+> **Note**: Replace `<your-username>` and `<your-repo-name>` in the URL above with your actual GitHub details after exporting.
+
+## 📞 Contact
+
+- **Phone**: +213 550 15 82 58
+- **Facebook**: [Houati Moto Guelma](https://www.facebook.com/share/1ajGC4W37z/)
+- **Location**: Guelma, Algérie
