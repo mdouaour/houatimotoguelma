@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Star, MessageCircle, Phone, ArrowUpRight } from 'lucide-react';
 import { CONFIG } from '../constants';
 import { LandingContent, Locale } from '../types/content';
+import { AdaptiveMedia } from './media/AdaptiveMedia';
 
 interface HeroProps {
   t: any;
@@ -100,10 +101,12 @@ export const Hero = ({ t, lang, content }: HeroProps) => {
           
           <div className="relative z-10 glass p-5 rounded-[4rem] shadow-elegant overflow-hidden group">
             <div className="rounded-[3rem] overflow-hidden aspect-[4/5] relative">
-              <img 
-                 src={hero.image || CONFIG.images.hero} 
-                alt="Expert Moto Guerlma" 
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" 
+              <AdaptiveMedia
+                type="image"
+                src={hero.image || CONFIG.images.hero}
+                alt="Expert Moto Guerlma"
+                loading="eager"
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
               

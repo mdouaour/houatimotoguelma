@@ -9,8 +9,9 @@ The official landing page for **Houati Moto Guelma**, the #1 destination for mot
 - **Responsive Design**: Professional UI that works on all devices.
 - **Services Showcase**: Detailed sections for Motos, e-Scooters, e-Bikes, Bicycles, and Spare Parts.
 - **Expert Workshop**: Highlighted engineering and repair capabilities.
-- **Modern Tech Stack**: React 18, Vite, Tailwind CSS, and Motion for animations.
-- **Free Admin Panel**: Built-in local admin editor for landing content, media galleries, and section visibility.
+- **Modern Tech Stack**: React 19, Vite, Tailwind CSS, and Motion for animations.
+- **Secure CMS Mode**: Supabase Auth + PostgreSQL + Storage for production content management.
+- **Reusable Media Wrapper**: Unified image/video rendering that preserves existing layout and animation styles.
 
 ## 🛠️ Tech Stack
 
@@ -42,11 +43,23 @@ The official landing page for **Houati Moto Guelma**, the #1 destination for mot
    npm run build
    ```
 
-## 🛠️ Admin Panel (Free)
+## 🔐 Supabase Setup (Production CMS)
 
-The project now includes a built-in admin panel with **no paid tools required**.
+1. Create a Supabase project.
+2. Run `/supabase/schema.sql` in Supabase SQL editor.
+3. In Supabase Auth, create at least one admin user (email/password).
+4. Configure Vercel/project env vars from `.env.example`:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+   - `VITE_SUPABASE_MEDIA_BUCKET` (default: `site-media`)
+5. Redeploy.
 
-- Open the site and click the **Admin** button (bottom-left), or use `#admin` in the URL.
+## 🛠️ Admin Panel
+
+The project includes a built-in admin panel with Supabase-backed persistence.
+
+- Open `/admin` directly (or click the **Admin** button).
+- Sign in with a Supabase Auth admin account.
 - Edit:
   - Business info (phone, WhatsApp, Facebook, maps, location)
   - Hero texts, buttons, links, and image
@@ -54,9 +67,12 @@ The project now includes a built-in admin panel with **no paid tools required**.
   - Gallery media (photos/videos), add/remove/replace items
   - Custom sections (title, description, button)
   - Brands list
-- Save is automatic in browser `localStorage`.
+- Save as **Draft** or **Publish** to update live content.
+- Media uploads go to Supabase Storage with type/size checks.
 - Use **Export JSON** / **Import JSON** for backup and transfer.
 - Use **Reset to defaults** to restore original content.
+
+> If Supabase env vars are missing, the panel automatically falls back to local mode for development.
 
 ## 🌐 Deployment to Vercel
 

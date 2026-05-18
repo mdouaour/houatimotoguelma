@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Camera, Facebook, ArrowUpRight } from 'lucide-react';
 import { LandingContent, Locale } from '../types/content';
+import { AdaptiveMedia } from './media/AdaptiveMedia';
 
 interface GalleryProps {
   t: any;
@@ -53,22 +54,16 @@ export const Gallery = ({ t, lang, content }: GalleryProps) => {
               transition={{ delay: i * 0.1, duration: 0.8 }}
               className={`relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden group cursor-pointer ${item.span} border border-black/5 shadow-soft`}
             >
-              {item.type === 'video' ? (
-                <video
-                  src={item.url}
-                  className="w-full h-full object-cover grayscale opacity-70 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              ) : (
-                <img
-                  src={item.url}
-                  alt={item.title[lang]}
-                  className="w-full h-full object-cover grayscale opacity-70 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
-                />
-              )}
+              <AdaptiveMedia
+                type={item.type}
+                src={item.url}
+                alt={item.title[lang]}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover grayscale opacity-70 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+              />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-10 translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
                 <p className="text-[10px] font-black text-brand uppercase tracking-[0.4em] mb-3">{item.category[lang]}</p>
                 <h3 className="text-2xl md:text-4xl font-extrabold text-white uppercase italic tracking-tighter leading-none">{item.title[lang]}</h3>

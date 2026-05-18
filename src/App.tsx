@@ -20,23 +20,74 @@ import { StickyCTA } from './components/StickyCTA';
 import { AdminPanel } from './components/AdminPanel';
 import { CustomSections } from './components/CustomSections';
 import { createDefaultContent } from './content/defaultContent';
-import { loadContent, saveContent } from './content/storage';
+import { loadPublishedContent, publishContent, saveDraftContent } from './content/cms';
+import { isSupabaseConfigured } from './lib/supabase';
 
 export default function App() {
   const [lang, setLang] = useState<'ar' | 'fr'>('fr');
   const [content, setContent] = useState(createDefaultContent);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveStatus, setSaveStatus] = useState('');
 
   useEffect(() => {
-    setContent(loadContent());
-    if (window.location.hash === '#admin') {
+    let mounted = true;
+
+    loadPublishedContent().then((nextContent) => {
+      if (mounted) setContent(nextContent);
+    });
+
+    const normalizedPath = window.location.pathname.replace(/\/+$/, '') || '/';
+    if (window.location.hash === '#admin' || normalizedPath === '/admin') {
       setIsAdminOpen(true);
     }
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  useEffect(() => {
-    saveContent(content);
-  }, [content]);
+  const openAdmin = () => {
+    setIsAdminOpen(true);
+    if (window.location.pathname !== '/admin') {
+      window.history.replaceState({}, '', '/admin');
+    }
+  };
+
+  const closeAdmin = () => {
+    setIsAdminOpen(false);
+    if (window.location.pathname === '/admin' || window.location.hash === '#admin') {
+      window.history.replaceState({}, '', '/');
+    }
+  };
+
+  const handleSaveDraft = async () => {
+    setIsSaving(true);
+    setSaveStatus('');
+
+    try {
+      const result = await saveDraftContent(content);
+      setSaveStatus(result.local ? 'Draft saved locally.' : `Draft saved (v${result.version}).`);
+    } catch (error) {
+      setSaveStatus(error instanceof Error ? error.message : 'Draft save failed.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handlePublish = async () => {
+    setIsSaving(true);
+    setSaveStatus('');
+
+    try {
+      const result = await publishContent(content);
+      setSaveStatus(result.local ? 'Published locally.' : `Published (v${result.version}).`);
+    } catch (error) {
+      setSaveStatus(error instanceof Error ? error.message : 'Publish failed.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   const t = I18N[lang];
   const isRtl = lang === 'ar';
@@ -89,7 +140,7 @@ export default function App() {
 
       <button
         type="button"
-        onClick={() => setIsAdminOpen(true)}
+        onClick={openAdmin}
         className="fixed bottom-8 left-8 z-[101] bg-zinc-900 text-white px-4 py-3 rounded-2xl text-[10px] uppercase tracking-[0.25em] font-black inline-flex items-center gap-2 shadow-elegant"
       >
         <Settings size={14} />
@@ -98,10 +149,15 @@ export default function App() {
 
       <AdminPanel
         isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
+        onClose={closeAdmin}
         content={content}
         onChange={setContent}
         onReset={() => setContent(createDefaultContent())}
+        onSaveDraft={handleSaveDraft}
+        onPublish={handlePublish}
+        isSaving={isSaving}
+        saveStatus={saveStatus}
+        isSupabaseConfigured={isSupabaseConfigured}
       />
     </div>
   );
