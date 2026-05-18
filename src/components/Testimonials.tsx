@@ -1,33 +1,15 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Star, Quote, MessageSquare } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
+import { TestimonialItem, Locale } from '../types/content';
 
 interface TestimonialsProps {
   t: any;
+  lang: Locale;
+  items: TestimonialItem[];
 }
 
-const reviews = [
-  {
-    name: "Yassine B.",
-    text: "Une équipe incroyable. Ma moto a été réparée en un temps record avec des pièces d'origine. C'est la référence à Guelma.",
-    rating: 5,
-    date: "Mars 2024"
-  },
-  {
-    name: "Mohamed R.",
-    text: "J'ai acheté un scooter SYM chez eux. Très bon prix et accueil chaleureux. On sent le professionnalisme dès l'entrée.",
-    rating: 5,
-    date: "Avril 2024"
-  },
-  {
-    name: "Riadh K.",
-    text: "Leur sélection de vélos électriques est superbe. Très robuste pour la ville de Guelma. Je suis ravi de mon achat.",
-    rating: 5,
-    date: "Février 2024"
-  }
-];
-
-export const Testimonials = ({ t }: TestimonialsProps) => {
+export const Testimonials = ({ t, lang, items }: TestimonialsProps) => {
   return (
     <section className="py-24 md:py-32 bg-zinc-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -47,9 +29,9 @@ export const Testimonials = ({ t }: TestimonialsProps) => {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {reviews.map((review, i) => (
+          {items.map((review, i) => (
             <motion.div 
-              key={i}
+              key={review.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -63,14 +45,14 @@ export const Testimonials = ({ t }: TestimonialsProps) => {
                   ))}
                 </div>
                 <p className="text-lg md:text-xl text-zinc-600 font-medium leading-relaxed italic">
-                  "{review.text}"
+                  "{review.text[lang]}"
                 </p>
               </div>
               
               <div className="mt-12 flex items-center justify-between border-t border-zinc-100 pt-8">
                 <div>
                   <p className="font-extrabold text-base text-zinc-900 font-display uppercase italic tracking-tight">{review.name}</p>
-                  <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-1">{review.date}</p>
+                  <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-1">{review.date[lang]}</p>
                 </div>
                 <div className="w-10 h-10 bg-zinc-50 rounded-xl flex items-center justify-center text-brand/20 group-hover:text-brand transition-colors">
                   <Quote size={18} />

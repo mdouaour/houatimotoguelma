@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Facebook, Phone, Globe, Bike } from 'lucide-react';
-import { CONFIG } from '../constants';
+import { Menu, X, Globe, Bike } from 'lucide-react';
 
 interface NavbarProps {
   t: any;
   lang: 'fr' | 'ar';
   setLang: (lang: 'fr' | 'ar') => void;
   isRtl: boolean;
+  phone: string;
+  businessName: string;
 }
 
-export const Navbar = ({ t, lang, setLang, isRtl }: NavbarProps) => {
+export const Navbar = ({ t, lang, setLang, isRtl, phone, businessName }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -38,7 +39,7 @@ export const Navbar = ({ t, lang, setLang, isRtl }: NavbarProps) => {
               <Bike size={24} />
             </div>
             <div className="flex flex-col">
-              <span className="font-black text-zinc-900 italic text-xl uppercase tracking-tighter leading-none">HOUATI MOTO</span>
+              <span className="font-black text-zinc-900 italic text-xl uppercase tracking-tighter leading-none">{businessName}</span>
               <span className="text-[9px] font-bold text-zinc-400 tracking-[0.4em] uppercase leading-none mt-1">Guelma Performance</span>
             </div>
           </a>
@@ -71,7 +72,7 @@ export const Navbar = ({ t, lang, setLang, isRtl }: NavbarProps) => {
               <motion.a 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href={`tel:${CONFIG.phone}`}
+                href={`tel:${phone}`}
                 className="bg-brand text-white px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-soft hover:shadow-brand/20 transition-all"
               >
                 {t.nav.contact}
@@ -113,10 +114,10 @@ export const Navbar = ({ t, lang, setLang, isRtl }: NavbarProps) => {
                 <Globe size={18} /> {lang === 'fr' ? 'العربية' : 'Français'}
               </button>
               <a 
-                href={`tel:${CONFIG.phone}`}
+                href={`tel:${phone}`}
                 className="block w-full bg-brand text-white py-5 rounded-2xl font-black text-xl uppercase tracking-tighter shadow-xl"
               >
-                {CONFIG.phone}
+                {phone}
               </a>
             </div>
           </motion.div>

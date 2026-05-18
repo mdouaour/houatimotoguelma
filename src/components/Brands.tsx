@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CONFIG } from '../constants';
 
 interface BrandsProps {
   t: any;
+  brands: string[];
 }
 
-export const Brands = ({ t }: BrandsProps) => {
+export const Brands = ({ t, brands }: BrandsProps) => {
+  const items = brands.length ? brands : ['SYM'];
+
   return (
     <section className="py-20 bg-white overflow-hidden border-y border-zinc-100">
       <div className="max-w-7xl mx-auto px-4 mb-4 flex items-center gap-6">
@@ -23,7 +25,7 @@ export const Brands = ({ t }: BrandsProps) => {
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           className="flex whitespace-nowrap gap-24 md:gap-40 py-8 items-center"
         >
-          {[...CONFIG.brands, ...CONFIG.brands].map((brand, i) => (
+          {[...items, ...items].map((brand, i) => (
             <span key={i} className="text-4xl md:text-6xl font-extrabold text-zinc-100 uppercase tracking-tighter hover:text-brand transition-all duration-700 cursor-default select-none font-display italic">
               {brand}
             </span>
