@@ -10,6 +10,7 @@ The official landing page for **Houati Moto Guelma**, the #1 destination for mot
 - **Services Showcase**: Detailed sections for Motos, e-Scooters, e-Bikes, Bicycles, and Spare Parts.
 - **Expert Workshop**: Highlighted engineering and repair capabilities.
 - **Modern Tech Stack**: React 18, Vite, Tailwind CSS, and Motion for animations.
+- **Free Admin Panel**: Built-in local admin editor for landing content, media galleries, and section visibility.
 
 ## 🛠️ Tech Stack
 
@@ -40,6 +41,22 @@ The official landing page for **Houati Moto Guelma**, the #1 destination for mot
    ```bash
    npm run build
    ```
+
+## 🛠️ Admin Panel (Free)
+
+The project now includes a built-in admin panel with **no paid tools required**.
+
+- Open the site and click the **Admin** button (bottom-left), or use `#admin` in the URL.
+- Edit:
+  - Business info (phone, WhatsApp, Facebook, maps, location)
+  - Hero texts, buttons, links, and image
+  - Section visibility (show/hide blocks)
+  - Gallery media (photos/videos), add/remove/replace items
+  - Custom sections (title, description, button)
+  - Brands list
+- Save is automatic in browser `localStorage`.
+- Use **Export JSON** / **Import JSON** for backup and transfer.
+- Use **Reset to defaults** to restore original content.
 
 ## 🌐 Deployment to Vercel
 
