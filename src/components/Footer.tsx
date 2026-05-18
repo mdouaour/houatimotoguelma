@@ -1,12 +1,14 @@
 import React from 'react';
 import { Facebook, MapPin, Phone, Instagram, Youtube, ArrowUpRight } from 'lucide-react';
-import { CONFIG } from '../constants';
+import { LandingContent, Locale } from '../types/content';
 
 interface FooterProps {
   t: any;
+  lang: Locale;
+  content: LandingContent;
 }
 
-export const Footer = ({ t }: FooterProps) => {
+export const Footer = ({ t, lang, content }: FooterProps) => {
   return (
     <footer className="bg-zinc-900 text-zinc-400 py-24 relative overflow-hidden" id="footer">
       <div className="absolute inset-0 bg-mesh opacity-5 pointer-events-none" />
@@ -18,16 +20,16 @@ export const Footer = ({ t }: FooterProps) => {
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-white font-black italic shadow-lg shadow-brand/20">H</div>
                 <h3 className="text-2xl font-black text-white font-display uppercase tracking-[-0.05em] italic">
-                  HOUATI <span className="text-brand">MOTO</span>
+                  {content.business.name}
                 </h3>
               </div>
               <p className="text-sm md:text-base max-w-sm font-medium leading-relaxed uppercase tracking-tighter text-zinc-500">
-                {t.hero.sub}
+                {content.hero.sub[lang] || t.hero.sub}
               </p>
             </div>
             
             <div className="flex gap-3">
-              <SocialIcon icon={<Facebook size={18} />} href={CONFIG.facebook} />
+              <SocialIcon icon={<Facebook size={18} />} href={content.business.facebook} />
               <SocialIcon icon={<Instagram size={18} />} href="#" />
               <SocialIcon icon={<Youtube size={18} />} href="#" />
             </div>
@@ -41,9 +43,9 @@ export const Footer = ({ t }: FooterProps) => {
                   <MapPin size={18} />
                 </div>
                 <div>
-                   <a href={CONFIG.googleMaps} target="_blank" rel="noreferrer" className="text-zinc-300 font-bold hover:text-brand transition-colors flex items-center gap-2 text-xs uppercase tracking-widest leading-none">
-                     Guelma, Algérie <ArrowUpRight size={12} />
-                   </a>
+                   <a href={content.business.googleMaps} target="_blank" rel="noreferrer" className="text-zinc-300 font-bold hover:text-brand transition-colors flex items-center gap-2 text-xs uppercase tracking-widest leading-none">
+                      {content.business.location} <ArrowUpRight size={12} />
+                    </a>
                    <p className="text-[10px] mt-2 font-semibold uppercase tracking-widest text-zinc-600">Centre ville</p>
                 </div>
               </li>
@@ -52,9 +54,9 @@ export const Footer = ({ t }: FooterProps) => {
                   <Phone size={18} />
                 </div>
                 <div>
-                   <a href={`tel:${CONFIG.phone}`} className="text-zinc-300 font-bold hover:text-brand transition-colors text-xs uppercase tracking-widest leading-none">
-                     {CONFIG.phone}
-                   </a>
+                   <a href={`tel:${content.business.phone}`} className="text-zinc-300 font-bold hover:text-brand transition-colors text-xs uppercase tracking-widest leading-none">
+                      {content.business.phone}
+                    </a>
                    <p className="text-[10px] mt-2 font-semibold uppercase tracking-widest text-zinc-600">Available 08:00 - 18:00</p>
                 </div>
               </li>
@@ -101,4 +103,3 @@ function SocialIcon({ icon, href }: { icon: React.ReactNode, href: string }) {
     </a>
   );
 }
-

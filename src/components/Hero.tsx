@@ -2,12 +2,17 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Star, MessageCircle, Phone, ArrowUpRight } from 'lucide-react';
 import { CONFIG } from '../constants';
+import { LandingContent, Locale } from '../types/content';
 
 interface HeroProps {
   t: any;
+  lang: Locale;
+  content: LandingContent;
 }
 
-export const Hero = ({ t }: HeroProps) => {
+export const Hero = ({ t, lang, content }: HeroProps) => {
+  const hero = content.hero;
+
   return (
     <header className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-white">
       {/* Subtle Background Textures */}
@@ -30,11 +35,11 @@ export const Hero = ({ t }: HeroProps) => {
               className="inline-flex items-center gap-3 bg-brand/5 border border-brand/10 px-5 py-2 rounded-full"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_#E31E24]" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand/80">{t.hero.tag}</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand/80">{hero.tag[lang] || t.hero.tag}</span>
             </motion.div>
             
             <h1 className="text-5xl md:text-7xl lg:text-[100px] font-extrabold leading-[0.9] tracking-tighter font-display uppercase">
-              {t.hero.title.split(' ').map((word, i) => (
+              {(hero.title[lang] || t.hero.title).split(' ').map((word, i) => (
                 <span key={i} className={i === 1 ? 'text-brand block italic translate-x-4' : 'block text-zinc-900'}>{word}</span>
               ))}
             </h1>
@@ -44,30 +49,30 @@ export const Hero = ({ t }: HeroProps) => {
               <p className="text-zinc-400 text-[10px] font-bold uppercase tracking-[0.3em]">Precision Engineering / Expert Support</p>
             </div>
             
-            <p className="text-lg md:text-xl text-zinc-500 max-w-lg leading-relaxed font-medium">
-              {t.hero.sub}
-            </p>
-          </div>
+              <p className="text-lg md:text-xl text-zinc-500 max-w-lg leading-relaxed font-medium">
+                {hero.sub[lang] || t.hero.sub}
+              </p>
+            </div>
 
           <div className="flex flex-wrap gap-4">
             <motion.a 
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              href={`https://wa.me/${CONFIG.whatsapp}`}
+               href={hero.primaryCtaUrl || `https://wa.me/${content.business.whatsapp}`}
               className="flex items-center gap-4 bg-brand text-white px-10 py-5 rounded-2xl font-bold text-sm transition-all shadow-elegant hover:shadow-brand/20 group"
             >
               <MessageCircle size={20} className="group-hover:rotate-12 transition-transform" /> 
-              <span className="uppercase tracking-widest">{t.hero.ctaWA}</span>
-            </motion.a>
+               <span className="uppercase tracking-widest">{hero.primaryCtaLabel[lang] || t.hero.ctaWA}</span>
+             </motion.a>
             <motion.a 
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              href={`tel:${CONFIG.phone}`}
+               href={hero.secondaryCtaUrl || `tel:${content.business.phone}`}
               className="flex items-center gap-4 bg-zinc-100 text-zinc-900 px-10 py-5 rounded-2xl font-bold text-sm transition-all border border-transparent hover:border-zinc-200"
             >
               <Phone size={20} /> 
-              <span className="uppercase tracking-widest">{CONFIG.phone}</span>
-            </motion.a>
+               <span className="uppercase tracking-widest">{hero.secondaryCtaLabel[lang] || content.business.phone}</span>
+             </motion.a>
           </div>
 
           {/* Stats Summary */}
@@ -96,7 +101,7 @@ export const Hero = ({ t }: HeroProps) => {
           <div className="relative z-10 glass p-5 rounded-[4rem] shadow-elegant overflow-hidden group">
             <div className="rounded-[3rem] overflow-hidden aspect-[4/5] relative">
               <img 
-                src={CONFIG.images.hero} 
+                 src={hero.image || CONFIG.images.hero} 
                 alt="Expert Moto Guerlma" 
                 className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" 
               />
