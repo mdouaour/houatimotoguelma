@@ -4,6 +4,7 @@ import { Star, MessageCircle, Phone, ArrowUpRight, Facebook, Instagram } from 'l
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
 import { Trotinette3D } from './Trotinette3D';
+import { AnimatedCounter } from './AnimatedCounter';
 import { springs, motionTokens } from '../lib/motion-tokens';
 
 interface HeroProps {
@@ -19,6 +20,18 @@ export const Hero = ({ t, lang }: HeroProps) => {
         <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="absolute inset-0 bg-dots pointer-events-none" />
         <div className="absolute top-1/3 -left-48 w-[500px] h-[500px] bg-brand/8 rounded-full blur-3xl" />
+        <motion.div
+          className="absolute inset-0 pointer-events-none overflow-hidden opacity-30 dark:opacity-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.6 }}
+        >
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-r from-transparent via-brand/20 to-transparent blur-[80px] -skew-y-6"
+            animate={{ x: [0, 60, -60, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10 w-full py-16 md:py-24">
@@ -79,7 +92,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             <div className="space-y-1 text-center">
               <div className="flex items-center gap-2 justify-center">
                 <Facebook size={16} className="text-[#1877F2]" />
-                <span className="text-3xl font-black text-ink italic font-display tabular-nums">{CONFIG.stats.fbFollowers}</span>
+                <AnimatedCounter value={CONFIG.stats.fbFollowers} className="text-3xl font-black text-ink italic font-display tabular-nums" />
               </div>
               <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none">Facebook</p>
             </div>
@@ -87,13 +100,13 @@ export const Hero = ({ t, lang }: HeroProps) => {
             <div className="space-y-1 text-center">
               <div className="flex items-center gap-2 justify-center">
                 <Instagram size={16} className="text-[#E4405F]" />
-                <span className="text-3xl font-black text-ink italic font-display tabular-nums">{CONFIG.stats.igFollowers}</span>
+                <AnimatedCounter value={CONFIG.stats.igFollowers} className="text-3xl font-black text-ink italic font-display tabular-nums" />
               </div>
               <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none">Instagram</p>
             </div>
             <div className="w-px h-10 bg-zinc-100" />
             <div className="space-y-1 text-center">
-              <span className="text-3xl font-black text-ink italic font-display tabular-nums">{CONFIG.stats.satisfied}</span>
+              <AnimatedCounter value={CONFIG.stats.satisfied} className="text-3xl font-black text-ink italic font-display tabular-nums" />
               <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none">{t.sections.testimonials}</p>
             </div>
           </div>
