@@ -15,6 +15,7 @@ import { Services } from './components/Services';
 import { Brands } from './components/Brands';
 import { Gallery } from './components/Gallery';
 import { Testimonials } from './components/Testimonials';
+import { SocialMediaSection } from './components/SocialMediaSection';
 import { Footer } from './components/Footer';
 import { StickyCTA } from './components/StickyCTA';
 import { AdminPanel } from './components/AdminPanel';
@@ -71,6 +72,7 @@ export default function App() {
             {content.sectionVisibility.gallery && <Gallery t={t} lang={lang} content={content} />}
             {content.sectionVisibility.customSections && <CustomSections items={content.customSections} lang={lang} />}
             {content.sectionVisibility.brands && <Brands t={t} brands={content.brands} />}
+            {<SocialMediaSection t={t} lang={lang} />}
             {content.sectionVisibility.testimonials && (
               <Testimonials t={t} lang={lang} items={content.testimonials} />
             )}

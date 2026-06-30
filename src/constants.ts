@@ -1,27 +1,37 @@
 export const CONFIG = {
   name: "Houati Moto Guelma",
   phone: "+213550158258",
-  whatsapp: "213550158258", // No + for WHATSAPP
-  facebook: "https://www.facebook.com/share/1ajGC4W37z/",
+  whatsapp: "213550158258",
+  facebook: "https://www.facebook.com/houatimoto",
+  instagram: "https://www.instagram.com/houatimoto/",
+  tiktok: "https://www.tiktok.com/@houatimoto",
   established: "2018",
-  location: "Guelma, Algérie",
+  location: "Rue Mouhoub Ben Tayeb N° 05, Guelma, Algérie",
   googleMaps: "https://maps.google.com/?q=Houati+Moto+Guelma",
   stats: {
-    followers: "1.5K",
-    experience: "6+",
+    fbFollowers: "1.5K",
+    igFollowers: "1.4K",
+    tiktokFollowers: "1.2K",
+    experience: "8+",
     satisfied: "1200+"
+  },
+  hours: {
+    weekdays: "Samedi–Jeudi 09h–21h",
+    friday: "Vendredi 15h–21h",
+    weekdays_ar: "السبت–الخميس 09h–21h",
+    friday_ar: "الجمعة 15h–21h"
   },
   images: {
     hero: "https://images.unsplash.com/photo-1622185135505-2d795003994a?auto=format&fit=crop&q=80&w=2000",
     moto: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=1000",
-    escooter: "https://images.unsplash.com/photo-1605152276897-4f618f831968?auto=format&fit=crop&q=80&w=1000", // Electric scooter
+    escooter: "https://images.unsplash.com/photo-1605152276897-4f618f831968?auto=format&fit=crop&q=80&w=1000",
     ebike: "https://images.unsplash.com/photo-1593766788306-28561086694e?auto=format&fit=crop&q=80&w=1000",
     tricycle: "https://images.unsplash.com/photo-1610632380989-680fe40816c6?auto=format&fit=crop&q=80&w=1000",
     bicycle: "https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&q=80&w=1000",
-    trotinet: "https://images.unsplash.com/photo-1597063415112-f04ad800293a?auto=format&fit=crop&q=80&w=1000", // Electric Trotinette
-    parts: "https://images.unsplash.com/photo-1612030225145-12cf3094892c?auto=format&fit=crop&q=80&w=1000", // Motorcycle parts
+    trotinet: "https://images.unsplash.com/photo-1597063415112-f04ad800293a?auto=format&fit=crop&q=80&w=1000",
+    parts: "https://images.unsplash.com/photo-1612030225145-12cf3094892c?auto=format&fit=crop&q=80&w=1000",
     accessories: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=1000",
-    atelier: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&q=80&w=1000", // Repair workshop
+    atelier: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&q=80&w=1000",
   },
   brands: ["SYM", "VMS", "Yamaha", "Bicyclettes", "E-Bikes", "Accessories"]
 };
@@ -71,12 +81,13 @@ export const I18N = {
       repair: "مركز الصيانة المتخصص",
       repairDesc: "صيانة احترافية وشاملة للدراجات النارية، الكهربائية، الهوائية، والسكوتر.",
       brands: "شركاؤنا",
-      testimonials: "قالوا عنا"
+      testimonials: "قالوا عنا",
+      social: "تابعنا على"
     },
     footer: {
       follow: "تابعنا على فيسبوك",
       visit: "موقعنا في قالمة",
-      rights: "جميع الحقوق محفوظة © 2024 هواتي موتو قالمة"
+      rights: "جميع الحقوق محفوظة © 2026 هواتي موتو قالمة"
     }
   },
   fr: {
@@ -123,12 +134,13 @@ export const I18N = {
       repair: "Atelier Multi-Service",
       repairDesc: "Réparation experte pour motos, vélos électriques, scooters et bicyclettes.",
       brands: "Nos Marques",
-      testimonials: "Avis Clients"
+      testimonials: "Avis Clients",
+      social: "Suivez-nous"
     },
     footer: {
       follow: "Suivez-nous sur Facebook",
       visit: "Showroom à Guelma",
-      rights: "Tous droits réservés © 2024 Houati Moto Guelma"
+      rights: "Tous droits réservés © 2026 Houati Moto Guelma"
     }
   }
 } as const;

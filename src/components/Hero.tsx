@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Star, MessageCircle, Phone, ArrowUpRight } from 'lucide-react';
+import { Star, MessageCircle, Phone, ArrowUpRight, Facebook, Instagram } from 'lucide-react';
 import { CONFIG } from '../constants';
 import { LandingContent, Locale } from '../types/content';
 
@@ -77,14 +77,25 @@ export const Hero = ({ t, lang, content }: HeroProps) => {
 
           {/* Stats Summary */}
           <div className="flex items-center gap-10 pt-4 border-t border-zinc-100">
-             <div className="space-y-1">
-                <span className="text-3xl font-black text-zinc-900 italic font-display">{CONFIG.stats.satisfied}</span>
-                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none">{t.sections.testimonials}</p>
+             <div className="space-y-1 text-center">
+                <div className="flex items-center gap-2 justify-center">
+                  <Facebook size={16} className="text-[#1877F2]" />
+                  <span className="text-3xl font-black text-zinc-900 italic font-display">{CONFIG.stats.fbFollowers}</span>
+                </div>
+                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none">Facebook</p>
              </div>
              <div className="w-px h-10 bg-zinc-100" />
-             <div className="space-y-1">
-                <span className="text-3xl font-black text-zinc-900 italic font-display">{CONFIG.stats.experience}</span>
-                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none">{t.trust.exp}</p>
+             <div className="space-y-1 text-center">
+                <div className="flex items-center gap-2 justify-center">
+                  <Instagram size={16} className="text-[#E4405F]" />
+                  <span className="text-3xl font-black text-zinc-900 italic font-display">{CONFIG.stats.igFollowers}</span>
+                </div>
+                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none">Instagram</p>
+             </div>
+             <div className="w-px h-10 bg-zinc-100" />
+             <div className="space-y-1 text-center">
+                <span className="text-3xl font-black text-zinc-900 italic font-display">{CONFIG.stats.satisfied}</span>
+                <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none">{t.sections.testimonials}</p>
              </div>
           </div>
         </motion.div>
