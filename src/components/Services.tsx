@@ -64,10 +64,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
   ];
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-surface relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
+    <section id="services" className="py-24 md:py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20">
           <div className="space-y-4">
@@ -153,9 +150,6 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
                 </div>
               </div>
 
-              <div className="absolute bottom-6 right-8 p-4 text-ink/5 font-display text-7xl md:text-8xl font-black pointer-events-none group-hover:text-brand/5 transition-colors">
-                 {i+1}
-              </div>
             </motion.div>
           ))}
         </div>

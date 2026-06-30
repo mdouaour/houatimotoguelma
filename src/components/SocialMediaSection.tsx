@@ -82,8 +82,7 @@ const platforms = [
 
 export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
   return (
-    <section className="py-24 md:py-32 bg-surface relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
+    <section className="py-24 md:py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-20 space-y-6">
           <div className="flex items-center justify-center gap-3 text-brand">

@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import { Clock, ShieldCheck, Wrench, Zap } from 'lucide-react';
 
 
@@ -9,19 +8,8 @@ interface TrustBarProps {
 
 export const TrustBar = ({ t }: TrustBarProps) => {
   return (
-    <section className="py-12 bg-surface border-y border-border-subtle relative z-20 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--brand)_0%,_transparent_70%)] opacity-[0.03]" />
-      {/* Electric scan line */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-        style={{
-          background: "repeating-linear-gradient(45deg, transparent, transparent 20px, #DC2626 20px, #DC2626 22px)",
-          backgroundSize: "200% 200%",
-        }}
-      />
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+    <section className="py-12 bg-surface border-y border-border-subtle relative z-20">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10">
           <TrustItem icon={<Zap />} text={t.trust.specialist} label="E-Scooter_Specialist" />
           <TrustItem icon={<Clock />} text={t.trust.exp} label="Precision_Time" />
@@ -38,12 +26,6 @@ function TrustItem({ icon, text, label }: { icon: React.ReactNode, text: string,
     <div className="flex items-center gap-6 justify-center md:justify-start group cursor-default">
       <div className="w-14 h-14 bg-surface-secondary rounded-2xl flex items-center justify-center text-ink-tertiary group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-soft relative overflow-hidden">
         {React.cloneElement(icon as React.ReactElement, { size: 24 })}
-        {/* Power ring */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl border border-brand/40"
-          animate={{ scale: [1, 1.3, 1], opacity: [0, 0.5, 0] }}
-          transition={{ duration: 2, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
-        />
       </div>
       <div className="space-y-0.5">
         <p className="text-[9px] font-black text-brand uppercase tracking-[0.2em] font-display">{label}</p>

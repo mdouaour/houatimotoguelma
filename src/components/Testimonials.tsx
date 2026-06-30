@@ -31,10 +31,8 @@ const REVIEWS = [
 
 export const Testimonials = ({ t, lang }: TestimonialsProps) => {
   return (
-    <section className="py-24 md:py-32 bg-surface-secondary relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/60 to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-3xl" />
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+    <section className="py-24 md:py-32 bg-surface-secondary">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center text-center space-y-6 mb-16 md:mb-24">
           <div className="flex items-center gap-3 text-brand">
             <Star size={12} fill="currentColor" />

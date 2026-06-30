@@ -53,11 +53,6 @@ export const Hero = ({ t, lang }: HeroProps) => {
               {t.hero.specialist}
             </motion.p>
 
-            <div className="flex items-center gap-4 py-2">
-              <div className="h-px w-12 bg-zinc-200" />
-              <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em]">Precision Engineering / Expert Support</p>
-            </div>
-
             <p className="text-lg md:text-xl text-ink-secondary max-w-lg leading-relaxed font-medium text-pretty">
               {t.hero.sub}
             </p>

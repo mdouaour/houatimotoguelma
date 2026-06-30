@@ -35,9 +35,8 @@ export const Features = ({ t }: FeaturesProps) => {
   ];
 
   return (
-    <section className="py-24 bg-surface relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+    <section className="py-24 bg-surface">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="mb-16 md:mb-20 space-y-4">
           <div className="flex items-center gap-3 text-brand">
             <Shield size={12} />
