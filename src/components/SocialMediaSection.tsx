@@ -4,6 +4,8 @@ import { Users, ArrowUpRight } from 'lucide-react';
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
 import { ScrollReveal, StaggerReveal, RevealItem } from './ScrollReveal';
+import { ArcField } from './ArcField';
+import { GlowUnderline } from './GlowUnderline';
 
 interface SocialMediaSectionProps {
   t: any;
@@ -84,6 +86,7 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
   return (
     <section className="py-24 md:py-32 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
+      <ArcField count={16} className="opacity-30" />
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal variant="wheel" className="text-center mb-20 space-y-6">
           <div className="flex items-center justify-center gap-3 text-brand">
@@ -93,7 +96,7 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
             <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
             {lang === 'fr' ? 'Rejoignez-nous' : 'انضم إلينا'}
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full mx-auto" />
+          <GlowUnderline className="mx-auto" />
           <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em]">
             {lang === 'fr' ? 'Suivez-nous sur les réseaux sociaux' : 'تابعنا على مواقع التواصل الاجتماعي'}
           </p>

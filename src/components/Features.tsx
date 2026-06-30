@@ -1,6 +1,8 @@
 import React from 'react';
 import { Shield, Zap, Wrench, ChevronRight } from 'lucide-react';
-import { StaggerReveal, RevealItem } from './ScrollReveal';
+import { StaggerReveal, RevealItem, ScrollReveal } from './ScrollReveal';
+import { ArcField } from './ArcField';
+import { GlowUnderline } from './GlowUnderline';
 
 interface FeaturesProps {
   t: any;
@@ -31,17 +33,20 @@ export const Features = ({ t }: FeaturesProps) => {
   return (
     <section className="py-24 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="mb-16 md:mb-20 space-y-4">
-          <div className="flex items-center gap-3 text-brand">
-            <Shield size={12} className="animate-glow-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Why_Us</span>
+      <ArcField count={16} className="opacity-40" />
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <ScrollReveal variant="speed" direction="left">
+          <div className="mb-16 md:mb-20 space-y-4">
+            <div className="flex items-center gap-3 text-brand">
+              <Shield size={12} className="animate-glow-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Why_Us</span>
+            </div>
+            <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
+              {t.sections.features}
+            </h2>
+            <GlowUnderline />
           </div>
-          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
-            {t.sections.features}
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full" />
-        </div>
+        </ScrollReveal>
         <StaggerReveal variant="bounce">
           <div className="grid md:grid-cols-3 gap-12">
             {items.map((item, i) => (

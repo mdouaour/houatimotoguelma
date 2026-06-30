@@ -5,6 +5,8 @@ import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
 import { PHOTOS, GALLERY_CATEGORIES } from '../config/photos';
 import { ScrollReveal } from './ScrollReveal';
+import { GlowUnderline } from './GlowUnderline';
+import { ArcField } from './ArcField';
 
 interface GalleryProps {
   t: any;
@@ -21,6 +23,7 @@ export const Gallery = ({ t, lang }: GalleryProps) => {
   return (
     <section id="showroom" className="py-24 md:py-32 bg-surface overflow-hidden relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
+      <ArcField count={18} className="opacity-30" />
       <div className="max-w-[1600px] mx-auto px-4">
         <ScrollReveal variant="speed" className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-8">
           <div className="space-y-6">
@@ -31,7 +34,7 @@ export const Gallery = ({ t, lang }: GalleryProps) => {
             <h2 className="text-4xl md:text-8xl font-black tracking-tighter font-display uppercase italic text-ink leading-[0.8] text-balance">
               {lang === 'fr' ? 'Visual Excellence' : 'تميّز بصري'}
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full" />
+            <GlowUnderline />
             <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em] ml-2">
               {lang === 'fr' ? 'Exploring the fine details of mechanics' : 'استكشاف أدق تفاصيل الميكانيك'}
             </p>

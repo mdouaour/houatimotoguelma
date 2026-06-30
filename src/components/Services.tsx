@@ -4,6 +4,8 @@ import { Bike, Zap, ShoppingBag, Settings, Star, Package, ShieldCheck } from 'lu
 import { CONFIG } from '../constants';
 import { TiltCard } from './TiltCard';
 import { ScrollReveal } from './ScrollReveal';
+import { ArcField } from './ArcField';
+import { GlowUnderline } from './GlowUnderline';
 
 interface ServicesProps {
   t: any;
@@ -81,6 +83,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
   return (
     <section id="services" className="py-24 md:py-32 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
+      <ArcField count={18} className="opacity-30" />
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
       <div className="max-w-7xl mx-auto px-4">
@@ -95,7 +98,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
             <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
               {t.sections.products}
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full" />
+            <GlowUnderline />
           </div>
           <p className="text-ink-tertiary max-w-sm font-semibold leading-relaxed uppercase text-[10px] tracking-[0.2em]">
             Since 2018. Delivering premium motorcycles and professional technical support in Guelma.
@@ -107,7 +110,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
             <TiltCard
               key={i}
               tiltDegree={6}
-              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft hover:shadow-elegant border border-border-subtle hover:border-brand/20 transition-all duration-700
+              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft hover:shadow-[0_0_50px_-20px_rgba(220,38,38,0.4)] border border-border-subtle hover:border-brand/30 transition-all duration-700
                 ${item.size === 'large' ? 'lg:col-span-8 lg:row-span-2' : ''}
                 ${item.size === 'medium' ? 'lg:col-span-4 lg:row-span-1' : ''}
                 ${item.size === 'small' ? 'lg:col-span-4 lg:row-span-1' : ''}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ScrollReveal } from './ScrollReveal';
+import { ArcField } from './ArcField';
 import { MapPin, Clock, Phone, ArrowUpRight, Navigation } from 'lucide-react';
 
 interface MapSectionProps {
@@ -15,6 +16,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
   return (
     <section className="py-24 md:py-32 bg-surface-secondary relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
+      <ArcField count={14} className="opacity-25" />
       {/* GPS signal rings */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         {[0, 1, 2].map((i) => (
