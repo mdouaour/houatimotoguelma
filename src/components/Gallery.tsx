@@ -22,7 +22,7 @@ export const Gallery = ({ t, lang }: GalleryProps) => {
     <section id="showroom" className="py-24 md:py-32 bg-surface overflow-hidden relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
       <div className="max-w-[1600px] mx-auto px-4">
-        <ScrollReveal className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-8">
+        <ScrollReveal variant="speed" className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-8">
           <div className="space-y-6">
             <div className="flex items-center gap-3 text-brand">
               <Camera size={14} />

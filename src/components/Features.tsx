@@ -42,10 +42,10 @@ export const Features = ({ t }: FeaturesProps) => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full" />
         </div>
-        <StaggerReveal>
+        <StaggerReveal variant="bounce">
           <div className="grid md:grid-cols-3 gap-12">
             {items.map((item, i) => (
-              <RevealItem key={i}>
+              <RevealItem key={i} variant="bounce">
                 <div className="group space-y-6 p-8 rounded-3xl border border-transparent hover:border-brand/10 hover:bg-brand-subtle transition-all duration-500">
                   <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ring-1 ring-brand/10 group-hover:ring-brand/30`}>
                     {React.cloneElement(item.icon as React.ReactElement, { size: 32 })}

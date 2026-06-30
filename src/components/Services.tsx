@@ -83,7 +83,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
       <div className="max-w-7xl mx-auto px-4">
-        <ScrollReveal
+        <ScrollReveal variant="speed"
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20"
         >
           <div className="space-y-4">

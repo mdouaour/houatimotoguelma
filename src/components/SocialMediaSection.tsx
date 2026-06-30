@@ -85,7 +85,7 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
     <section className="py-24 md:py-32 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
       <div className="max-w-7xl mx-auto px-4">
-        <ScrollReveal className="text-center mb-20 space-y-6">
+        <ScrollReveal variant="wheel" className="text-center mb-20 space-y-6">
           <div className="flex items-center justify-center gap-3 text-brand">
             <Users size={14} />
             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">{lang === 'fr' ? 'Social_Media' : 'التواصل الاجتماعي'}</span>
@@ -99,9 +99,9 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
           </p>
         </ScrollReveal>
 
-        <StaggerReveal className="grid md:grid-cols-3 gap-8">
+        <StaggerReveal variant="wheel" className="grid md:grid-cols-3 gap-8">
           {platforms.map((platform, i) => (
-            <RevealItem key={platform.name}>
+            <RevealItem key={platform.name} variant="wheel">
             <motion.a
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               href={platform.url}
