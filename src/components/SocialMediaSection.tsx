@@ -6,7 +6,7 @@ import type { Locale } from '../constants';
 import { ScrollReveal, StaggerReveal, RevealItem } from './ScrollReveal';
 import { ArcField } from './ArcField';
 import { GlowUnderline } from './GlowUnderline';
-import { CountUp } from './CountUp';
+import { AnimatedCounter } from './AnimatedCounter';
 
 interface SocialMediaSectionProps {
   t: any;
@@ -136,7 +136,7 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
               <div className="flex items-center gap-6 mt-auto">
                 <div className="text-center">
                   <span className="text-4xl font-black text-ink italic font-display">
-                    <CountUp to={parseFloat(platform.followers)} suffix="K" />
+                    <AnimatedCounter value={platform.followers} />
                   </span>
                     <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none mt-1">
                     {lang === 'fr' ? 'Abonnés' : 'متابع'}
