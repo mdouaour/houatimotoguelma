@@ -47,9 +47,9 @@ export function ArcField({ count = 14, className = "" }: ArcFieldProps) {
             top: p.y,
             width: p.size,
             height: p.size,
-            background: p.color === "neon" ? "#00FF88" : p.color === "cyan" ? "#00D4FF" : "#0088FF",
+            background: p.color === "neon" ? "#00FF88" : p.color === "cyan" ? "#00D4FF" : "#DC2626",
             boxShadow: `0 0 ${p.size * 4}px ${
-              p.color === "neon" ? "#00FF88" : p.color === "cyan" ? "#00D4FF" : "#0088FF"
+              p.color === "neon" ? "#00FF88" : p.color === "cyan" ? "#00D4FF" : "#DC2626"
             }`,
             ["--drift" as string]: `${p.drift}px`,
             animation: `arc-float ${p.duration}s ease-in-out ${p.delay}s infinite`,

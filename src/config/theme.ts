@@ -4,8 +4,8 @@ export const THEME = {
     body: '"Inter", ui-sans-serif, system-ui, sans-serif',
   },
   colors: {
-    brand: '#0088FF',
-    brandHover: '#0070D4',
+    brand: '#DC2626',
+    brandHover: '#B91C1C',
     neon: '#00FF88',
     cyan: '#00D4FF',
     ink: '#09090B',
@@ -20,6 +20,6 @@ export const THEME = {
   shadows: {
     soft: '0 10px 40px -10px rgba(0,0,0,0.04)',
     elegant: '0 20px 60px -12px rgba(0,0,0,0.08)',
-    brand: '0 20px 60px -12px rgba(0,136,255,0.15)',
+    brand: '0 20px 60px -12px rgba(220,38,38,0.15)',
   },
 } as const;

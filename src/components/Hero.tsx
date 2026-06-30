@@ -45,7 +45,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
               animate={{ opacity: 1, x: 0 }}
               className="inline-flex items-center gap-3 bg-brand/5 border border-brand/10 px-5 py-2 rounded-full"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_#0088FF]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_#DC2626]" />
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand/80 text-balance">{t.hero.tag}</span>
             </motion.div>
 

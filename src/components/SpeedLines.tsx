@@ -29,7 +29,7 @@ export function SpeedLines({ className = "", count = 8 }: SpeedLinesProps) {
             width: l.width,
             height: l.height,
             animation: `speed-line ${l.duration}s ease-in-out ${l.delay}s infinite`,
-            boxShadow: "0 0 12px rgba(0,136,255,0.15)",
+            boxShadow: "0 0 12px rgba(220,38,38,0.15)",
           }}
         />
       ))}

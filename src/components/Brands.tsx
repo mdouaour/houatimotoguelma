@@ -31,7 +31,7 @@ export const Brands = ({ t }: BrandsProps) => {
             <motion.span
               key={i}
               className="text-4xl md:text-6xl font-extrabold text-zinc-200 dark:text-white/[0.04] uppercase tracking-tighter hover:text-brand transition-all duration-700 cursor-default select-none font-display italic relative"
-              whileHover={{ scale: 1.1, color: "#0088FF" }}
+              whileHover={{ scale: 1.1, color: "#DC2626" }}
             >
               {brand}
               {/* Electric spark under brand name on hover */}

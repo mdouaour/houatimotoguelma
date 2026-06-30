@@ -139,7 +139,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
                     rotate: item.accent === "brand" ? [0, 360] : item.title === "e-Trotinettes" ? [0, -15, 15, 0] : [0, 15, -15, 0],
                     backgroundColor: "var(--color-brand)",
                     color: "#ffffff",
-                    borderColor: "rgba(0,136,255,0.3)",
+                    borderColor: "rgba(220,38,38,0.3)",
                   }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                 >

@@ -68,7 +68,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
               animate={{ backgroundPosition: ["0% 0%", "0% 100%"] }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               style={{
-                background: "linear-gradient(to bottom, transparent 40%, rgba(0,136,255,0.03) 45%, rgba(0,136,255,0.06) 50%, rgba(0,136,255,0.03) 55%, transparent 60%)",
+                background: "linear-gradient(to bottom, transparent 40%, rgba(220,38,38,0.03) 45%, rgba(220,38,38,0.06) 50%, rgba(220,38,38,0.03) 55%, transparent 60%)",
                 backgroundSize: "100% 200%",
               }}
             />

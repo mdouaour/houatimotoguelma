@@ -17,7 +17,7 @@ export const TrustBar = ({ t }: TrustBarProps) => {
         animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
         transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
         style={{
-          background: "repeating-linear-gradient(45deg, transparent, transparent 20px, #0088FF 20px, #0088FF 22px)",
+          background: "repeating-linear-gradient(45deg, transparent, transparent 20px, #DC2626 20px, #DC2626 22px)",
           backgroundSize: "200% 200%",
         }}
       />

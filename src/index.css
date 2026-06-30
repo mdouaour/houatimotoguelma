@@ -5,11 +5,11 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", sans-serif;
 
-  --color-brand: #0088FF;
-  --color-brand-hover: #0070D4;
-  --color-brand-muted: rgba(0, 136, 255, 0.05);
-  --color-brand-glow: rgba(0, 136, 255, 0.08);
-  --color-brand-subtle: rgba(0, 136, 255, 0.02);
+  --color-brand: #DC2626;
+  --color-brand-hover: #B91C1C;
+  --color-brand-muted: rgba(220, 38, 38, 0.05);
+  --color-brand-glow: rgba(220, 38, 38, 0.08);
+  --color-brand-subtle: rgba(220, 38, 38, 0.02);
 
   --color-neon: #00FF88;
   --color-neon-glow: rgba(0, 255, 136, 0.08);
@@ -27,10 +27,10 @@
 
   --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
   --shadow-elegant: 0 20px 60px -12px rgba(0, 0, 0, 0.1);
-  --shadow-brand: 0 20px 60px -12px rgba(0, 136, 255, 0.15);
-}
+    --shadow-brand: 0 20px 60px -12px rgba(220, 38, 38, 0.15);
+  }
 
-@custom-variant dark (&:where(.dark, .dark *));
+  @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
@@ -39,9 +39,9 @@
 
   .dark {
     color-scheme: dark;
-    --color-brand-muted: rgba(0, 136, 255, 0.15);
-    --color-brand-glow: rgba(0, 136, 255, 0.12);
-    --color-brand-subtle: rgba(0, 136, 255, 0.05);
+    --color-brand-muted: rgba(220, 38, 38, 0.15);
+    --color-brand-glow: rgba(220, 38, 38, 0.12);
+    --color-brand-subtle: rgba(220, 38, 38, 0.05);
     --color-neon-glow: rgba(0, 255, 136, 0.1);
     --color-cyan-glow: rgba(0, 212, 255, 0.1);
 
@@ -56,7 +56,7 @@
 
     --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.4);
     --shadow-elegant: 0 20px 60px -12px rgba(0, 0, 0, 0.5);
-    --shadow-brand: 0 20px 60px -12px rgba(0, 136, 255, 0.25);
+    --shadow-brand: 0 20px 60px -12px rgba(220, 38, 38, 0.25);
   }
 
   html {
@@ -103,8 +103,8 @@
   ::-webkit-scrollbar-thumb {
     background: repeating-linear-gradient(
       to bottom,
-      #0088FF 0px,
-      #0088FF 4px,
+      #DC2626 0px,
+      #DC2626 4px,
       transparent 4px,
       transparent 8px
     );
@@ -119,8 +119,8 @@
   ::-webkit-scrollbar-thumb:hover {
     background: repeating-linear-gradient(
       to bottom,
-      #0070D4 0px,
-      #0070D4 4px,
+      #B91C1C 0px,
+      #B91C1C 4px,
       transparent 4px,
       transparent 8px
     );
@@ -280,12 +280,12 @@
   }
 
   .bg-dots {
-    background-image: radial-gradient(rgba(0, 136, 255, 0.06) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(220, 38, 38, 0.06) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
   .dark .bg-dots {
-    background-image: radial-gradient(rgba(0, 136, 255, 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(220, 38, 38, 0.12) 1px, transparent 1px);
   }
 
   .perspective-1000 {
