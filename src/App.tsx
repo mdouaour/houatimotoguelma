@@ -13,6 +13,7 @@ import { SocialMediaSection } from './components/SocialMediaSection';
 import { MapSection } from './components/MapSection';
 import { Footer } from './components/Footer';
 import { StickyCTA } from './components/StickyCTA';
+import { FullPageScooter } from './components/FullPageScooter';
 
 export default function App() {
   const [lang, setLang] = useState<Locale>('ar');
@@ -51,6 +52,8 @@ export default function App() {
         dark={dark}
         toggleDark={toggleDark}
       />
+
+      <FullPageScooter />
 
       <main>
         <Hero t={t} lang={lang} />

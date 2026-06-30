@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import { Star, MessageCircle, Phone, ArrowUpRight, Facebook, Instagram } from 'lucide-react';
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
-import { Trotinette3D } from './Trotinette3D';
 import { AnimatedCounter } from './AnimatedCounter';
 import { springs, motionTokens } from '../lib/motion-tokens';
 
@@ -15,7 +14,6 @@ interface HeroProps {
 export const Hero = ({ t, lang }: HeroProps) => {
   return (
     <header className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-surface">
-      <Trotinette3D />
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="absolute inset-0 bg-dots pointer-events-none" />

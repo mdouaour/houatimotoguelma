@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CONFIG } from '../constants';
 import { ScrollReveal } from './ScrollReveal';
-import { RiderAvatar } from './RiderAvatar';
 
 interface BrandsProps {
   t: any;
@@ -18,11 +17,7 @@ export const Brands = ({ t }: BrandsProps) => {
         <div className="h-px w-full bg-border-medium" />
       </div>
 
-      {/* Rider character */}
-      <div className="absolute right-8 bottom-0 w-[200px] h-[140px] z-20 opacity-50 md:opacity-100">
-        <RiderAvatar />
-      </div>
-
+      
       <div className="relative flex">
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-surface to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-surface to-transparent z-10" />
