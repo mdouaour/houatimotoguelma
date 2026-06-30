@@ -1,26 +1,26 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { CONFIG } from '../constants';
 
 interface BrandsProps {
   t: any;
-  brands: string[];
 }
 
-export const Brands = ({ t, brands }: BrandsProps) => {
-  const items = brands.length ? brands : ['SYM'];
+export const Brands = ({ t }: BrandsProps) => {
+  const items = CONFIG.brands.length ? CONFIG.brands : ['SYM'];
 
   return (
     <section className="py-20 bg-white overflow-hidden border-y border-zinc-100">
       <div className="max-w-7xl mx-auto px-4 mb-4 flex items-center gap-6">
-        <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400 font-display flex-shrink-0">{t.sections.brands}</h2>
+        <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-ink-tertiary font-display flex-shrink-0">{t.sections.brands}</h2>
         <div className="h-px w-full bg-zinc-100" />
       </div>
-      
+
       <div className="relative flex">
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
-        
-        <motion.div 
+
+        <motion.div
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           className="flex whitespace-nowrap gap-24 md:gap-40 py-8 items-center"

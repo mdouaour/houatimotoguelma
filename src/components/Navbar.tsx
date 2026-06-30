@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Globe, Bike } from 'lucide-react';
+import { CONFIG } from '../constants';
+import type { Locale } from '../constants';
 
 interface NavbarProps {
   t: any;
-  lang: 'fr' | 'ar';
-  setLang: (lang: 'fr' | 'ar') => void;
+  lang: Locale;
+  setLang: (lang: Locale) => void;
   isRtl: boolean;
-  phone: string;
-  businessName: string;
 }
 
-export const Navbar = ({ t, lang, setLang, isRtl, phone, businessName }: NavbarProps) => {
+export const Navbar = ({ t, lang, setLang, isRtl }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -24,7 +24,7 @@ export const Navbar = ({ t, lang, setLang, isRtl, phone, businessName }: NavbarP
   const navLinks = [
     { name: t.nav.services, href: "#services" },
     { name: t.nav.products, href: "#services" },
-    { name: t.nav.about, href: "#showroom" }, // Using "About/Showroom" for gallery
+    { name: t.nav.about, href: "#showroom" },
     { name: t.nav.contact, href: "#footer" }
   ];
 
@@ -39,7 +39,7 @@ export const Navbar = ({ t, lang, setLang, isRtl, phone, businessName }: NavbarP
               <Bike size={24} />
             </div>
             <div className="flex flex-col">
-              <span className="font-black text-zinc-900 italic text-xl uppercase tracking-tighter leading-none">{businessName}</span>
+              <span className="font-black text-zinc-900 italic text-xl uppercase tracking-tighter leading-none">{CONFIG.name}</span>
               <span className="text-[9px] font-bold text-zinc-400 tracking-[0.4em] uppercase leading-none mt-1">Guelma Performance</span>
             </div>
           </a>
@@ -72,7 +72,7 @@ export const Navbar = ({ t, lang, setLang, isRtl, phone, businessName }: NavbarP
               <motion.a 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href={`tel:${phone}`}
+                href={`tel:${CONFIG.phone}`}
                 className="bg-brand text-white px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest shadow-soft hover:shadow-brand/20 transition-all"
               >
                 {t.nav.contact}
@@ -114,10 +114,10 @@ export const Navbar = ({ t, lang, setLang, isRtl, phone, businessName }: NavbarP
                 <Globe size={18} /> {lang === 'fr' ? 'العربية' : 'Français'}
               </button>
               <a 
-                href={`tel:${phone}`}
+                href={`tel:${CONFIG.phone}`}
                 className="block w-full bg-brand text-white py-5 rounded-2xl font-black text-xl uppercase tracking-tighter shadow-xl"
               >
-                {phone}
+                {CONFIG.phone}
               </a>
             </div>
           </motion.div>

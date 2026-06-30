@@ -1,12 +1,11 @@
 import React from 'react';
 import { MapPin, Phone, ArrowUpRight } from 'lucide-react';
-import { LandingContent, Locale } from '../types/content';
 import { CONFIG } from '../constants';
+import type { Locale } from '../constants';
 
 interface FooterProps {
   t: any;
   lang: Locale;
-  content: LandingContent;
 }
 
 function FacebookIcon() {
@@ -40,15 +39,15 @@ function TikTokIcon() {
   );
 }
 
-export const Footer = ({ t, lang, content }: FooterProps) => {
+export const Footer = ({ t, lang }: FooterProps) => {
   const hours = lang === 'ar'
     ? `${CONFIG.hours.weekdays_ar} / ${CONFIG.hours.friday_ar}`
     : `${CONFIG.hours.weekdays} / ${CONFIG.hours.friday}`;
 
   return (
-    <footer className="bg-zinc-900 text-zinc-400 py-24 relative overflow-hidden" id="footer">
+    <footer className="bg-ink text-ink-tertiary py-24 relative overflow-hidden" id="footer">
       <div className="absolute inset-0 bg-mesh opacity-5 pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-16 md:gap-24">
           <div className="md:col-span-2 space-y-12">
@@ -56,21 +55,21 @@ export const Footer = ({ t, lang, content }: FooterProps) => {
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-brand rounded-lg flex items-center justify-center text-white font-black italic shadow-lg shadow-brand/20">H</div>
                 <h3 className="text-2xl font-black text-white font-display uppercase tracking-[-0.05em] italic">
-                  {content.business.name}
+                  {CONFIG.name}
                 </h3>
               </div>
-              <p className="text-sm md:text-base max-w-sm font-medium leading-relaxed uppercase tracking-tighter text-zinc-500">
-                {content.hero.sub[lang] || t.hero.sub}
+              <p className="text-sm md:text-base max-w-sm font-medium leading-relaxed uppercase tracking-tighter text-zinc-500 text-pretty">
+                {t.hero.sub}
               </p>
             </div>
-            
+
             <div className="flex gap-3">
               <SocialIcon icon={<FacebookIcon />} href={CONFIG.facebook} label="Facebook" />
               <SocialIcon icon={<InstagramIcon />} href={CONFIG.instagram} label="Instagram" />
               <SocialIcon icon={<TikTokIcon />} href={CONFIG.tiktok} label="TikTok" />
             </div>
           </div>
-          
+
           <div className="space-y-8">
             <h4 className="text-zinc-600 font-extrabold uppercase tracking-[0.3em] text-[10px] font-display">{t.footer.visit}</h4>
             <ul className="space-y-6">
@@ -79,10 +78,10 @@ export const Footer = ({ t, lang, content }: FooterProps) => {
                   <MapPin size={18} />
                 </div>
                 <div>
-                   <a href={content.business.googleMaps} target="_blank" rel="noreferrer" className="text-zinc-300 font-bold hover:text-brand transition-colors flex items-center gap-2 text-xs uppercase tracking-widest leading-none">
-                      {content.business.location} <ArrowUpRight size={12} />
-                    </a>
-                   <p className="text-[10px] mt-2 font-semibold uppercase tracking-widest text-zinc-600">{lang === 'ar' ? 'وسط المدينة' : 'Centre ville'}</p>
+                  <a href={CONFIG.googleMaps} target="_blank" rel="noreferrer" className="text-zinc-300 font-bold hover:text-brand transition-colors flex items-center gap-2 text-xs uppercase tracking-widest leading-none">
+                    {CONFIG.location} <ArrowUpRight size={12} />
+                  </a>
+                  <p className="text-[10px] mt-2 font-semibold uppercase tracking-widest text-zinc-600">{lang === 'ar' ? 'وسط المدينة' : 'Centre ville'}</p>
                 </div>
               </li>
               <li className="flex items-start gap-4 group">
@@ -90,10 +89,10 @@ export const Footer = ({ t, lang, content }: FooterProps) => {
                   <Phone size={18} />
                 </div>
                 <div>
-                   <a href={`tel:${content.business.phone}`} className="text-zinc-300 font-bold hover:text-brand transition-colors text-xs uppercase tracking-widest leading-none">
-                      {content.business.phone}
-                    </a>
-                   <p className="text-[10px] mt-2 font-semibold uppercase tracking-widest text-zinc-600">{hours}</p>
+                  <a href={`tel:${CONFIG.phone}`} className="text-zinc-300 font-bold hover:text-brand transition-colors text-xs uppercase tracking-widest leading-none">
+                    {CONFIG.phone}
+                  </a>
+                  <p className="text-[10px] mt-2 font-semibold uppercase tracking-widest text-zinc-600">{hours}</p>
                 </div>
               </li>
             </ul>
@@ -113,7 +112,7 @@ export const Footer = ({ t, lang, content }: FooterProps) => {
             </ul>
           </div>
         </div>
-        
+
         <div className="mt-24 md:mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-700">{t.footer.rights}</p>
           <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-700">
@@ -129,10 +128,10 @@ export const Footer = ({ t, lang, content }: FooterProps) => {
 
 function SocialIcon({ icon, href, label }: { icon: React.ReactNode, href: string, label: string }) {
   return (
-    <a 
-      href={href} 
-      target="_blank" 
-      rel="noreferrer" 
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
       aria-label={label}
       className="w-12 h-12 glass-dark rounded-2xl flex items-center justify-center text-zinc-500 hover:text-white hover:border-brand/40 transition-all border border-white/5"
     >

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Users, ArrowUpRight } from 'lucide-react';
 import { CONFIG } from '../constants';
-import { Locale } from '../types/content';
+import type { Locale } from '../constants';
 
 interface SocialMediaSectionProps {
   t: any;

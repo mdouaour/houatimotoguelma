@@ -1,20 +1,14 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageCircle, Phone, Facebook } from 'lucide-react';
+import { CONFIG } from '../constants';
 
-interface StickyCTAProps {
-  t: any;
-  lang: string;
-  phone: string;
-  whatsapp: string;
-  facebook: string;
-}
-
-export const StickyCTA = ({ t, lang, phone, whatsapp, facebook }: StickyCTAProps) => {
+export const StickyCTA = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const lang = 'fr';
 
   return (
-    <div className={`fixed bottom-8 ${lang === 'ar' ? 'left-8' : 'right-8'} z-[100] flex flex-col items-end gap-3`}>
+    <div className={`fixed bottom-8 right-8 z-[100] flex flex-col items-end gap-3`}>
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -23,31 +17,28 @@ export const StickyCTA = ({ t, lang, phone, whatsapp, facebook }: StickyCTAProps
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             className="flex flex-col gap-3 mb-2"
           >
-            {/* Facebook */}
-               <motion.a 
-                 whileHover={{ scale: 1.05, x: -4 }}
-                href={facebook}
-                target="_blank"
-                rel="noreferrer"
+            <motion.a 
+              whileHover={{ scale: 1.05, x: -4 }}
+              href={CONFIG.facebook}
+              target="_blank"
+              rel="noreferrer"
               className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[#1877F2] border border-zinc-100 shadow-elegant"
             >
               <Facebook size={20} />
             </motion.a>
 
-            {/* Phone */}
-               <motion.a 
-                 whileHover={{ scale: 1.05, x: -4 }}
-                href={`tel:${phone}`} 
-                className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-zinc-900 border border-zinc-100 shadow-elegant"
+            <motion.a 
+              whileHover={{ scale: 1.05, x: -4 }}
+              href={`tel:${CONFIG.phone}`} 
+              className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-zinc-900 border border-zinc-100 shadow-elegant"
             >
               <Phone size={20} />
             </motion.a>
 
-            {/* WhatsApp */}
-               <motion.a 
-                 whileHover={{ scale: 1.05, x: -4 }}
-                href={`https://wa.me/${whatsapp}`} 
-                className="w-12 h-12 bg-[#25D366] text-white rounded-2xl flex items-center justify-center shadow-elegant"
+            <motion.a 
+              whileHover={{ scale: 1.05, x: -4 }}
+              href={`https://wa.me/${CONFIG.whatsapp}`} 
+              className="w-12 h-12 bg-[#25D366] text-white rounded-2xl flex items-center justify-center shadow-elegant"
             >
               <MessageCircle size={24} />
             </motion.a>

@@ -1,42 +1,62 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Star, Quote } from 'lucide-react';
-import { TestimonialItem, Locale } from '../types/content';
+import type { Locale } from '../constants';
 
 interface TestimonialsProps {
   t: any;
   lang: Locale;
-  items: TestimonialItem[];
 }
 
-export const Testimonials = ({ t, lang, items }: TestimonialsProps) => {
+const REVIEWS = [
+  {
+    name: 'Yassine B.',
+    text: { fr: "Une équipe incroyable. Ma moto a été réparée en un temps record avec des pièces d'origine.", ar: 'فريق رائع. تم إصلاح دراجتي بسرعة وبقطع أصلية.' },
+    rating: 5 as const,
+    date: { fr: 'Mars 2024', ar: 'مارس 2024' },
+  },
+  {
+    name: 'Mohamed R.',
+    text: { fr: "J'ai acheté un scooter SYM chez eux. Très bon prix et accueil chaleureux.", ar: 'اشتريت سكوتر SYM منهم. سعر ممتاز واستقبال رائع.' },
+    rating: 5 as const,
+    date: { fr: 'Avril 2024', ar: 'أبريل 2024' },
+  },
+  {
+    name: 'Riadh K.',
+    text: { fr: 'Leur sélection de vélos électriques est superbe. Je suis ravi de mon achat.', ar: 'تشكيلتهم من الدراجات الكهربائية ممتازة. أنا سعيد جدًا بالشراء.' },
+    rating: 5 as const,
+    date: { fr: 'Février 2024', ar: 'فبراير 2024' },
+  },
+];
+
+export const Testimonials = ({ t, lang }: TestimonialsProps) => {
   return (
     <section className="py-24 md:py-32 bg-zinc-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex flex-col items-center text-center space-y-6 mb-16 md:mb-24"
         >
           <div className="flex items-center gap-3 text-brand">
-             <Star size={12} fill="currentColor" />
-             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Customer_Voices</span>
+            <Star size={12} fill="currentColor" />
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Customer_Voices</span>
           </div>
-          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-zinc-900 leading-none">
+          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-none text-balance">
             {t.sections.testimonials}
           </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {items.map((review, i) => (
-            <motion.div 
-              key={review.id}
+          {REVIEWS.map((review, i) => (
+            <motion.div
+              key={review.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-black/5 flex flex-col justify-between hover:shadow-elegant transition-all duration-700 group relative"
+              className="bg-white p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-border-subtle flex flex-col justify-between hover:shadow-elegant transition-all duration-700 group relative"
             >
               <div className="space-y-6">
                 <div className="flex text-brand gap-1">
@@ -44,15 +64,15 @@ export const Testimonials = ({ t, lang, items }: TestimonialsProps) => {
                     <Star key={i} size={14} fill="currentColor" />
                   ))}
                 </div>
-                <p className="text-lg md:text-xl text-zinc-600 font-medium leading-relaxed italic">
-                  "{review.text[lang]}"
+                <p className="text-lg md:text-xl text-ink-secondary font-medium leading-relaxed italic text-pretty">
+                  &ldquo;{review.text[lang]}&rdquo;
                 </p>
               </div>
-              
+
               <div className="mt-12 flex items-center justify-between border-t border-zinc-100 pt-8">
                 <div>
-                  <p className="font-extrabold text-base text-zinc-900 font-display uppercase italic tracking-tight">{review.name}</p>
-                  <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-1">{review.date[lang]}</p>
+                  <p className="font-extrabold text-base text-ink font-display uppercase italic tracking-tight">{review.name}</p>
+                  <p className="text-[10px] font-bold text-ink-tertiary uppercase tracking-widest mt-1">{review.date[lang]}</p>
                 </div>
                 <div className="w-10 h-10 bg-zinc-50 rounded-xl flex items-center justify-center text-brand/20 group-hover:text-brand transition-colors">
                   <Quote size={18} />

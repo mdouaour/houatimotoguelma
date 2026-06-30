@@ -36,6 +36,8 @@ export const CONFIG = {
   brands: ["SYM", "VMS", "Yamaha", "Bicyclettes", "E-Bikes", "Accessories"]
 };
 
+export type Locale = 'fr' | 'ar';
+
 export const I18N = {
   ar: {
     dir: "rtl",
