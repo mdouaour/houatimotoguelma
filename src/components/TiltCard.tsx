@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from "react"
+import { useRef, type ReactNode, type MouseEvent } from "react"
 import { motion, useMotionValue, useSpring } from "motion/react"
 import { springs } from "../lib/motion-tokens"
 
@@ -6,6 +6,7 @@ interface TiltCardProps {
   children: ReactNode
   className?: string
   tiltDegree?: number
+  key?: string | number
 }
 
 export function TiltCard({ children, className = "", tiltDegree = 8 }: TiltCardProps) {
@@ -17,7 +18,7 @@ export function TiltCard({ children, className = "", tiltDegree = 8 }: TiltCardP
   const rotateX = useSpring(y, springs.snappy)
   const rotateY = useSpring(x, springs.snappy)
 
-  function handleMouseMove(e: React.MouseEvent) {
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
     if (!ref.current) return
     const rect = ref.current.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2

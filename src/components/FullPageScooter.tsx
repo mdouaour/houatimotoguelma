@@ -2,7 +2,7 @@ import { motion } from "motion/react"
 import { ScooterRider } from "./ScooterRider"
 import { shouldAnimate } from "../lib/motion-config"
 
-function RoadLane({ delay = 0, top = 0 }: { delay?: number; top?: number }) {
+function RoadLane({ delay = 0, top = 0 }: { key?: string | number; delay?: number; top?: number }) {
   return (
     <motion.div
       className="absolute w-16 h-1 rounded-full bg-zinc-300 dark:bg-white/10"
@@ -22,7 +22,7 @@ export function FullPageScooter() {
   if (!shouldAnimate()) return null
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden max-md:hidden">
       {/* Gradient background strip at bottom — road */}
       <div className="absolute bottom-0 left-0 right-0 h-[22%] bg-zinc-100 dark:bg-zinc-900/60 border-t border-zinc-200 dark:border-zinc-800">
         {/* Lane markings */}

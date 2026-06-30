@@ -52,7 +52,8 @@ export const I18N = {
       title: "متخصصون في عالم الدراجات",
       sub: "بيع وتصليح الدراجات النارية، السكوتر الكهربائي، الدراجات الهوائية، التروتنيت الكهربائي، وجميع قطع الغيار والأكسسوارات.",
       ctaWA: "اطلب الآن عبر واتساب",
-      ctaCall: "خدمة العملاء"
+      ctaCall: "خدمة العملاء",
+      satisfied: "عملاء راضون"
     },
     trust: {
       exp: "6 سنوات من الخبرة",
@@ -84,7 +85,21 @@ export const I18N = {
       repairDesc: "صيانة احترافية وشاملة للدراجات النارية، الكهربائية، الهوائية، والسكوتر.",
       brands: "شركاؤنا",
       testimonials: "قالوا عنا",
-      social: "تابعنا على"
+      social: "تابعنا على",
+      gallery: "تميّز بصري",
+      galleryDesc: "استكشاف أدق تفاصيل الميكانيك",
+      galleryEmpty: "لا توجد صور لهذا القسم",
+      galleryCTA: "تابعنا على",
+      galleryActivity: "النشاطات"
+    },
+    map: {
+      tag: "موقعنا",
+      title: "زورونا",
+      sub: "في قلب مدينة قالمة",
+      address: "العنوان",
+      hours: "ساعات العمل",
+      phone: "هاتف",
+      directions: "اتجاهات"
     },
     footer: {
       follow: "تابعنا على فيسبوك",
@@ -105,7 +120,8 @@ export const I18N = {
       title: "VOTRE EXPERT EN DEUX ROUES",
       sub: "Vente et réparation de motos, scooters électriques, bicyclettes, trottinettes électriques, pièces de rechange et articles divers.",
       ctaWA: "Commander via WhatsApp",
-      ctaCall: "Appeler le Service"
+      ctaCall: "Appeler le Service",
+      satisfied: "Clients Satisfaits"
     },
     trust: {
       exp: "6 Ans d'Expertise",
@@ -137,7 +153,21 @@ export const I18N = {
       repairDesc: "Réparation experte pour motos, vélos électriques, scooters et bicyclettes.",
       brands: "Nos Marques",
       testimonials: "Avis Clients",
-      social: "Suivez-nous"
+      social: "Suivez-nous",
+      gallery: "Visual Excellence",
+      galleryDesc: "Exploring the fine details of mechanics",
+      galleryEmpty: "Aucune photo pour cette catégorie",
+      galleryCTA: "Check_Activity",
+      galleryActivity: "Facebook Page"
+    },
+    map: {
+      tag: "Find_Us",
+      title: "Visitez-nous",
+      sub: "Au cœur de Guelma",
+      address: "Adresse",
+      hours: "Horaires",
+      phone: "Téléphone",
+      directions: "Itinéraire"
     },
     footer: {
       follow: "Suivez-nous sur Facebook",

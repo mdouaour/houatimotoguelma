@@ -162,7 +162,7 @@ export const PHOTOS: PhotoConfig[] = [
   },
   {
     id: 'acc-4',
-    src: 'https://images.unsplash.com/photo-1558981359-219d6364c9c8?w=800&q=80',
+    src: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80',
     title: { fr: 'Pièces Moto Sport', ar: 'قطع دراجات رياضية' },
     categoryKey: 'accessoires',
     span: 'col-span-12 md:col-span-4',

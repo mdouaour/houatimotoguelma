@@ -27,8 +27,8 @@
 
   --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
   --shadow-elegant: 0 20px 60px -12px rgba(0, 0, 0, 0.1);
-    --shadow-brand: 0 20px 60px -12px rgba(220, 38, 38, 0.15);
-  }
+  --shadow-brand: 0 20px 60px -12px rgba(220, 38, 38, 0.15);
+}
 
   @custom-variant dark (&:where(.dark, .dark *));
 
@@ -219,37 +219,6 @@
 
 .animate-radar-ping {
   animation: radar-ping 2s ease-out infinite;
-}
-
-@keyframes grid-shift {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-64px);
-  }
-}
-
-@keyframes grid-opacity {
-  0%, 100% { opacity: 0.03; }
-  50% { opacity: 0.06; }
-}
-
-@keyframes arc-float {
-  0% {
-    opacity: 0;
-    transform: translateY(0) translateX(0) scale(0.5);
-  }
-  10% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 0.4;
-  }
-  90% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-80px) translateX(var(--drift, 0px)) scale(1.2);
-  }
 }
 
 @layer utilities {

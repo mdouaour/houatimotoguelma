@@ -45,6 +45,13 @@ export default function App() {
       className="min-h-screen text-ink selection:bg-brand selection:text-white font-sans"
       dir={t.dir}
     >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-4 focus:bg-brand focus:text-white focus:rounded-2xl focus:text-sm focus:font-bold focus:outline-none"
+      >
+        {lang === 'fr' ? 'Aller au contenu' : 'الانتقال إلى المحتوى'}
+      </a>
+
       <Navbar
         t={t}
         lang={lang}
@@ -56,7 +63,7 @@ export default function App() {
 
       <FullPageScooter />
 
-      <main>
+      <main id="main-content">
         <Hero t={t} lang={lang} />
         <TrustBar t={t} />
         <Features t={t} />

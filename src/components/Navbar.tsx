@@ -25,8 +25,8 @@ export const Navbar = ({ t, lang, setLang, isRtl, dark, toggleDark }: NavbarProp
 
   const navLinks = [
     { name: t.nav.services, href: "#services" },
-    { name: t.nav.products, href: "#services" },
-    { name: t.nav.about, href: "#showroom" },
+    { name: t.nav.products, href: "#showroom" },
+    { name: t.nav.about, href: "#hero" },
     { name: t.nav.contact, href: "#footer" }
   ];
 
@@ -74,6 +74,7 @@ export const Navbar = ({ t, lang, setLang, isRtl, dark, toggleDark }: NavbarProp
               <button
                 onClick={() => setLang(lang === 'fr' ? 'ar' : 'fr')}
                 className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-ink-tertiary hover:text-ink transition-colors"
+                aria-label={lang === 'fr' ? 'Switch to Arabic' : 'التبديل إلى الفرنسية'}
               >
                 <Globe size={14} className="text-brand" />
                 {lang === 'fr' ? 'العربية' : 'Français'}
@@ -91,7 +92,7 @@ export const Navbar = ({ t, lang, setLang, isRtl, dark, toggleDark }: NavbarProp
           </div>
 
           {/* Mobile Toggle */}
-          <button className="lg:hidden text-ink p-2" onClick={() => setIsOpen(!isOpen)}>
+          <button className="lg:hidden text-ink p-2" onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? 'Close menu' : 'Menu'}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>

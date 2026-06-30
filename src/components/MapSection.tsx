@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion } from 'motion/react';
-
 import { MapPin, Clock, Phone, ArrowUpRight, Navigation } from 'lucide-react';
 
 interface MapSectionProps {
+  t: any;
   lang: 'fr' | 'ar';
 }
 
 const MAP_EMBED = 'https://maps.google.com/maps?q=36.4659316,7.4361022&z=15&output=embed';
 
-export const MapSection = ({ lang }: MapSectionProps) => {
+export const MapSection = ({ t, lang }: MapSectionProps) => {
   const isRtl = lang === 'ar';
 
   return (
@@ -33,14 +33,14 @@ export const MapSection = ({ lang }: MapSectionProps) => {
             <div className="flex items-center gap-3 text-brand">
               <MapPin size={14} />
               <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">
-                {isRtl ? 'موقعنا' : 'Find_Us'}
+                {t.map.tag}
               </span>
             </div>
             <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
-              {isRtl ? 'زورونا' : 'Visitez-nous'}
+              {t.map.title}
             </h2>
             <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em]">
-              {isRtl ? 'في قلب مدينة قالمة' : 'Au cœur de Guelma'}
+              {t.map.sub}
             </p>
           </div>
         </div>
@@ -84,14 +84,14 @@ export const MapSection = ({ lang }: MapSectionProps) => {
             <div className="space-y-10">
               <InfoRow
                 icon={<MapPin size={20} />}
-                label={isRtl ? 'العنوان' : 'Adresse'}
+                label={t.map.address}
                 value={isRtl ? 'Rue Larbi Ben Mehidi، قالمة' : 'Rue Larbi Ben Mehidi, Guelma'}
                 isRtl={isRtl}
               />
 
               <InfoRow
                 icon={<Clock size={20} />}
-                label={isRtl ? 'ساعات العمل' : 'Horaires'}
+                label={t.map.hours}
                 value={isRtl
                   ? 'السبت–الخميس 09h–21h / الجمعة 15h–21h'
                   : 'Samedi–Jeudi 09h–21h / Vendredi 15h–21h'}
@@ -100,7 +100,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
 
               <InfoRow
                 icon={<Phone size={20} />}
-                label={isRtl ? 'هاتف' : 'Téléphone'}
+                label={t.map.phone}
                 value="+213 550 158 258"
                 href="tel:+213550158258"
                 isRtl={isRtl}
@@ -117,7 +117,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
                 className="flex items-center justify-center gap-3 bg-brand text-white px-8 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-soft hover:shadow-brand transition-all flex-1"
               >
                 <Navigation size={16} />
-                {isRtl ? 'اتجاهات' : 'Itinéraire'}
+                {t.map.directions}
                 <ArrowUpRight size={14} />
               </motion.a>
               <motion.a

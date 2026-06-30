@@ -5,7 +5,6 @@ import { CONFIG } from '../constants';
 
 export const StickyCTA = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const lang = 'fr';
 
   return (
     <div className={`fixed bottom-8 right-8 z-[100] flex flex-col items-end gap-3`}>

@@ -118,7 +118,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             <div className="w-px h-10 bg-zinc-100" />
             <div className="space-y-1 text-center">
               <AnimatedCounter value={CONFIG.stats.satisfied} className="text-3xl font-black text-ink italic font-display tabular-nums" />
-              <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none">{t.sections.testimonials}</p>
+              <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none">{t.hero.satisfied}</p>
             </div>
           </div>
         </motion.div>
