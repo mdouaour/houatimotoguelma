@@ -1,5 +1,6 @@
-import React from 'react';
-import { Star, Quote } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Locale } from '../constants';
 
 
@@ -30,6 +31,20 @@ const REVIEWS = [
 ];
 
 export const Testimonials = ({ t, lang }: TestimonialsProps) => {
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % REVIEWS.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [paused]);
+
+  const next = () => setCurrent((prev) => (prev + 1) % REVIEWS.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + REVIEWS.length) % REVIEWS.length);
+
   return (
     <section className="py-24 md:py-32 bg-surface-secondary">
       <div className="max-w-7xl mx-auto px-4">
@@ -43,32 +58,59 @@ export const Testimonials = ({ t, lang }: TestimonialsProps) => {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          {REVIEWS.map((review) => (
-            <div className="bg-surface p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-border-subtle hover:border-brand/30 flex flex-col justify-between hover:shadow-[0_0_50px_-20px_rgba(220,38,38,0.4)] transition-all duration-700 group relative overflow-hidden">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand/50 to-brand/0 scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
-              <div className="space-y-6">
+        <div
+          className="max-w-2xl mx-auto relative"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="bg-surface p-10 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] border border-border-subtle"
+            >
+              <div className="space-y-8">
                 <div className="flex text-brand gap-1">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} size={14} fill="currentColor" />
+                  {[...Array(REVIEWS[current].rating)].map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
                   ))}
                 </div>
-                <p className="text-lg md:text-xl text-ink-secondary font-medium leading-relaxed italic text-pretty">
-                  &ldquo;{review.text[lang]}&rdquo;
+                <p className="text-xl md:text-2xl text-ink-secondary font-medium leading-relaxed italic text-pretty">
+                  &ldquo;{REVIEWS[current].text[lang]}&rdquo;
                 </p>
+                <div className="flex items-center justify-between border-t border-border-subtle pt-8">
+                  <div>
+                    <p className="font-extrabold text-lg text-ink font-display uppercase italic tracking-tight">{REVIEWS[current].name}</p>
+                    <p className="text-[10px] font-bold text-ink-tertiary uppercase tracking-widest mt-1">{REVIEWS[current].date[lang]}</p>
+                  </div>
+                  <div className="w-10 h-10 bg-surface-secondary rounded-xl flex items-center justify-center text-brand/40">
+                    <Quote size={18} />
+                  </div>
+                </div>
               </div>
+            </motion.div>
+          </AnimatePresence>
 
-              <div className="mt-12 flex items-center justify-between border-t border-border-subtle pt-8">
-                <div>
-                  <p className="font-extrabold text-base text-ink font-display uppercase italic tracking-tight">{review.name}</p>
-                  <p className="text-[10px] font-bold text-ink-tertiary uppercase tracking-widest mt-1">{review.date[lang]}</p>
-                </div>
-                <div className="w-10 h-10 bg-surface-secondary rounded-xl flex items-center justify-center text-brand/20 group-hover:text-brand transition-colors">
-                  <Quote size={18} />
-                </div>
-              </div>
+          <div className="flex items-center justify-center gap-4 mt-10">
+            <button onClick={prev} className="w-12 h-12 rounded-2xl bg-surface border border-border-subtle flex items-center justify-center text-ink-tertiary hover:text-brand hover:border-brand/30 transition-all">
+              <ChevronLeft size={18} />
+            </button>
+            <div className="flex gap-2">
+              {REVIEWS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-500 ${i === current ? 'w-8 bg-brand' : 'bg-zinc-300 dark:bg-zinc-600'}`}
+                />
+              ))}
             </div>
-          ))}
+            <button onClick={next} className="w-12 h-12 rounded-2xl bg-surface border border-border-subtle flex items-center justify-center text-ink-tertiary hover:text-brand hover:border-brand/30 transition-all">
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

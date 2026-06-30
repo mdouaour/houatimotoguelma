@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, useMotionValue, useTransform } from 'motion/react';
 import { Bike, Zap, ShoppingBag, Settings, Star, Package, ShieldCheck } from 'lucide-react';
 import { CONFIG } from '../constants';
 
@@ -106,54 +106,85 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8">
           {products.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft border border-border-subtle
-                ${item.size === 'large' ? 'lg:col-span-8 lg:row-span-2' : ''}
-                ${item.size === 'medium' ? 'lg:col-span-4 lg:row-span-1' : ''}
-                ${item.size === 'small' ? 'lg:col-span-4 lg:row-span-1' : ''}
-                ${item.specialty ? 'ring-2 ring-brand/20' : ''}
-              `}
-              whileHover={{ y: -4, boxShadow: "0 8px 40px rgba(220,38,38,0.15)", transition: { type: "spring", stiffness: 300, damping: 20 } }}
-            >
-              <img 
-                src={item.img} 
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-1000" 
-                alt={item.title} 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent group-hover:from-surface/10 group-hover:via-transparent transition-all duration-700" />
-
-              <div className="relative h-full p-10 md:p-14 flex flex-col justify-between z-10">
-                <div className="flex items-start justify-between">
-                  <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-soft group-hover:bg-brand group-hover:text-white group-hover:border-brand/30 transition-all duration-500">
-                    {item.icon}
-                  </div>
-                  {item.specialty && (
-                    <span className="inline-flex items-center gap-1.5 bg-brand/10 text-brand text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-brand/20">
-                      <Star size={10} fill="currentColor" />
-                      {t.sections.specialty}
-                    </span>
-                  )}
-                </div>
-                
-                <div className="space-y-4 mb-4">
-                  <h3 className="text-2xl md:text-3xl font-extrabold font-display uppercase tracking-tight text-ink italic group-hover:text-brand transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-ink-tertiary font-medium text-xs md:text-sm leading-relaxed max-w-xs transition-colors">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-
-            </motion.div>
+            <div key={i} className="contents">
+              <ServiceCard item={item} index={i} t={t} />
+            </div>
           ))}
         </div>
       </div>
     </section>
+  );
+};
+
+function ServiceCard({ item, index, t }: {
+  item: any;
+  index: number;
+  t: any;
+}) {
+  const shouldTilt = item.size === 'large';
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-0.5, 0.5], [3, -3]);
+  const rotateY = useTransform(x, [-0.5, 0.5], [-3, 3]);
+
+  const handleMouseMove = shouldTilt ? (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  } : undefined;
+
+  const handleMouseLeave = shouldTilt ? () => {
+    x.set(0);
+    y.set(0);
+  } : undefined;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={shouldTilt ? { rotateX, rotateY, transformStyle: "preserve-3d" as const } : {}}
+      className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft border border-border-subtle
+        ${item.size === 'large' ? 'lg:col-span-8 lg:row-span-2 perspective-1000' : ''}
+        ${item.size === 'medium' ? 'lg:col-span-4 lg:row-span-1' : ''}
+        ${item.size === 'small' ? 'lg:col-span-4 lg:row-span-1' : ''}
+        ${item.specialty ? 'ring-2 ring-brand/20' : ''}
+      `}
+      whileHover={{ y: shouldTilt ? 0 : -4, boxShadow: "0 8px 40px rgba(220,38,38,0.15)", transition: { type: "spring", stiffness: 300, damping: 20 } }}
+    >
+      <img 
+        src={item.img} 
+        className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-1000 img-frame" 
+        alt={item.title} 
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent group-hover:from-surface/10 group-hover:via-transparent transition-all duration-700" />
+
+      <div className="relative h-full p-10 md:p-14 flex flex-col justify-between z-10">
+        <div className="flex items-start justify-between">
+          <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-soft group-hover:bg-brand group-hover:text-white group-hover:border-brand/30 transition-all duration-500">
+            {item.icon}
+          </div>
+          {item.specialty && (
+            <span className="inline-flex items-center gap-1.5 bg-brand/10 text-brand text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-brand/20">
+              <Star size={10} fill="currentColor" />
+              {t.sections.specialty}
+            </span>
+          )}
+        </div>
+        
+        <div className="space-y-4 mb-4">
+          <h3 className="text-2xl md:text-3xl font-extrabold font-display uppercase tracking-tight text-ink italic group-hover:text-brand transition-colors">
+            {item.title}
+          </h3>
+          <p className="text-ink-tertiary font-medium text-xs md:text-sm leading-relaxed max-w-xs transition-colors">
+            {item.desc}
+          </p>
+        </div>
+      </div>
+
+    </motion.div>
   );
 };

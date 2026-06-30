@@ -15,6 +15,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
     <header className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-surface">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-mesh opacity-40" />
+        <div className="absolute inset-0 bg-noise opacity-[0.02] dark:opacity-[0.04]" />
         <div className="absolute inset-0 bg-dots pointer-events-none" />
         <div className="absolute top-1/3 -left-48 w-[500px] h-[500px] bg-brand/8 rounded-full blur-3xl" />
       </div>
@@ -37,11 +38,26 @@ export const Hero = ({ t, lang }: HeroProps) => {
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand/80 text-balance">{t.hero.tag}</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-[100px] font-extrabold leading-[0.9] tracking-tighter font-display uppercase">
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.04 } },
+              }}
+              className="text-5xl md:text-7xl lg:text-[100px] font-extrabold leading-[0.9] tracking-tighter font-display uppercase"
+            >
               {t.hero.title.split(' ').map((word, i) => (
-                <span key={i} className={i === 1 ? 'text-brand block italic md:translate-x-4' : 'block text-ink'}>{word}</span>
+                <motion.span
+                  key={i}
+                  variants={{
+                    hidden: { y: 40, opacity: 0 },
+                    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 120, damping: 14 } },
+                  }}
+                  className={i === 1 ? 'text-brand block italic md:translate-x-4' : 'block text-ink'}
+                >{word}</motion.span>
               ))}
-            </h1>
+            </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -114,9 +130,9 @@ export const Hero = ({ t, lang }: HeroProps) => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          initial={{ opacity: 0, clipPath: "inset(0 0 0 100%)" }}
+          animate={{ opacity: 1, clipPath: "inset(0 0 0 0)" }}
+          transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="relative lg:block hidden"
         >
           <div className="absolute -inset-20 bg-brand/5 blur-[120px] rounded-full pointer-events-none" />
@@ -126,7 +142,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
               <img
                 src={CONFIG.images.hero}
                 alt="Spécialiste Trottinette Électrique Guelma"
-                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 img-frame"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />
 

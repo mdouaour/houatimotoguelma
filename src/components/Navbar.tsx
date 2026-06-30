@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 import { Menu, X, Globe, Bike, Moon, Sun } from 'lucide-react';
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
@@ -16,12 +16,18 @@ interface NavbarProps {
 export const Navbar = ({ t, lang, setLang, isRtl, dark, toggleDark }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    setScrolled(latest > 20);
+    if (latest > previous && latest > 80) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   const navLinks = [
     { name: t.nav.services, href: "#services" },
@@ -31,7 +37,11 @@ export const Navbar = ({ t, lang, setLang, isRtl, dark, toggleDark }: NavbarProp
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-2 md:py-3' : 'py-5 md:py-6'}`}>
+    <motion.nav
+      animate={{ y: hidden ? -100 : 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-2 md:py-3' : 'py-5 md:py-6'}`}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className={`glass rounded-2xl md:rounded-[2rem] px-5 md:px-7 py-2.5 flex items-center justify-between transition-all duration-500 ${scrolled ? 'shadow-soft border-border-medium' : 'border-transparent'}`}>
 
@@ -142,6 +152,6 @@ export const Navbar = ({ t, lang, setLang, isRtl, dark, toggleDark }: NavbarProp
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };

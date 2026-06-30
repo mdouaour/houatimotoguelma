@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Shield, Zap, Wrench, ChevronRight, BatteryCharging } from 'lucide-react';
 
 interface FeaturesProps {
@@ -48,8 +49,12 @@ export const Features = ({ t }: FeaturesProps) => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {items.map((item, i) => (
-                <div
+                <motion.div
                   key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className={`group space-y-6 p-8 rounded-3xl border transition-all duration-500
                     ${item.accent
                       ? 'border-brand/20 bg-brand/[0.04] hover:bg-brand/[0.08]'
@@ -68,7 +73,7 @@ export const Features = ({ t }: FeaturesProps) => {
                        Learn More <ChevronRight size={12} />
                      </button>
                   </div>
-                </div>
+                </motion.div>
             ))}
           </div>
       </div>
