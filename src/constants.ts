@@ -33,7 +33,7 @@ export const CONFIG = {
     accessories: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&q=80&w=1000",
     atelier: "https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&q=80&w=1000",
   },
-  brands: ["SYM", "VMS", "Yamaha", "Bicyclettes", "E-Bikes", "Accessories"]
+  brands: ["SYM", "VMS", "Yamaha", "Xiaomi", "Ninebot", "Niu"]
 };
 
 export type Locale = 'fr' | 'ar';
