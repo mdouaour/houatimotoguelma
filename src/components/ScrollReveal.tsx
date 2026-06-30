@@ -4,7 +4,7 @@ import { motionTokens, springs } from "../lib/motion-tokens"
 import { useSafeMotion } from "../lib/use-reduced-motion"
 import { shouldAnimate } from "../lib/motion-config"
 
-type RevealVariant = "default" | "speed" | "wheel" | "bounce" | "tilt"
+type RevealVariant = "default" | "speed" | "wheel" | "bounce" | "tilt" | "spark"
 type RevealDirection = "up" | "down" | "left" | "right" | "none"
 
 interface ScrollRevealProps {
@@ -55,6 +55,11 @@ function getVariantInitial(dir: RevealDirection, variant: RevealVariant) {
         rotate: dir === "left" ? 12 : dir === "right" ? -12 : 8,
         scale: 0.92,
       }
+    case "spark":
+      return {
+        opacity: 0,
+        scale: 0.3,
+      }
     default:
       return {
         opacity: 0,
@@ -95,6 +100,11 @@ function getVariantAnimate(variant: RevealVariant) {
         rotate: 0,
         scale: 1,
       }
+    case "spark":
+      return {
+        opacity: 1,
+        scale: 1,
+      }
     default:
       return {
         opacity: 1,
@@ -114,6 +124,8 @@ function getVariantTransition(variant: RevealVariant) {
       return { type: "spring", stiffness: 350, damping: 10, mass: 1 }
     case "tilt":
       return { type: "spring", stiffness: 160, damping: 18, mass: 1 }
+    case "spark":
+      return { type: "spring", stiffness: 500, damping: 8, mass: 0.6 }
     default:
       return springs.gentle
   }
@@ -187,6 +199,11 @@ function getStaggerItemVariants(variant: RevealVariant, direction: RevealDirecti
       return {
         hidden: { opacity: 0, x: (d.x ?? 0) * 1.5, rotate: direction === "left" ? 12 : direction === "right" ? -12 : 8, scale: 0.92 },
         visible: { opacity: 1, x: 0, rotate: 0, scale: 1, transition: { type: "spring", stiffness: 160, damping: 18, mass: 1 } },
+      }
+    case "spark":
+      return {
+        hidden: { opacity: 0, scale: 0.3 },
+        visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 500, damping: 8, mass: 0.6 } },
       }
     default:
       return {

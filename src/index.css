@@ -5,16 +5,21 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Plus Jakarta Sans", sans-serif;
 
-  --color-brand: #E31E24;
-  --color-brand-hover: #BA181C;
-  --color-brand-muted: rgba(227, 30, 36, 0.05);
-  --color-brand-glow: rgba(227, 30, 36, 0.08);
-  --color-brand-subtle: rgba(227, 30, 36, 0.02);
+  --color-brand: #0088FF;
+  --color-brand-hover: #0070D4;
+  --color-brand-muted: rgba(0, 136, 255, 0.05);
+  --color-brand-glow: rgba(0, 136, 255, 0.08);
+  --color-brand-subtle: rgba(0, 136, 255, 0.02);
 
-    --color-ink: #09090B;
-    --color-ink-secondary: #18181B;
-    --color-ink-tertiary: #3F3F46;
-    --color-ink-muted: #A1A1AA;
+  --color-neon: #00FF88;
+  --color-neon-glow: rgba(0, 255, 136, 0.08);
+  --color-cyan: #00D4FF;
+  --color-cyan-glow: rgba(0, 212, 255, 0.08);
+
+  --color-ink: #09090B;
+  --color-ink-secondary: #18181B;
+  --color-ink-tertiary: #3F3F46;
+  --color-ink-muted: #A1A1AA;
 
   --color-border-subtle: rgba(0, 0, 0, 0.06);
   --color-border-medium: rgba(0, 0, 0, 0.1);
@@ -22,7 +27,7 @@
 
   --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.06);
   --shadow-elegant: 0 20px 60px -12px rgba(0, 0, 0, 0.1);
-  --shadow-brand: 0 20px 60px -12px rgba(227, 30, 36, 0.15);
+  --shadow-brand: 0 20px 60px -12px rgba(0, 136, 255, 0.15);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -34,14 +39,16 @@
 
   .dark {
     color-scheme: dark;
-    --color-brand-muted: rgba(227, 30, 36, 0.15);
-    --color-brand-glow: rgba(227, 30, 36, 0.12);
-    --color-brand-subtle: rgba(227, 30, 36, 0.05);
+    --color-brand-muted: rgba(0, 136, 255, 0.15);
+    --color-brand-glow: rgba(0, 136, 255, 0.12);
+    --color-brand-subtle: rgba(0, 136, 255, 0.05);
+    --color-neon-glow: rgba(0, 255, 136, 0.1);
+    --color-cyan-glow: rgba(0, 212, 255, 0.1);
 
-    --color-ink: #F4F4F5;
-    --color-ink-secondary: #D4D4D8;
-    --color-ink-tertiary: #A1A1AA;
-    --color-ink-muted: #71717A;
+    --color-ink: #E8EDF2;
+    --color-ink-secondary: #C8D0DC;
+    --color-ink-tertiary: #8895A8;
+    --color-ink-muted: #5C6A7F;
 
     --color-border-subtle: rgba(255, 255, 255, 0.06);
     --color-border-medium: rgba(255, 255, 255, 0.1);
@@ -49,18 +56,7 @@
 
     --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.4);
     --shadow-elegant: 0 20px 60px -12px rgba(0, 0, 0, 0.5);
-    --shadow-brand: 0 20px 60px -12px rgba(227, 30, 36, 0.25);
-
-    --color-zinc-50: #18181B;
-    --color-zinc-100: #27272A;
-    --color-zinc-200: #3F3F46;
-    --color-zinc-300: #52525B;
-    --color-zinc-400: #71717A;
-    --color-zinc-500: #A1A1AA;
-    --color-zinc-600: #D4D4D8;
-    --color-zinc-700: #E4E4E7;
-    --color-zinc-800: #F4F4F5;
-    --color-zinc-900: #FAFAFA;
+    --shadow-brand: 0 20px 60px -12px rgba(0, 136, 255, 0.25);
   }
 
   html {
@@ -72,7 +68,7 @@
   }
 
   .dark, .dark html, html.dark {
-    background-color: #0B0B0E;
+    background-color: #07070A;
   }
 
   body {
@@ -80,11 +76,11 @@
   }
 
   .dark .bg-surface {
-    background-color: #121214;
+    background-color: #0D0D14;
   }
 
   .dark .bg-surface-secondary {
-    background-color: #1A1A1E;
+    background-color: #12121A;
   }
 
   img {
@@ -121,12 +117,16 @@
     text-shadow: 0 0 40px var(--color-brand-glow);
   }
 
+  .text-glow-neon {
+    text-shadow: 0 0 40px var(--color-neon-glow);
+  }
+
   .glass {
     @apply bg-white/95 backdrop-blur-xl border border-black/5 shadow-xl;
   }
 
   .dark .glass {
-    @apply bg-[#18181B]/95 backdrop-blur-xl border border-white/5 shadow-xl;
+    @apply bg-[#0D0D14]/95 backdrop-blur-xl border border-white/5 shadow-xl;
   }
 
   .glass-dark {
@@ -141,22 +141,22 @@
     background-color: inherit;
     background-image:
       radial-gradient(at 0% 0%, var(--color-brand-glow) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(227, 30, 36, 0.02) 0px, transparent 50%);
+      radial-gradient(at 100% 100%, var(--color-cyan-glow) 0px, transparent 50%);
   }
 
   .dark .bg-mesh {
     background-image:
       radial-gradient(at 0% 0%, var(--color-brand-glow) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(227, 30, 36, 0.05) 0px, transparent 50%);
+      radial-gradient(at 100% 100%, var(--color-cyan-glow) 0px, transparent 50%);
   }
 
   .bg-dots {
-    background-image: radial-gradient(rgba(227, 30, 36, 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(0, 136, 255, 0.06) 1px, transparent 1px);
     background-size: 32px 32px;
   }
 
   .dark .bg-dots {
-    background-image: radial-gradient(rgba(227, 30, 36, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(0, 136, 255, 0.12) 1px, transparent 1px);
   }
 
   .perspective-1000 {

@@ -70,7 +70,7 @@ export function Trotinette3D() {
             className="absolute -inset-12 rounded-full opacity-30"
             style={{
               background:
-                "radial-gradient(circle, rgba(227,30,36,0.4) 0%, transparent 60%)",
+                "radial-gradient(circle, rgba(0,136,255,0.4) 0%, transparent 60%)",
             }}
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -89,7 +89,7 @@ export function Trotinette3D() {
                 cx="55"
                 cy="145"
                 r="28"
-                stroke="#E31E24"
+                stroke="#0088FF"
                 strokeWidth="4.5"
                 animate={{ rotate: 360 }}
                 style={{ transformOrigin: "55px 145px" }}
@@ -114,7 +114,7 @@ export function Trotinette3D() {
                   y1="117"
                   x2="55"
                   y2="173"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="2"
                   className="opacity-60"
                 />
@@ -123,7 +123,7 @@ export function Trotinette3D() {
                   y1="145"
                   x2="83"
                   y2="145"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="2"
                   className="opacity-60"
                 />
@@ -132,7 +132,7 @@ export function Trotinette3D() {
                   y1="125"
                   x2="75"
                   y2="165"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="1.5"
                   className="opacity-40"
                 />
@@ -141,7 +141,7 @@ export function Trotinette3D() {
                   y1="125"
                   x2="35"
                   y2="165"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="1.5"
                   className="opacity-40"
                 />
@@ -154,7 +154,7 @@ export function Trotinette3D() {
                 cx="195"
                 cy="145"
                 r="28"
-                stroke="#E31E24"
+                stroke="#0088FF"
                 strokeWidth="4.5"
                 animate={{ rotate: -360 }}
                 style={{ transformOrigin: "195px 145px" }}
@@ -179,7 +179,7 @@ export function Trotinette3D() {
                   y1="117"
                   x2="195"
                   y2="173"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="2"
                   className="opacity-60"
                 />
@@ -188,7 +188,7 @@ export function Trotinette3D() {
                   y1="145"
                   x2="223"
                   y2="145"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="2"
                   className="opacity-60"
                 />
@@ -197,7 +197,7 @@ export function Trotinette3D() {
                   y1="125"
                   x2="215"
                   y2="165"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="1.5"
                   className="opacity-40"
                 />
@@ -206,7 +206,7 @@ export function Trotinette3D() {
                   y1="125"
                   x2="175"
                   y2="165"
-                  stroke="#E31E24"
+                  stroke="#0088FF"
                   strokeWidth="1.5"
                   className="opacity-40"
                 />
@@ -220,7 +220,7 @@ export function Trotinette3D() {
               width="100"
               height="10"
               rx="3"
-              fill="#E31E24"
+              fill="#0088FF"
               className="opacity-90"
             />
             <rect
@@ -240,7 +240,7 @@ export function Trotinette3D() {
               width="16"
               height="22"
               rx="4"
-              fill="#E31E24"
+              fill="#0088FF"
               className="opacity-90"
             />
             <rect
@@ -259,7 +259,7 @@ export function Trotinette3D() {
               width="7"
               height="68"
               rx="3"
-              fill="#E31E24"
+              fill="#0088FF"
               className="opacity-90"
             />
             <rect
@@ -279,7 +279,7 @@ export function Trotinette3D() {
               width="65"
               height="7"
               rx="3"
-              fill="#E31E24"
+              fill="#0088FF"
               className="opacity-90"
             />
             {/* Handlebar grips */}
@@ -301,7 +301,26 @@ export function Trotinette3D() {
             />
           </svg>
 
-          {/* Floating particles */}
+          {/* Neon glow ring behind scooter */}
+          <motion.div
+            className="absolute -inset-8 rounded-full opacity-25"
+            style={{ background: "radial-gradient(circle, rgba(0,255,136,0.3) 0%, transparent 70%)" }}
+            animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.35, 0.2] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Battery indicator — neon green */}
+          <motion.rect
+            x="130"
+            y="96"
+            width="8"
+            height="14"
+            rx="2"
+            fill="#00FF88"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="drop-shadow-[0_0_6px_#00FF88]"
+          />
           <Particle
             cx={220}
             cy={40}
@@ -324,7 +343,7 @@ export function Trotinette3D() {
             cx={240}
             cy={120}
             size={5}
-            color="amber"
+            color="neon"
             delay={1.6}
             driftX={-40}
             driftY={-50}
@@ -371,7 +390,9 @@ function Particle({
         height: size,
         backgroundColor: color === "brand" || color === "brand/60" || color === "brand/40"
           ? "var(--color-brand)"
-          : "#F59E0B",
+          : color === "neon"
+            ? "#00FF88"
+            : "#F59E0B",
         opacity: color.includes("60") ? 0.6 : color.includes("40") ? 0.4 : 1,
       }}
       animate={{
