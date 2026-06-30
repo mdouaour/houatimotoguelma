@@ -5,6 +5,7 @@ import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
 import { Trotinette3D } from './Trotinette3D';
 import { AnimatedCounter } from './AnimatedCounter';
+import { ArcField } from './ArcField';
 import { springs, motionTokens } from '../lib/motion-tokens';
 
 interface HeroProps {
@@ -32,6 +33,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
         </motion.div>
+        <ArcField count={16} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10 w-full py-16 md:py-24">
@@ -74,7 +76,12 @@ export const Hero = ({ t, lang }: HeroProps) => {
               href={`https://wa.me/${CONFIG.whatsapp}`}
               className="flex items-center gap-4 bg-brand text-white px-10 py-5 rounded-2xl font-bold text-sm transition-all shadow-elegant hover:shadow-brand group"
             >
-              <MessageCircle size={20} className="group-hover:rotate-12 transition-transform" />
+              <motion.span
+                whileHover={{ rotate: [0, -15, 15, -5, 0] }}
+                transition={{ duration: 0.5 }}
+              >
+                <MessageCircle size={20} />
+              </motion.span>
               <span className="uppercase tracking-widest">{t.hero.ctaWA}</span>
             </motion.a>
             <motion.a
@@ -83,7 +90,12 @@ export const Hero = ({ t, lang }: HeroProps) => {
               href={`tel:${CONFIG.phone}`}
               className="flex items-center gap-4 bg-zinc-100 text-ink px-10 py-5 rounded-2xl font-bold text-sm transition-all border border-transparent hover:border-zinc-200"
             >
-              <Phone size={20} />
+              <motion.span
+                whileHover={{ rotate: [0, -15, 15, -5, 0] }}
+                transition={{ duration: 0.5 }}
+              >
+                <Phone size={20} />
+              </motion.span>
               <span className="uppercase tracking-widest">{t.hero.ctaCall}</span>
             </motion.a>
           </div>

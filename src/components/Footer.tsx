@@ -48,6 +48,25 @@ export const Footer = ({ t, lang }: FooterProps) => {
     <footer className="bg-ink text-ink-tertiary py-24 relative overflow-hidden" id="footer">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
       <div className="absolute inset-0 bg-mesh opacity-5 pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.04] dark:opacity-[0.06]">
+        <svg
+          viewBox="0 0 1200 600"
+          className="w-full h-full"
+          preserveAspectRatio="none"
+        >
+          <path d="M0 300 L200 300 L250 200 L350 200 L400 300 L600 300" fill="none" stroke="#0088FF" strokeWidth="1.5" strokeDasharray="8 4" className="animate-circuit" />
+          <path d="M1200 100 L1000 100 L950 400 L800 400 L750 500 L600 500" fill="none" stroke="#00FF88" strokeWidth="1" strokeDasharray="6 4" className="animate-circuit" style={{ animationDelay: "1s" }} />
+          <path d="M0 500 L150 500 L200 350 L350 350 L400 500 L500 500 L550 100 L700 100" fill="none" stroke="#00D4FF" strokeWidth="1" strokeDasharray="6 4" className="animate-circuit" style={{ animationDelay: "0.5s" }} />
+          <path d="M800 0 L800 150 L700 150 L650 50 L500 50" fill="none" stroke="#0088FF" strokeWidth="1.5" strokeDasharray="8 4" className="animate-circuit" style={{ animationDelay: "2s" }} />
+          <path d="M1200 400 L1050 400 L1000 250 L900 250 L850 400 L700 400" fill="none" stroke="#00FF88" strokeWidth="1" strokeDasharray="6 4" className="animate-circuit" style={{ animationDelay: "1.5s" }} />
+          <circle cx="200" cy="300" r="3" fill="#0088FF" className="animate-circuit-dot" />
+          <circle cx="400" cy="300" r="2.5" fill="#0088FF" className="animate-circuit-dot" style={{ animationDelay: "0.8s" }} />
+          <circle cx="950" cy="400" r="2.5" fill="#00FF88" className="animate-circuit-dot" style={{ animationDelay: "1.2s" }} />
+          <circle cx="550" cy="100" r="2" fill="#00D4FF" className="animate-circuit-dot" style={{ animationDelay: "0.3s" }} />
+          <circle cx="1000" cy="250" r="2" fill="#00FF88" className="animate-circuit-dot" style={{ animationDelay: "1.8s" }} />
+          <circle cx="300" cy="250" r="2" fill="#00D4FF" className="animate-circuit-dot" style={{ animationDelay: "0.6s" }} />
+        </svg>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-16 md:gap-24">

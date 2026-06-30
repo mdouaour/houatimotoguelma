@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Bike, Zap, ShoppingBag, Settings, Star, Package, ShieldCheck } from 'lucide-react';
 import { CONFIG } from '../constants';
 import { TiltCard } from './TiltCard';
@@ -117,12 +118,29 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
                 className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-1000" 
                 alt={item.title} 
               />
+              {i === products.length - 1 && (
+                <div className="absolute inset-0 pointer-events-none z-[1]">
+                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0deg,var(--color-brand)/0.08_60deg,transparent_120deg)] animate-radar-sweep" />
+                  <div className="absolute top-6 right-6 w-16 h-16 rounded-full border border-brand/10 animate-radar-ping" />
+                  <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-brand/10 animate-radar-ping" style={{ animationDelay: "0.5s" }} />
+                </div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent group-hover:from-surface/10 group-hover:via-transparent transition-all duration-700" />
 
               <div className="relative h-full p-10 md:p-14 flex flex-col justify-between z-10">
-                <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-soft">
+                <motion.div
+                  className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-soft"
+                  whileHover={{
+                    scale: 1.1,
+                    rotate: item.accent === "brand" ? [0, 360] : item.title === "e-Trotinettes" ? [0, -15, 15, 0] : [0, 15, -15, 0],
+                    backgroundColor: "var(--color-brand)",
+                    color: "#ffffff",
+                    borderColor: "rgba(0,136,255,0.3)",
+                  }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                >
                   {item.icon}
-                </div>
+                </motion.div>
                 
                 <div className="space-y-4 mb-4">
                   <h3 className="text-2xl md:text-3xl font-extrabold font-display uppercase tracking-tight text-ink italic group-hover:text-brand transition-colors">
