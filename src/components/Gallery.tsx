@@ -31,6 +31,7 @@ export const Gallery = ({ t, lang }: GalleryProps) => {
             <h2 className="text-4xl md:text-8xl font-black tracking-tighter font-display uppercase italic text-ink leading-[0.8] text-balance">
               {lang === 'fr' ? 'Visual Excellence' : 'تميّز بصري'}
             </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full" />
             <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em] ml-2">
               {lang === 'fr' ? 'Exploring the fine details of mechanics' : 'استكشاف أدق تفاصيل الميكانيك'}
             </p>

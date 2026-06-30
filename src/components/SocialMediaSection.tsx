@@ -93,6 +93,7 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
             <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
             {lang === 'fr' ? 'Rejoignez-nous' : 'انضم إلينا'}
           </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full mx-auto" />
           <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em]">
             {lang === 'fr' ? 'Suivez-nous sur les réseaux sociaux' : 'تابعنا على مواقع التواصل الاجتماعي'}
           </p>

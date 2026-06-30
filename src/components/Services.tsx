@@ -80,6 +80,8 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
   return (
     <section id="services" className="py-24 md:py-32 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20"
@@ -92,6 +94,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
             <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
               {t.sections.products}
             </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-brand to-brand/30 rounded-full" />
           </div>
           <p className="text-ink-tertiary max-w-sm font-semibold leading-relaxed uppercase text-[10px] tracking-[0.2em]">
             Since 2018. Delivering premium motorcycles and professional technical support in Guelma.
