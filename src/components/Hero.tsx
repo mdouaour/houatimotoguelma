@@ -30,6 +30,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="inline-flex items-center gap-3 bg-brand/5 border border-brand/10 px-5 py-2 rounded-full"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_#DC2626]" />
@@ -42,6 +43,16 @@ export const Hero = ({ t, lang }: HeroProps) => {
               ))}
             </h1>
 
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 150, damping: 18, delay: 0.15 }}
+              className="inline-flex items-center gap-2 text-brand text-sm md:text-base font-bold tracking-wide"
+            >
+              <span className="w-8 h-[2px] bg-brand" />
+              {t.hero.specialist}
+            </motion.p>
+
             <div className="flex items-center gap-4 py-2">
               <div className="h-px w-12 bg-zinc-200" />
               <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em]">Precision Engineering / Expert Support</p>
@@ -52,7 +63,12 @@ export const Hero = ({ t, lang }: HeroProps) => {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 150, damping: 18, delay: 0.3 }}
+            className="flex flex-wrap gap-4"
+          >
             <motion.a
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
@@ -71,9 +87,14 @@ export const Hero = ({ t, lang }: HeroProps) => {
               <Phone size={20} />
               <span className="uppercase tracking-widest">{t.hero.ctaCall}</span>
             </motion.a>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-10 pt-4 border-t border-border-subtle">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 150, damping: 18, delay: 0.4 }}
+            className="flex items-center gap-10 pt-4 border-t border-border-subtle"
+          >
             <div className="space-y-1 text-center">
               <div className="flex items-center gap-2 justify-center">
                 <Facebook size={16} className="text-[#1877F2]" />
@@ -94,7 +115,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
               <AnimatedCounter value={CONFIG.stats.satisfied} className="text-3xl font-black text-ink italic font-display tabular-nums" />
               <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none">{t.hero.satisfied}</p>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -109,7 +130,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             <div className="rounded-[3rem] overflow-hidden aspect-[4/5] relative">
               <img
                 src={CONFIG.images.hero}
-                alt="Expert Moto Guelma"
+                alt="Spécialiste Trottinette Électrique Guelma"
                 className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent" />

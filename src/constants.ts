@@ -22,7 +22,7 @@ export const CONFIG = {
     friday_ar: "الجمعة 15h–21h"
   },
   images: {
-    hero: "https://images.unsplash.com/photo-1622185135505-2d795003994a?auto=format&fit=crop&q=80&w=2000",
+    hero: "https://images.unsplash.com/photo-1605152276897-4f618f831968?auto=format&fit=crop&q=80&w=2000",
     moto: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=1000",
     escooter: "https://images.unsplash.com/photo-1605152276897-4f618f831968?auto=format&fit=crop&q=80&w=1000",
     ebike: "https://images.unsplash.com/photo-1593766788306-28561086694e?auto=format&fit=crop&q=80&w=1000",
@@ -51,16 +51,19 @@ export const I18N = {
       tag: "الرقم 1 في قالمة • منذ 2018",
       title: "متخصصون في عالم الدراجات",
       sub: "بيع وتصليح الدراجات النارية، السكوتر الكهربائي، الدراجات الهوائية، التروتنيت الكهربائي، وجميع قطع الغيار والأكسسوارات.",
+      specialist: "متخصصون في السكوتر الكهربائي",
       ctaWA: "اطلب الآن عبر واتساب",
       ctaCall: "خدمة العملاء",
       satisfied: "عملاء راضون"
     },
     trust: {
+      specialist: "🔹 متخصصون في السكوتر الكهربائي",
       exp: "6 سنوات من الخبرة",
       parts: "قطع غيار وإكسسوارات",
       service: "تصليح جميع الدراجات"
     },
     sections: {
+      specialty: "★ تخصصنا",
       products: "معروضاتنا الفاخرة",
       whyUs: "لماذا تختار هواتي موتو؟",
       expertTitle: "خبراء فنيون",
@@ -79,6 +82,8 @@ export const I18N = {
       bicycleRepair: "بيع الدراجات الهوائية والتروتنيت الكهربائي الحديث مع خدمة الصيانة.",
       parts: "قطع الغيار الأصلية",
       partsDesc: "مجموعة ضخمة من قطع الغيار الأصلية والزيوت عالية الجودة.",
+      specialistTitle: "خبراء التروتنيت الكهربائي",
+      specialistDesc: "بيع، صيانة، وإصلاح جميع أنواع السكوتر الكهربائي بأحدث المعدات.",
       articles: "إكسسوارات ومقالات متنوعة",
       articlesDesc: "خوذ، ملابس واقية، وحقائب. كل ما يحتاجه سائق الدراجة.",
       repair: "مركز الصيانة المتخصص",
@@ -119,16 +124,19 @@ export const I18N = {
       tag: "N°1 À GUELMA • DEPUIS 2018",
       title: "VOTRE EXPERT EN DEUX ROUES",
       sub: "Vente et réparation de motos, scooters électriques, bicyclettes, trottinettes électriques, pièces de rechange et articles divers.",
+      specialist: "Spécialiste Trottinette Électrique",
       ctaWA: "Commander via WhatsApp",
       ctaCall: "Appeler le Service",
       satisfied: "Clients Satisfaits"
     },
     trust: {
+      specialist: "🔹 Spécialiste Trottinette Électrique",
       exp: "6 Ans d'Expertise",
       parts: "Pièces & Accessoires",
       service: "Réparation Expert"
     },
     sections: {
+      specialty: "★ Notre Spécialité",
       products: "Showroom Premium",
       whyUs: "Pourquoi nous choisir ?",
       expertTitle: "Expertise Technique",
@@ -147,6 +155,8 @@ export const I18N = {
       bicycleRepair: "Large gamme de bicyclettes et trottinettes électriques modernes.",
       parts: "Pièces de Rechange",
       partsDesc: "Stock complet de pièces originales et consommables de qualité.",
+      specialistTitle: "Expert E-Trottinettes",
+      specialistDesc: "Vente, réparation et entretien de trottinettes électriques toutes marques.",
       articles: "Articles & Accessoires",
       articlesDesc: "Casques, gants, vêtements et accessoires de protection.",
       repair: "Atelier Multi-Service",

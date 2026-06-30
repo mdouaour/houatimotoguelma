@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Zap, Wrench, ChevronRight } from 'lucide-react';
+import { Shield, Zap, Wrench, ChevronRight, BatteryCharging } from 'lucide-react';
 
 interface FeaturesProps {
   t: any;
@@ -7,6 +7,13 @@ interface FeaturesProps {
 
 export const Features = ({ t }: FeaturesProps) => {
   const items = [
+    {
+      title: t.sections.specialistTitle,
+      desc: t.sections.specialistDesc,
+      icon: <BatteryCharging className="text-brand" />,
+      color: "bg-brand/10",
+      accent: true
+    },
     {
       title: t.sections.expertTitle,
       desc: t.sections.expertDesc,
@@ -40,10 +47,17 @@ export const Features = ({ t }: FeaturesProps) => {
             {t.sections.features}
           </h2>
         </div>
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {items.map((item, i) => (
-                <div className="group space-y-6 p-8 rounded-3xl border border-transparent hover:border-brand/10 hover:bg-brand-subtle transition-all duration-500">
-                  <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ring-1 ring-brand/10 group-hover:ring-brand/30`}>
+                <div
+                  key={i}
+                  className={`group space-y-6 p-8 rounded-3xl border transition-all duration-500
+                    ${item.accent
+                      ? 'border-brand/20 bg-brand/[0.04] hover:bg-brand/[0.08]'
+                      : 'border-transparent hover:border-brand/10 hover:bg-brand-subtle'
+                    }`}
+                >
+                  <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ring-1 ${item.accent ? 'ring-brand/30' : 'ring-brand/10'} group-hover:ring-brand/30`}>
                     {React.cloneElement(item.icon as React.ReactElement, { size: 32 })}
                   </div>
                   <div className="space-y-3">

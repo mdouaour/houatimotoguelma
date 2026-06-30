@@ -12,6 +12,7 @@ import { Testimonials } from './components/Testimonials';
 import { SocialMediaSection } from './components/SocialMediaSection';
 import { MapSection } from './components/MapSection';
 import { Footer } from './components/Footer';
+import { ScrollProgress } from './components/ScrollProgress';
 import { StickyCTA } from './components/StickyCTA';
 
 
@@ -61,6 +62,7 @@ export default function App() {
         toggleDark={toggleDark}
       />
 
+      <ScrollProgress />
       <main id="main-content">
         <Hero t={t} lang={lang} />
         <TrustBar t={t} />

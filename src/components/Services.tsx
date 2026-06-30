@@ -12,68 +12,54 @@ interface ServicesProps {
 export const Services = ({ t, isRtl }: ServicesProps) => {
   const products = [
     {
+      title: "e-Trotinettes",
+      desc: t.sections.specialistDesc,
+      icon: <Zap size={28} />,
+      img: CONFIG.images.escooter,
+      size: "large",
+      specialty: true
+    },
+    {
       title: t.sections.moto,
       desc: t.sections.motoRepair,
       icon: <Bike size={28} />,
       img: CONFIG.images.moto,
-      size: "large",
-      accent: "brand"
-    },
-    {
-      title: t.sections.electric,
-      desc: t.sections.electricRepair,
-      icon: <Zap size={28} />,
-      img: CONFIG.images.escooter,
-      size: "medium",
-      accent: "yellow-400"
+      size: "medium"
     },
     {
       title: t.sections.tricycle,
       desc: t.sections.tricycleRepair,
       icon: <Zap size={28} />,
       img: CONFIG.images.tricycle,
-      size: "medium",
-      accent: "yellow-500"
+      size: "medium"
     },
     {
       title: t.sections.bicycle,
       desc: t.sections.bicycleRepair,
       icon: <Star size={28} />,
       img: CONFIG.images.bicycle,
-      size: "small",
-      accent: "blue-500"
-    },
-    {
-      title: "e-Trotinettes",
-      desc: t.sections.bicycleRepair,
-      icon: <Zap size={28} />,
-      img: CONFIG.images.trotinet,
-      size: "small",
-      accent: "purple-500"
+      size: "small"
     },
     {
       title: t.sections.parts,
       desc: t.sections.partsDesc,
       icon: <Settings size={28} />,
       img: CONFIG.images.parts,
-      size: "small",
-      accent: "zinc-400"
+      size: "small"
     },
     {
       title: t.sections.articles,
       desc: t.sections.articlesDesc,
       icon: <Package size={28} />,
       img: CONFIG.images.accessories,
-      size: "small",
-      accent: "zinc-400"
+      size: "small"
     },
     {
       title: t.sections.repair,
       desc: t.sections.repairDesc,
       icon: <ShieldCheck size={28} />,
       img: CONFIG.images.atelier,
-      size: "large",
-      accent: "brand"
+      size: "medium"
     }
   ];
 
@@ -94,9 +80,32 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
             </h2>
           </div>
           <p className="text-ink-tertiary max-w-sm font-semibold leading-relaxed uppercase text-[10px] tracking-[0.2em]">
-            Since 2018. Delivering premium motorcycles and professional technical support in Guelma.
+            Since 2018. Delivering premium equipment and professional technical support in Guelma.
           </p>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ type: "spring", stiffness: 120, damping: 14 }}
+          className="relative mb-16 md:mb-20 p-10 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-gradient-to-br from-brand/5 via-transparent to-brand/[0.02] border border-brand/10"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-brand/8 rounded-full blur-3xl" />
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
+            <div className="w-16 h-16 bg-brand rounded-2xl flex items-center justify-center text-white shrink-0">
+              <Zap size={32} />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-2xl md:text-3xl font-extrabold font-display uppercase italic text-ink">
+                {t.sections.specialty}
+              </h3>
+              <p className="text-ink-tertiary font-medium text-sm md:text-base leading-relaxed max-w-xl" dir={isRtl ? "rtl" : "ltr"}>
+                {t.sections.specialistTitle} — {t.sections.specialistDesc}
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8">
           {products.map((item, i) => (
@@ -110,8 +119,9 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
                 ${item.size === 'large' ? 'lg:col-span-8 lg:row-span-2' : ''}
                 ${item.size === 'medium' ? 'lg:col-span-4 lg:row-span-1' : ''}
                 ${item.size === 'small' ? 'lg:col-span-4 lg:row-span-1' : ''}
+                ${item.specialty ? 'ring-2 ring-brand/20' : ''}
               `}
-              whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+              whileHover={{ y: -4, boxShadow: "0 8px 40px rgba(220,38,38,0.15)", transition: { type: "spring", stiffness: 300, damping: 20 } }}
             >
               <img 
                 src={item.img} 
@@ -121,8 +131,16 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent group-hover:from-surface/10 group-hover:via-transparent transition-all duration-700" />
 
               <div className="relative h-full p-10 md:p-14 flex flex-col justify-between z-10">
-                <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-soft group-hover:bg-brand group-hover:text-white group-hover:border-brand/30 transition-all duration-500">
-                  {item.icon}
+                <div className="flex items-start justify-between">
+                  <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-soft group-hover:bg-brand group-hover:text-white group-hover:border-brand/30 transition-all duration-500">
+                    {item.icon}
+                  </div>
+                  {item.specialty && (
+                    <span className="inline-flex items-center gap-1.5 bg-brand/10 text-brand text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-brand/20">
+                      <Star size={10} fill="currentColor" />
+                      {t.sections.specialty}
+                    </span>
+                  )}
                 </div>
                 
                 <div className="space-y-4 mb-4">

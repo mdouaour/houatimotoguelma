@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Clock, ShieldCheck, Wrench } from 'lucide-react';
+import { Clock, ShieldCheck, Wrench, Zap } from 'lucide-react';
 
 
 interface TrustBarProps {
@@ -22,7 +22,8 @@ export const TrustBar = ({ t }: TrustBarProps) => {
         }}
       />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10">
+          <TrustItem icon={<Zap />} text={t.trust.specialist} label="E-Scooter_Specialist" />
           <TrustItem icon={<Clock />} text={t.trust.exp} label="Precision_Time" />
           <TrustItem icon={<ShieldCheck />} text={t.trust.parts} label="Genuine_Guaranteed" />
           <TrustItem icon={<Wrench />} text={t.trust.service} label="Technical_Excellence" />
