@@ -6,7 +6,7 @@ export const CONFIG = {
   instagram: "https://www.instagram.com/houatimoto/",
   tiktok: "https://www.tiktok.com/@houatimoto",
   established: "2018",
-  location: "Rue Mouhoub Ben Tayeb N° 05, Guelma, Algérie",
+  location: "Rue Larbi Ben Mehidi, Guelma, Algérie",
   googleMaps: "https://maps.google.com/?q=Houati+Moto+Guelma",
   stats: {
     fbFollowers: "1.5K",

@@ -66,7 +66,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
               <InfoRow
                 icon={<MapPin size={20} />}
                 label={isRtl ? 'العنوان' : 'Adresse'}
-                value={isRtl ? 'Rue Mouhoub Ben Tayeb N° 05، قالمة' : 'Rue Mouhoub Ben Tayeb N° 05, Guelma'}
+                value={isRtl ? 'Rue Larbi Ben Mehidi، قالمة' : 'Rue Larbi Ben Mehidi, Guelma'}
                 isRtl={isRtl}
               />
 
