@@ -4,9 +4,6 @@ import { Star, MessageCircle, Phone, ArrowUpRight, Facebook, Instagram } from 'l
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
 import { AnimatedCounter } from './AnimatedCounter';
-import { SpeedLines } from './SpeedLines';
-
-import { springs, motionTokens } from '../lib/motion-tokens';
 
 interface HeroProps {
   t: any;
@@ -19,20 +16,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="absolute inset-0 bg-dots pointer-events-none" />
-        <SpeedLines count={12} />
         <div className="absolute top-1/3 -left-48 w-[500px] h-[500px] bg-brand/8 rounded-full blur-3xl" />
-        <motion.div
-          className="absolute inset-0 pointer-events-none overflow-hidden opacity-30 dark:opacity-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.6 }}
-        >
-          <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-r from-transparent via-brand/20 to-transparent blur-[80px] -skew-y-6"
-            animate={{ x: [0, 60, -60, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10 w-full py-16 md:py-24">
@@ -75,12 +59,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
               href={`https://wa.me/${CONFIG.whatsapp}`}
               className="flex items-center gap-4 bg-brand text-white px-10 py-5 rounded-2xl font-bold text-sm transition-all shadow-elegant hover:shadow-brand group"
             >
-              <motion.span
-                whileHover={{ rotate: [0, -15, 15, -5, 0] }}
-                transition={{ duration: 0.5 }}
-              >
-                <MessageCircle size={20} />
-              </motion.span>
+              <MessageCircle size={20} />
               <span className="uppercase tracking-widest">{t.hero.ctaWA}</span>
             </motion.a>
             <motion.a
@@ -89,12 +68,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
               href={`tel:${CONFIG.phone}`}
               className="flex items-center gap-4 bg-zinc-100 text-ink px-10 py-5 rounded-2xl font-bold text-sm transition-all border border-transparent hover:border-zinc-200"
             >
-              <motion.span
-                whileHover={{ rotate: [0, -15, 15, -5, 0] }}
-                transition={{ duration: 0.5 }}
-              >
-                <Phone size={20} />
-              </motion.span>
+              <Phone size={20} />
               <span className="uppercase tracking-widest">{t.hero.ctaCall}</span>
             </motion.a>
           </div>
@@ -151,10 +125,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             </div>
           </div>
 
-          <motion.div
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-8 top-1/4 glass p-6 rounded-3xl shadow-elegant z-20 border-brand/10"
+          <div className="absolute -right-8 top-1/4 glass p-6 rounded-3xl shadow-elegant z-20 border-brand/10"
           >
             <div className="flex gap-1 text-brand mb-2">
               <Star size={12} fill="currentColor" />
@@ -165,7 +136,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             </div>
             <p className="text-[9px] font-black text-ink-tertiary uppercase tracking-widest leading-none">Reputation_Score</p>
             <p className="text-2xl font-black text-ink italic font-display uppercase tracking-tight tabular-nums">4.9/5.0</p>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </header>

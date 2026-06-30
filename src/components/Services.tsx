@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Bike, Zap, ShoppingBag, Settings, Star, Package, ShieldCheck } from 'lucide-react';
 import { CONFIG } from '../constants';
-import { TiltCard } from './TiltCard';
 
 
 interface ServicesProps {
@@ -101,47 +100,30 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8">
           {products.map((item, i) => (
-            <TiltCard
+            <motion.div
               key={i}
-              tiltDegree={6}
-              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft hover:shadow-[0_0_50px_-20px_rgba(220,38,38,0.4)] border border-border-subtle hover:border-brand/30 transition-all duration-700
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft border border-border-subtle
                 ${item.size === 'large' ? 'lg:col-span-8 lg:row-span-2' : ''}
                 ${item.size === 'medium' ? 'lg:col-span-4 lg:row-span-1' : ''}
                 ${item.size === 'small' ? 'lg:col-span-4 lg:row-span-1' : ''}
               `}
+              whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 20 } }}
             >
               <img 
                 src={item.img} 
                 className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-1000" 
                 alt={item.title} 
               />
-              {i === products.length - 1 && (
-                <div className="absolute inset-0 pointer-events-none z-[1]">
-                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0deg,var(--color-brand)/0.08_60deg,transparent_120deg)] animate-radar-sweep" />
-                  <div className="absolute top-6 right-6 w-16 h-16 rounded-full border border-brand/10 animate-radar-ping" />
-                  <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-brand/10 animate-radar-ping" style={{ animationDelay: "0.5s" }} />
-                  <div className="absolute bottom-20 left-8 flex flex-col items-center gap-1">
-                    <div className="w-[6px] h-[6px] bg-neon rounded-full animate-oil-drip" />
-                    <div className="w-[4px] h-[4px] bg-neon rounded-full animate-oil-drip" style={{ animationDelay: "2.5s" }} />
-                  </div>
-                </div>
-              )}
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent group-hover:from-surface/10 group-hover:via-transparent transition-all duration-700" />
 
               <div className="relative h-full p-10 md:p-14 flex flex-col justify-between z-10">
-                <motion.div
-                  className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-soft"
-                  whileHover={{
-                    scale: 1.1,
-                    rotate: item.accent === "brand" ? [0, 360] : item.title === "e-Trotinettes" ? [0, -15, 15, 0] : [0, 15, -15, 0],
-                    backgroundColor: "var(--color-brand)",
-                    color: "#ffffff",
-                    borderColor: "rgba(220,38,38,0.3)",
-                  }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                >
+                <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-soft group-hover:bg-brand group-hover:text-white group-hover:border-brand/30 transition-all duration-500">
                   {item.icon}
-                </motion.div>
+                </div>
                 
                 <div className="space-y-4 mb-4">
                   <h3 className="text-2xl md:text-3xl font-extrabold font-display uppercase tracking-tight text-ink italic group-hover:text-brand transition-colors">
@@ -156,7 +138,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
               <div className="absolute bottom-6 right-8 p-4 text-ink/5 font-display text-7xl md:text-8xl font-black pointer-events-none group-hover:text-brand/5 transition-colors">
                  {i+1}
               </div>
-            </TiltCard>
+            </motion.div>
           ))}
         </div>
       </div>
