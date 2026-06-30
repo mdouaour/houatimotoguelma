@@ -49,7 +49,8 @@ export const Testimonials = ({ t, lang }: TestimonialsProps) => {
         <StaggerReveal className="grid md:grid-cols-3 gap-6 md:gap-8" staggerDelay={0.1}>
           {REVIEWS.map((review) => (
             <RevealItem key={review.name}>
-            <div className="bg-surface p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-border-subtle flex flex-col justify-between hover:shadow-elegant transition-all duration-700 group relative">
+            <div className="bg-surface p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-border-subtle hover:border-brand/20 flex flex-col justify-between hover:shadow-elegant transition-all duration-700 group relative overflow-hidden">
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand/50 to-brand/0 scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
               <div className="space-y-6">
                 <div className="flex text-brand gap-1">
                   {[...Array(review.rating)].map((_, i) => (

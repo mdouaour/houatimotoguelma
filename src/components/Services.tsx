@@ -106,7 +106,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
             <TiltCard
               key={i}
               tiltDegree={6}
-              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft hover:shadow-elegant border border-border-subtle transition-all duration-700
+              className={`group relative rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden bg-surface min-h-[350px] lg:min-h-0 shadow-soft hover:shadow-elegant border border-border-subtle hover:border-brand/20 transition-all duration-700
                 ${item.size === 'large' ? 'lg:col-span-8 lg:row-span-2' : ''}
                 ${item.size === 'medium' ? 'lg:col-span-4 lg:row-span-1' : ''}
                 ${item.size === 'small' ? 'lg:col-span-4 lg:row-span-1' : ''}
