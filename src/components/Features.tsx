@@ -34,7 +34,7 @@ export const Features = ({ t }: FeaturesProps) => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-16 md:mb-20 space-y-4">
           <div className="flex items-center gap-3 text-brand">
-            <Shield size={12} />
+            <Shield size={12} className="animate-glow-pulse" />
             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Why_Us</span>
           </div>
           <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">

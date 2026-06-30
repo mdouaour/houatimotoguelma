@@ -133,6 +133,60 @@
   }
 }
 
+@keyframes speed-line {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(-400%);
+    opacity: 0;
+  }
+}
+
+@keyframes oil-drip {
+  0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 0;
+    height: 0;
+  }
+  10% {
+    opacity: 1;
+    height: 6px;
+  }
+  30% {
+    transform: translateY(0) scaleY(1.5);
+    height: 6px;
+  }
+  60% {
+    transform: translateY(20px) scaleY(0.8);
+    opacity: 1;
+    height: 6px;
+  }
+  100% {
+    transform: translateY(50px) scaleY(0.3);
+    opacity: 0;
+    height: 6px;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0px var(--color-neon-glow);
+    opacity: 0.3;
+  }
+  50% {
+    box-shadow: 0 0 40px var(--color-neon);
+    opacity: 1;
+  }
+}
+
 @keyframes circuit-flow {
   to { stroke-dashoffset: -100; }
 }
@@ -144,6 +198,14 @@
 
 .animate-circuit {
   animation: circuit-flow 3s linear infinite;
+}
+
+.animate-oil-drip {
+  animation: oil-drip 4s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out 1;
 }
 
 .animate-circuit-dot {

@@ -6,6 +6,7 @@ import type { Locale } from '../constants';
 import { Trotinette3D } from './Trotinette3D';
 import { AnimatedCounter } from './AnimatedCounter';
 import { ArcField } from './ArcField';
+import { SpeedLines } from './SpeedLines';
 import { springs, motionTokens } from '../lib/motion-tokens';
 
 interface HeroProps {
@@ -34,6 +35,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
           />
         </motion.div>
         <ArcField count={16} />
+        <SpeedLines count={10} className="z-[1]" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10 w-full py-16 md:py-24">

@@ -45,6 +45,8 @@ export function TiltCard({ children, className = "", tiltDegree = 8 }: TiltCardP
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      whileHover={{ scaleY: 0.97 }}
+      transition={{ type: "spring", stiffness: 400, damping: 20 }}
     >
       <div style={{ transformStyle: "preserve-3d" }} className="[&>*]:backface-visible">
         {children}

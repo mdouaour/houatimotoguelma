@@ -48,7 +48,7 @@ export const StickyCTA = () => {
 
       <motion.button
         whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileTap={{ rotate: [0, 15, -15, 5, -5, 0], scale: 0.92 }}
         onClick={() => setIsOpen(!isOpen)}
         className="w-14 h-14 bg-brand text-white rounded-[2rem] flex items-center justify-center shadow-elegant relative overflow-hidden group"
       >
