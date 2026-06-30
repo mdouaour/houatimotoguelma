@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { CONFIG } from '../constants';
-import { ScrollReveal } from './ScrollReveal';
-import { ArcField } from './ArcField';
+
 
 interface BrandsProps {
   t: any;
@@ -12,8 +11,7 @@ export const Brands = ({ t }: BrandsProps) => {
   const items = CONFIG.brands.length ? CONFIG.brands : ['SYM'];
 
   return (
-    <ScrollReveal className="py-20 bg-surface overflow-hidden border-y border-border-subtle relative">
-      <ArcField count={12} className="opacity-25" />
+    <section className="py-20 bg-surface overflow-hidden border-y border-border-subtle relative">
       <div className="max-w-7xl mx-auto px-4 mb-4 flex items-center gap-6 relative z-10">
         <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-ink-tertiary font-display flex-shrink-0">{t.sections.brands}</h2>
         <div className="h-px w-full bg-border-medium" />
@@ -47,6 +45,6 @@ export const Brands = ({ t }: BrandsProps) => {
           ))}
         </motion.div>
       </div>
-    </ScrollReveal>
+    </section>
   );
 };

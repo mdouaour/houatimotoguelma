@@ -1,9 +1,7 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 import type { Locale } from '../constants';
-import { ScrollReveal, StaggerReveal, RevealItem } from './ScrollReveal';
-import { ArcField } from './ArcField';
-import { GlowUnderline } from './GlowUnderline';
+
 
 interface TestimonialsProps {
   t: any;
@@ -35,10 +33,9 @@ export const Testimonials = ({ t, lang }: TestimonialsProps) => {
   return (
     <section className="py-24 md:py-32 bg-surface-secondary relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/60 to-transparent" />
-      <ArcField count={14} className="opacity-25" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-3xl" />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <ScrollReveal variant="spark" className="flex flex-col items-center text-center space-y-6 mb-16 md:mb-24">
+        <div className="flex flex-col items-center text-center space-y-6 mb-16 md:mb-24">
           <div className="flex items-center gap-3 text-brand">
             <Star size={12} fill="currentColor" />
             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Customer_Voices</span>
@@ -46,12 +43,10 @@ export const Testimonials = ({ t, lang }: TestimonialsProps) => {
           <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-none text-balance">
             {t.sections.testimonials}
           </h2>
-          <GlowUnderline className="mx-auto" />
-        </ScrollReveal>
+        </div>
 
-        <StaggerReveal className="grid md:grid-cols-3 gap-6 md:gap-8" staggerDelay={0.1} variant="tilt">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {REVIEWS.map((review) => (
-            <RevealItem key={review.name} variant="tilt">
             <div className="bg-surface p-8 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-border-subtle hover:border-brand/30 flex flex-col justify-between hover:shadow-[0_0_50px_-20px_rgba(220,38,38,0.4)] transition-all duration-700 group relative overflow-hidden">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand/50 to-brand/0 scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
               <div className="space-y-6">
@@ -75,9 +70,8 @@ export const Testimonials = ({ t, lang }: TestimonialsProps) => {
                 </div>
               </div>
             </div>
-            </RevealItem>
           ))}
-        </StaggerReveal>
+        </div>
       </div>
     </section>
   );

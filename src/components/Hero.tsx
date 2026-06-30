@@ -5,8 +5,7 @@ import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
 import { AnimatedCounter } from './AnimatedCounter';
 import { SpeedLines } from './SpeedLines';
-import { ArcField } from './ArcField';
-import { ScrollReveal } from './ScrollReveal';
+
 import { springs, motionTokens } from '../lib/motion-tokens';
 
 interface HeroProps {
@@ -21,7 +20,6 @@ export const Hero = ({ t, lang }: HeroProps) => {
         <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="absolute inset-0 bg-dots pointer-events-none" />
         <SpeedLines count={12} />
-        <ArcField count={20} className="opacity-60" />
         <div className="absolute top-1/3 -left-48 w-[500px] h-[500px] bg-brand/8 rounded-full blur-3xl" />
         <motion.div
           className="absolute inset-0 pointer-events-none overflow-hidden opacity-30 dark:opacity-20"

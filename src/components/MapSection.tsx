@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ScrollReveal } from './ScrollReveal';
-import { ArcField } from './ArcField';
+
 import { MapPin, Clock, Phone, ArrowUpRight, Navigation } from 'lucide-react';
 
 interface MapSectionProps {
@@ -16,7 +15,6 @@ export const MapSection = ({ lang }: MapSectionProps) => {
   return (
     <section className="py-24 md:py-32 bg-surface-secondary relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
-      <ArcField count={14} className="opacity-25" />
       {/* GPS signal rings */}
       <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
         {[0, 1, 2].map((i) => (
@@ -30,7 +28,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
         ))}
       </div>
       <div className="max-w-7xl mx-auto px-4">
-        <ScrollReveal variant="tilt" className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-brand">
               <MapPin size={14} />
@@ -45,7 +43,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
               {isRtl ? 'في قلب مدينة قالمة' : 'Au cœur de Guelma'}
             </p>
           </div>
-        </ScrollReveal>
+        </div>
 
         <div className="grid md:grid-cols-5 gap-8 items-stretch">
           <motion.div

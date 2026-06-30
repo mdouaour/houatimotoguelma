@@ -3,9 +3,7 @@ import { motion } from 'motion/react';
 import { Bike, Zap, ShoppingBag, Settings, Star, Package, ShieldCheck } from 'lucide-react';
 import { CONFIG } from '../constants';
 import { TiltCard } from './TiltCard';
-import { ScrollReveal } from './ScrollReveal';
-import { ArcField } from './ArcField';
-import { GlowUnderline } from './GlowUnderline';
+
 
 interface ServicesProps {
   t: any;
@@ -83,13 +81,10 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
   return (
     <section id="services" className="py-24 md:py-32 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
-      <ArcField count={18} className="opacity-30" />
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand/5 rounded-full blur-3xl" />
       <div className="max-w-7xl mx-auto px-4">
-        <ScrollReveal variant="speed"
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20"
-        >
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20">
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-brand">
               <Star size={12} fill="currentColor" />
@@ -98,12 +93,11 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
             <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
               {t.sections.products}
             </h2>
-            <GlowUnderline />
           </div>
           <p className="text-ink-tertiary max-w-sm font-semibold leading-relaxed uppercase text-[10px] tracking-[0.2em]">
             Since 2018. Delivering premium motorcycles and professional technical support in Guelma.
           </p>
-        </ScrollReveal>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8">
           {products.map((item, i) => (

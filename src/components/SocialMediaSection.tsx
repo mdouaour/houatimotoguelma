@@ -3,10 +3,7 @@ import { motion } from 'motion/react';
 import { Users, ArrowUpRight } from 'lucide-react';
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
-import { ScrollReveal, StaggerReveal, RevealItem } from './ScrollReveal';
-import { ArcField } from './ArcField';
-import { GlowUnderline } from './GlowUnderline';
-import { AnimatedCounter } from './AnimatedCounter';
+
 
 interface SocialMediaSectionProps {
   t: any;
@@ -87,9 +84,8 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
   return (
     <section className="py-24 md:py-32 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
-      <ArcField count={16} className="opacity-30" />
       <div className="max-w-7xl mx-auto px-4">
-        <ScrollReveal variant="wheel" className="text-center mb-20 space-y-6">
+        <div className="text-center mb-20 space-y-6">
           <div className="flex items-center justify-center gap-3 text-brand">
             <Users size={14} />
             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">{lang === 'fr' ? 'Social_Media' : 'التواصل الاجتماعي'}</span>
@@ -97,15 +93,13 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
             <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
             {lang === 'fr' ? 'Rejoignez-nous' : 'انضم إلينا'}
           </h2>
-          <GlowUnderline className="mx-auto" />
           <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em]">
             {lang === 'fr' ? 'Suivez-nous sur les réseaux sociaux' : 'تابعنا على مواقع التواصل الاجتماعي'}
           </p>
-        </ScrollReveal>
+        </div>
 
-        <StaggerReveal variant="wheel" className="grid md:grid-cols-3 gap-8">
-          {platforms.map((platform, i) => (
-            <RevealItem key={platform.name} variant="wheel">
+        <div className="grid md:grid-cols-3 gap-8">
+          {platforms.map((platform) => (
             <motion.a
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               href={platform.url}
@@ -135,9 +129,9 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
 
               <div className="flex items-center gap-6 mt-auto">
                 <div className="text-center">
-                  <span className="text-4xl font-black text-ink italic font-display">
-                    <AnimatedCounter value={platform.followers} />
-                  </span>
+                    <span className="text-4xl font-black text-ink italic font-display">
+                      {platform.followers}
+                    </span>
                     <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none mt-1">
                     {lang === 'fr' ? 'Abonnés' : 'متابع'}
                   </p>
@@ -151,9 +145,8 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
                 <ArrowUpRight size={16} className="text-ink-muted group-hover:text-brand transition-all group-hover:-translate-y-1 group-hover:translate-x-1 duration-300" />
               </div>
             </motion.a>
-            </RevealItem>
-          ))}
-        </StaggerReveal>
+            ))}
+        </div>
       </div>
     </section>
   );

@@ -1,8 +1,5 @@
 import React from 'react';
 import { Shield, Zap, Wrench, ChevronRight } from 'lucide-react';
-import { StaggerReveal, RevealItem, ScrollReveal } from './ScrollReveal';
-import { ArcField } from './ArcField';
-import { GlowUnderline } from './GlowUnderline';
 
 interface FeaturesProps {
   t: any;
@@ -33,24 +30,18 @@ export const Features = ({ t }: FeaturesProps) => {
   return (
     <section className="py-24 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
-      <ArcField count={16} className="opacity-40" />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <ScrollReveal variant="speed" direction="left">
-          <div className="mb-16 md:mb-20 space-y-4">
-            <div className="flex items-center gap-3 text-brand">
-              <Shield size={12} className="animate-glow-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Why_Us</span>
-            </div>
-            <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
-              {t.sections.features}
-            </h2>
-            <GlowUnderline />
+        <div className="mb-16 md:mb-20 space-y-4">
+          <div className="flex items-center gap-3 text-brand">
+            <Shield size={12} className="animate-glow-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">Why_Us</span>
           </div>
-        </ScrollReveal>
-        <StaggerReveal variant="bounce">
-          <div className="grid md:grid-cols-3 gap-12">
-            {items.map((item, i) => (
-              <RevealItem key={i} variant="bounce">
+          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
+            {t.sections.features}
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-3 gap-12">
+          {items.map((item, i) => (
                 <div className="group space-y-6 p-8 rounded-3xl border border-transparent hover:border-brand/10 hover:bg-brand-subtle transition-all duration-500">
                   <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ring-1 ring-brand/10 group-hover:ring-brand/30`}>
                     {React.cloneElement(item.icon as React.ReactElement, { size: 32 })}
@@ -65,10 +56,8 @@ export const Features = ({ t }: FeaturesProps) => {
                      </button>
                   </div>
                 </div>
-              </RevealItem>
             ))}
           </div>
-        </StaggerReveal>
       </div>
     </section>
   );

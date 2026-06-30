@@ -14,7 +14,7 @@ import { MapSection } from './components/MapSection';
 import { Footer } from './components/Footer';
 import { StickyCTA } from './components/StickyCTA';
 import { FullPageScooter } from './components/FullPageScooter';
-import { CircuitDivider } from './components/CircuitDivider';
+
 
 export default function App() {
   const [lang, setLang] = useState<Locale>('ar');
@@ -58,21 +58,13 @@ export default function App() {
 
       <main>
         <Hero t={t} lang={lang} />
-        <CircuitDivider />
         <TrustBar t={t} />
-        <CircuitDivider />
         <Features t={t} />
-        <CircuitDivider />
         <Services t={t} isRtl={isRtl} />
-        <CircuitDivider />
         <Gallery t={t} lang={lang} />
-        <CircuitDivider />
         <Brands t={t} />
-        <CircuitDivider />
         <SocialMediaSection t={t} lang={lang} />
-        <CircuitDivider />
         <MapSection t={t} lang={lang} />
-        <CircuitDivider />
         <Testimonials t={t} lang={lang} />
       </main>
 
