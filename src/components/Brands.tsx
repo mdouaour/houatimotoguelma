@@ -30,7 +30,7 @@ export const Brands = ({ t }: BrandsProps) => {
           {[...items, ...items].map((brand, i) => (
             <motion.span
               key={i}
-              className="text-4xl md:text-6xl font-extrabold text-zinc-400 dark:text-white/20 uppercase tracking-tighter hover:text-brand transition-all duration-700 cursor-default select-none font-display italic relative"
+              className="text-4xl md:text-6xl font-extrabold text-zinc-500 dark:text-zinc-400 uppercase tracking-tighter hover:text-brand transition-all duration-700 cursor-default select-none font-display italic relative"
               whileHover={{ scale: 1.1, color: "#DC2626" }}
             >
               {brand}
