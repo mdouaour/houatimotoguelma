@@ -15,6 +15,18 @@ export const MapSection = ({ lang }: MapSectionProps) => {
   return (
     <section className="py-24 md:py-32 bg-surface-secondary relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
+      {/* GPS signal rings */}
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+        {[0, 1, 2].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute w-32 h-32 rounded-full border border-brand/10"
+            style={{ left: -64, top: -64 }}
+            animate={{ scale: [1, 2.5, 1], opacity: [0.3, 0, 0.3] }}
+            transition={{ duration: 3, delay: i * 1, repeat: Infinity, ease: "easeOut" }}
+          />
+        ))}
+      </div>
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal variant="tilt" className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4">
@@ -38,7 +50,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
             initial={{ opacity: 0, x: isRtl ? 40 : -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-3 rounded-[2.5rem] overflow-hidden border border-border-subtle shadow-elegant h-[400px] md:h-[500px]"
+            className="md:col-span-3 rounded-[2.5rem] overflow-hidden border border-border-subtle shadow-elegant h-[400px] md:h-[500px] relative"
           >
             <iframe
               src={MAP_EMBED}
@@ -49,6 +61,16 @@ export const MapSection = ({ lang }: MapSectionProps) => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title={isRtl ? 'موقع هواتي موتو قالمة' : 'Houati Moto Guelma - Localisation'}
+            />
+            {/* Scan line overlay */}
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              animate={{ backgroundPosition: ["0% 0%", "0% 100%"] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              style={{
+                background: "linear-gradient(to bottom, transparent 40%, rgba(0,136,255,0.03) 45%, rgba(0,136,255,0.06) 50%, rgba(0,136,255,0.03) 55%, transparent 60%)",
+                backgroundSize: "100% 200%",
+              }}
             />
           </motion.div>
 
@@ -128,9 +150,13 @@ function InfoRow({
 }) {
   const content = (
     <div className={`flex gap-5 ${isRtl ? 'flex-row-reverse text-right' : ''}`}>
-      <div className="w-12 h-12 bg-brand/5 rounded-xl flex items-center justify-center text-brand flex-shrink-0">
+      <motion.div
+        className="w-12 h-12 bg-brand/5 rounded-xl flex items-center justify-center text-brand flex-shrink-0"
+        whileHover={{ scale: 1.1, backgroundColor: "var(--color-brand)", color: "white" }}
+        transition={{ duration: 0.3 }}
+      >
         {icon}
-      </div>
+      </motion.div>
       <div className="space-y-1">
         <p className="text-[9px] font-black uppercase tracking-[0.3em] text-ink-tertiary">{label}</p>
         <p className={`font-bold text-ink font-display uppercase tracking-tight ${href ? 'hover:text-brand transition-colors' : ''}`}>

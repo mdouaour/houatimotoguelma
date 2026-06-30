@@ -3,98 +3,181 @@ import { shouldAnimate } from "../lib/motion-config"
 
 function TrottiSVG() {
   return (
-    <svg viewBox="0 0 320 220" fill="none" className="w-full h-full drop-shadow-2xl" aria-hidden>
+    <svg viewBox="0 0 360 260" fill="none" className="w-full h-full drop-shadow-2xl" aria-hidden>
       <defs>
-        <filter id="g4">
+        <filter id="g5">
           <feGaussianBlur stdDeviation="2" result="b" />
           <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
-        <linearGradient id="f4" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id="f5" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#0088FF" /><stop offset="100%" stopColor="#0055AA" />
         </linearGradient>
+        <linearGradient id="tire" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#2A2A30" /><stop offset="100%" stopColor="#111115" />
+        </linearGradient>
+        <linearGradient id="deckGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#2A2A30" /><stop offset="50%" stopColor="#1A1A20" /><stop offset="100%" stopColor="#2A2A30" />
+        </linearGradient>
+        <pattern id="tread" patternUnits="userSpaceOnUse" width="8" height="8">
+          <rect width="8" height="8" fill="none" />
+          <rect x="0" y="0" width="2" height="8" fill="#0088FF" opacity="0.08" />
+        </pattern>
       </defs>
 
-      {/* Rear wheel */}
-      <circle cx="76" cy="165" r="36" fill="#1A1A1E" opacity="0.95" />
-      <motion.circle cx="76" cy="165" r="32" stroke="#0088FF" strokeWidth="4" fill="none"
-        animate={{ rotate: 360 }} style={{ transformOrigin: "76px 165px" }}
-        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }} />
-      <motion.g animate={{ rotate: 360 }} style={{ transformOrigin: "76px 165px" }}
-        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}>
-        {[0,45,90,135,180,225,270,315].map((a,i) => (
-          <circle key={i} cx={76+29*Math.cos(a*Math.PI/180)} cy={165+29*Math.sin(a*Math.PI/180)} r="2" fill="#0088FF" opacity="0.5" />
+      {/* ===== REAR WHEEL ===== */}
+      <g>
+        {/* Tire */}
+        <circle cx="90" cy="195" r="42" fill="url(#tire)" stroke="#1A1A1E" strokeWidth="2" />
+        <motion.circle cx="90" cy="195" r="38" fill="none" stroke="#333" strokeWidth="6"
+          animate={{ rotate: 360 }} style={{ transformOrigin: "90px 195px" }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }} />
+        <circle cx="90" cy="195" r="35" fill="#1A1A1E" />
+        {/* Rim spokes */}
+        <motion.g animate={{ rotate: 360 }} style={{ transformOrigin: "90px 195px" }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}>
+          {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((a) => (
+            <line key={a} x1={90 + 10 * Math.cos(a * Math.PI / 180)} y1={195 + 10 * Math.sin(a * Math.PI / 180)}
+              x2={90 + 30 * Math.cos(a * Math.PI / 180)} y2={195 + 30 * Math.sin(a * Math.PI / 180)}
+              stroke="#0088FF" strokeWidth="1.5" opacity="0.6" />
+          ))}
+        </motion.g>
+        {/* Hub */}
+        <circle cx="90" cy="195" r="10" fill="#0D0D14" stroke="url(#f5)" strokeWidth="2" />
+        <circle cx="90" cy="195" r="3" fill="#0088FF" />
+        {/* Inner ring */}
+        <motion.circle cx="90" cy="195" r="20" fill="none" stroke="#00FF88" strokeWidth="1" strokeDasharray="3 6"
+          animate={{ rotate: -360 }} style={{ transformOrigin: "90px 195px" }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }} />
+      </g>
+
+      {/* ===== FRONT WHEEL ===== */}
+      <g>
+        {/* Tire */}
+        <circle cx="285" cy="195" r="42" fill="url(#tire)" stroke="#1A1A1E" strokeWidth="2" />
+        <motion.circle cx="285" cy="195" r="38" fill="none" stroke="#333" strokeWidth="6"
+          animate={{ rotate: 360 }} style={{ transformOrigin: "285px 195px" }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }} />
+        <circle cx="285" cy="195" r="35" fill="#1A1A1E" />
+        {/* Rim spokes */}
+        <motion.g animate={{ rotate: 360 }} style={{ transformOrigin: "285px 195px" }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}>
+          {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((a) => (
+            <line key={a} x1={285 + 10 * Math.cos(a * Math.PI / 180)} y1={195 + 10 * Math.sin(a * Math.PI / 180)}
+              x2={285 + 30 * Math.cos(a * Math.PI / 180)} y2={195 + 30 * Math.sin(a * Math.PI / 180)}
+              stroke="#0088FF" strokeWidth="1.5" opacity="0.6" />
+          ))}
+        </motion.g>
+        {/* Brake disc */}
+        <circle cx="285" cy="195" r="16" fill="#333" stroke="#555" strokeWidth="0.5" />
+        {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((a) => (
+          <line key={a} x1={285 + 12 * Math.cos(a * Math.PI / 180)} y1={195 + 12 * Math.sin(a * Math.PI / 180)}
+            x2={285 + 15 * Math.cos(a * Math.PI / 180)} y2={195 + 15 * Math.sin(a * Math.PI / 180)}
+            stroke="#666" strokeWidth="1" />
         ))}
-      </motion.g>
-      <circle cx="76" cy="165" r="14" fill="#0D0D14" stroke="url(#f4)" strokeWidth="2" />
-      <motion.circle cx="76" cy="165" r="12" fill="none" stroke="#00FF88" strokeWidth="1.5" strokeDasharray="3 5"
-        animate={{ rotate: -360 }} style={{ transformOrigin: "76px 165px" }}
-        transition={{ duration: 2, repeat: Infinity, ease: "linear" }} />
+        {/* Hub */}
+        <circle cx="285" cy="195" r="8" fill="#0D0D14" stroke="url(#f5)" strokeWidth="2" />
+        <circle cx="285" cy="195" r="2.5" fill="#0088FF" />
+      </g>
 
-      {/* Front wheel */}
-      <circle cx="260" cy="165" r="36" fill="#1A1A1E" opacity="0.95" />
-      <motion.circle cx="260" cy="165" r="32" stroke="#0088FF" strokeWidth="4" fill="none"
-        animate={{ rotate: 360 }} style={{ transformOrigin: "260px 165px" }}
-        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }} />
-      <motion.g animate={{ rotate: 360 }} style={{ transformOrigin: "260px 165px" }}
-        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}>
-        {[0,45,90,135,180,225,270,315].map((a,i) => (
-          <circle key={i} cx={260+29*Math.cos(a*Math.PI/180)} cy={165+29*Math.sin(a*Math.PI/180)} r="2" fill="#0088FF" opacity="0.5" />
+      {/* ===== FRONT FORK ===== */}
+      <line x1="270" y1="110" x2="278" y2="170" stroke="#444" strokeWidth="4" strokeLinecap="round" />
+      <line x1="295" y1="110" x2="287" y2="170" stroke="#444" strokeWidth="4" strokeLinecap="round" />
+      {/* Fork brace */}
+      <rect x="272" y="140" width="22" height="4" rx="2" fill="url(#f5)" />
+
+      {/* ===== DECK (SOCLE) — rebuilt thicker ===== */}
+      <g>
+        {/* Main deck platform */}
+        <rect x="110" y="135" width="130" height="22" rx="6" fill="url(#deckGrad)" stroke="#0088FF" strokeWidth="1.5" />
+        {/* Deck beveled edges */}
+        <rect x="112" y="137" width="126" height="3" rx="1.5" fill="#333" opacity="0.5" />
+        {/* Grip texture */}
+        {[118, 126, 134, 142, 150, 158, 166, 174, 182, 190, 198, 206, 214, 222, 230].map((x) => (
+          <line key={x} x1={x} y1="140" x2={x} y2="152" stroke="#0088FF" strokeWidth="0.8" opacity="0.15" />
         ))}
-      </motion.g>
-      <circle cx="260" cy="165" r="10" fill="#0D0D14" stroke="url(#f4)" strokeWidth="2" />
+        {/* Deck underglow */}
+        <motion.rect x="113" y="155" width="124" height="1" rx="0.5" fill="#00FF88"
+          animate={{ opacity: [0.2, 0.7, 0.2] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} />
+        {/* Deck logo */}
+        <text x="175" y="150" textAnchor="middle" fill="#0088FF" fontSize="6" fontWeight="bold" fontFamily="monospace" opacity="0.3">HOUATI</text>
+      </g>
 
-      {/* Fork */}
-      <line x1="245" y1="95" x2="252" y2="140" stroke="#333" strokeWidth="3" />
-      <line x1="268" y1="95" x2="260" y2="140" stroke="#333" strokeWidth="3" />
-      <rect x="246" y="100" width="5" height="25" rx="2.5" fill="url(#f4)" />
-
-      {/* Deck */}
-      <rect x="100" y="118" width="110" height="14" rx="6" fill="#0D0D14" stroke="#0088FF" strokeWidth="2" />
-      {[115,131,147,163,179,195].map((x,i) => (
-        <line key={i} x1={x} y1="121" x2={x} y2="129" stroke="#0088FF" strokeWidth="1" opacity="0.3" />
+      {/* ===== BATTERY PACK ===== */}
+      <rect x="150" y="98" width="40" height="35" rx="5" fill="#0D0D14" stroke="#00FF88" strokeWidth="1.5" />
+      <rect x="152" y="100" width="36" height="4" rx="2" fill="#1A1A1E" />
+      {/* Battery cells */}
+      {[0, 1, 2, 3, 4].map((i) => (
+        <motion.rect key={i} x={154 + i * 7} y="107" width="5" height="18" rx="1.5" fill="#00FF88"
+          opacity={0.15 + i * 0.17}
+          animate={{ opacity: [0.15 + i * 0.17, 0.9, 0.15 + i * 0.17] }}
+          transition={{ duration: 2, delay: i * 0.3, repeat: Infinity, ease: "easeInOut" }} />
       ))}
-      <motion.rect x="103" y="130" width="104" height="1" rx="0.5" fill="#00FF88"
-        animate={{ opacity: [0.3, 0.8, 0.3] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} />
-
-      {/* Battery */}
-      <rect x="138" y="88" width="30" height="28" rx="4" fill="#0D0D14" stroke="#00FF88" strokeWidth="1.5" />
-      {[0,1,2,3].map((i) => (
-        <motion.rect key={i} x={143+i*6} y="93" width="4" height="18" rx="1" fill="#00FF88"
-          opacity={0.2+i*0.2}
-          animate={{ opacity: [0.2+i*0.2, 0.8, 0.2+i*0.2] }}
-          transition={{ duration: 2, delay: i*0.4, repeat: Infinity, ease: "easeInOut" }} />
+      {/* Battery terminal */}
+      <rect x="168" y="95" width="4" height="5" rx="1.5" fill="#0088FF" />
+      {/* Battery indicator LEDs */}
+      {[0, 1, 2].map((i) => (
+        <motion.circle key={i} cx={156 + i * 10} cy="132" r="1.2" fill="#00FF88"
+          animate={{ opacity: [0, 1] }}
+          transition={{ duration: 0.3, delay: i * 0.2, repeat: Infinity, repeatDelay: 3 }} />
       ))}
-      <rect x="152" y="86" width="2" height="4" rx="1" fill="#00FF88" />
 
-      {/* Stem + bars */}
-      <rect x="149" y="30" width="8" height="62" rx="4" fill="url(#f4)" />
-      <motion.rect x="150" y="32" width="6" height="2" rx="1" fill="#00FF88"
+      {/* ===== STEM / STEERING COLUMN ===== */}
+      <rect x="162" y="35" width="10" height="65" rx="4" fill="url(#f5)" />
+      <motion.rect x="163" y="38" width="8" height="2" rx="1" fill="#00FF88"
         animate={{ opacity: [0.3, 1, 0.3] }}
         transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }} />
-      <rect x="110" y="22" width="70" height="7" rx="3.5" fill="#0D0D14" stroke="#0088FF" strokeWidth="1" />
-      <rect x="110" y="20" width="16" height="11" rx="4" fill="#1A1A1E" />
-      <rect x="164" y="20" width="16" height="11" rx="4" fill="#1A1A1E" />
 
-      {/* Display */}
-      <rect x="147" y="12" width="18" height="12" rx="2.5" fill="#0D0D14" stroke="#0088FF" strokeWidth="1" />
-      <text x="156" y="20" textAnchor="middle" fill="#00FF88" fontSize="5.5" fontWeight="bold" fontFamily="monospace">28</text>
-      <motion.circle cx="149" cy="15" r="0.8" fill="#0088FF"
-        animate={{ opacity: [0, 1] }}
-        transition={{ duration: 0.5, repeat: Infinity }} />
+      {/* ===== HANDLEBARS ===== */}
+      <rect x="120" y="25" width="90" height="8" rx="4" fill="#0D0D14" stroke="#0088FF" strokeWidth="1.2" />
+      {/* Grips */}
+      <rect x="120" y="24" width="22" height="10" rx="4" fill="#1A1A1E" stroke="#333" strokeWidth="0.8" />
+      <rect x="188" y="24" width="22" height="10" rx="4" fill="#1A1A1E" stroke="#333" strokeWidth="0.8" />
+      {/* Throttle */}
+      <rect x="178" y="26" width="12" height="6" rx="3" fill="#333" stroke="#0088FF" strokeWidth="0.8" />
+      {/* Handlebar clamp */}
+      <rect x="160" y="22" width="14" height="14" rx="3" fill="#2A2A30" />
+      <rect x="163" y="25" width="8" height="8" rx="2" fill="#0D0D14" />
 
-      {/* Headlight */}
-      <rect x="230" y="90" width="8" height="16" rx="3" fill="#0D0D14" stroke="#0088FF" strokeWidth="1" />
-      <rect x="234" y="92" width="4" height="12" rx="2" fill="#FFF" opacity="0.9" />
-      <motion.path d="M 238 98 L 310 88 L 310 108 Z" fill="rgba(0,136,255,0.08)"
-        animate={{ opacity: [0, 0.2, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} />
+      {/* ===== DISPLAY / DASHBOARD ===== */}
+      <g>
+        <rect x="155" y="8" width="24" height="18" rx="4" fill="#0D0D14" stroke="#0088FF" strokeWidth="1.2" />
+        <rect x="157" y="10" width="20" height="14" rx="2.5" fill="#050508" />
+        {/* Speed display */}
+        <text x="167" y="20" textAnchor="middle" fill="#00FF88" fontSize="7" fontWeight="bold" fontFamily="monospace">32</text>
+        {/* Blinking DOT */}
+        <motion.circle cx="159" cy="12" r="0.6" fill="#0088FF"
+          animate={{ opacity: [0, 1] }}
+          transition={{ duration: 0.4, repeat: Infinity }} />
+        {/* Speed unit */}
+        <text x="174" y="13" textAnchor="middle" fill="#00FF88" fontSize="3" fontWeight="bold" fontFamily="monospace" opacity="0.5">km/h</text>
+      </g>
 
-      {/* Tail light */}
-      <rect x="98" y="110" width="6" height="10" rx="2" fill="#0D0D14" stroke="#FF4444" strokeWidth="1" />
-      <motion.rect x="100" y="112" width="2" height="6" rx="1" fill="#FF4444"
-        animate={{ opacity: [0.3, 1, 0.3] }}
-        transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }} />
+      {/* ===== HEADLIGHT ===== */}
+      <g>
+        <rect x="245" y="100" width="12" height="22" rx="4" fill="#0D0D14" stroke="#0088FF" strokeWidth="1.2" />
+        <rect x="250" y="104" width="6" height="14" rx="2" fill="#FFF" opacity="0.85" />
+        {/* Light beam */}
+        <motion.path d="M 258 108 L 330 95 L 330 125 Z" fill="rgba(0,136,255,0.06)"
+          animate={{ opacity: [0, 0.2, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
+        {/* High beam */}
+        <motion.circle cx="254" cy="106" r="1.5" fill="#FFF"
+          animate={{ opacity: [0, 1] }}
+          transition={{ duration: 1.5, repeat: Infinity }} />
+      </g>
+
+      {/* ===== TAIL LIGHT ===== */}
+      <g>
+        <rect x="108" y="125" width="8" height="14" rx="3" fill="#0D0D14" stroke="#FF4444" strokeWidth="1" />
+        <motion.rect x="110" y="127" width="4" height="10" rx="1.5" fill="#FF4444"
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }} />
+      </g>
+
+      {/* ===== FENDER REAR ===== */}
+      <path d="M 100 175 Q 90 150 110 135" stroke="#333" strokeWidth="2.5" fill="none" />
+      <path d="M 100 175 Q 90 150 110 135" stroke="#0088FF" strokeWidth="0.5" fill="none" opacity="0.3" />
     </svg>
   )
 }
@@ -106,7 +189,6 @@ export function Trotinette3D() {
     <div className="absolute inset-0 pointer-events-none z-[1] overflow-hidden">
       {/* Circuit track */}
       <div className="absolute inset-[8%] border-2 border-brand/10 rounded-[60px]">
-        {/* Dashed track */}
         <svg className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)]" aria-hidden>
           <motion.rect
             x="0" y="0" width="100%" height="100%" rx={50}
@@ -115,7 +197,6 @@ export function Trotinette3D() {
             animate={{ strokeDashoffset: [0, -40] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
           />
-          {/* Track nodes */}
           {[[50,50],[50,"calc(100%-50px)"],["calc(100%-50px)",50],["calc(100%-50px)","calc(100%-50px)"]].map((pos,i) => (
             <motion.circle key={i} cx={pos[0]} cy={pos[1]} r="3"
               fill="#00FF88" opacity="0.3"
@@ -125,7 +206,6 @@ export function Trotinette3D() {
           ))}
         </svg>
 
-        {/* Electrons flowing on track */}
         {[0, 1, 2, 3].map((i) => (
           <motion.div
             key={`e-${i}`}
@@ -151,14 +231,14 @@ export function Trotinette3D() {
 
       {/* Scooter animates around the track */}
       <motion.div
-        className="absolute w-[160px] h-[110px]"
-        style={{ left: "calc(50% - 80px)", top: "10%" }}
+        className="absolute w-[190px] h-[130px]"
+        style={{ left: "calc(50% - 95px)", top: "8%" }}
         animate={{
-          x: [0, 0, 300, 300, 0],
-          y: [0, 250, 250, 0, 0],
+          x: [0, 0, 320, 320, 0],
+          y: [0, 270, 270, 0, 0],
         }}
         transition={{
-          duration: 8,
+          duration: 10,
           repeat: Infinity,
           ease: "linear",
           times: [0, 0.25, 0.5, 0.75, 1],
