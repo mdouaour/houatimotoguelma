@@ -22,7 +22,7 @@ export const StickyCTA = () => {
               href={CONFIG.facebook}
               target="_blank"
               rel="noreferrer"
-              className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[#1877F2] border border-zinc-100 shadow-elegant"
+              className="w-12 h-12 bg-surface rounded-2xl flex items-center justify-center text-[#1877F2] border border-border-subtle shadow-elegant"
             >
               <Facebook size={20} />
             </motion.a>
@@ -30,7 +30,7 @@ export const StickyCTA = () => {
             <motion.a 
               whileHover={{ scale: 1.05, x: -4 }}
               href={`tel:${CONFIG.phone}`} 
-              className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-zinc-900 border border-zinc-100 shadow-elegant"
+              className="w-12 h-12 bg-surface rounded-2xl flex items-center justify-center text-ink border border-border-subtle shadow-elegant"
             >
               <Phone size={20} />
             </motion.a>

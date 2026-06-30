@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { ScrollReveal } from './ScrollReveal';
 import { MapPin, Clock, Phone, ArrowUpRight, Navigation } from 'lucide-react';
 
 interface MapSectionProps {
@@ -12,14 +13,9 @@ export const MapSection = ({ lang }: MapSectionProps) => {
   const isRtl = lang === 'ar';
 
   return (
-    <section className="py-24 md:py-32 bg-zinc-50 overflow-hidden">
+    <section className="py-24 md:py-32 bg-surface-secondary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16"
-        >
+        <ScrollReveal className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-brand">
               <MapPin size={14} />
@@ -34,7 +30,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
               {isRtl ? 'في قلب مدينة قالمة' : 'Au cœur de Guelma'}
             </p>
           </div>
-        </motion.div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-5 gap-8 items-stretch">
           <motion.div
@@ -60,7 +56,7 @@ export const MapSection = ({ lang }: MapSectionProps) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="md:col-span-2 bg-white rounded-[2.5rem] p-10 md:p-12 border border-border-subtle shadow-soft flex flex-col justify-between gap-8"
+            className="md:col-span-2 bg-surface rounded-[2.5rem] p-10 md:p-12 border border-border-subtle shadow-soft flex flex-col justify-between gap-8"
           >
             <div className="space-y-10">
               <InfoRow

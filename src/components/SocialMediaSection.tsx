@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Users, ArrowUpRight } from 'lucide-react';
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
+import { ScrollReveal, StaggerReveal, RevealItem } from './ScrollReveal';
 
 interface SocialMediaSectionProps {
   t: any;
@@ -81,41 +82,32 @@ const platforms = [
 
 export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
   return (
-    <section className="py-24 md:py-32 bg-white overflow-hidden">
+    <section className="py-24 md:py-32 bg-surface overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20 space-y-6"
-        >
+        <ScrollReveal className="text-center mb-20 space-y-6">
           <div className="flex items-center justify-center gap-3 text-brand">
             <Users size={14} />
             <span className="text-[10px] font-black uppercase tracking-[0.4em] font-display">{lang === 'fr' ? 'Social_Media' : 'التواصل الاجتماعي'}</span>
           </div>
-          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-zinc-900 leading-[0.9]">
+            <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-ink leading-[0.9]">
             {lang === 'fr' ? 'Rejoignez-nous' : 'انضم إلينا'}
           </h2>
-          <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em]">
+          <p className="text-ink-tertiary text-[10px] font-bold uppercase tracking-[0.3em]">
             {lang === 'fr' ? 'Suivez-nous sur les réseaux sociaux' : 'تابعنا على مواقع التواصل الاجتماعي'}
           </p>
-        </motion.div>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <StaggerReveal className="grid md:grid-cols-3 gap-8">
           {platforms.map((platform, i) => (
+            <RevealItem key={platform.name}>
             <motion.a
-              key={platform.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               href={platform.url}
               target="_blank"
               rel="noreferrer"
               className={`group relative ${platform.bgClass} ${platform.borderClass} border rounded-[2.5rem] p-10 md:p-12 flex flex-col items-center text-center transition-all duration-500 hover:shadow-elegant`}
             >
-              <div className={`w-20 h-20 rounded-2xl flex items-center justify-center bg-white shadow-soft border border-black/5 group-hover:border-transparent ${platform.hoverClass} transition-all duration-500 group-hover:shadow-xl mb-8`}
+              <div className={`w-20 h-20 rounded-2xl flex items-center justify-center bg-surface shadow-soft border border-border-subtle group-hover:border-transparent ${platform.hoverClass} transition-all duration-500 group-hover:shadow-xl mb-8`}
                 style={{ color: platform.color }}
               >
                 <div className="group-hover:brightness-0 group-hover:invert transition-all duration-500">
@@ -124,35 +116,36 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
               </div>
 
               <div className="space-y-4 mb-8">
-                <h3 className="text-3xl font-black text-zinc-900 font-display uppercase italic tracking-tight">
+                  <h3 className="text-3xl font-black text-ink font-display uppercase italic tracking-tight">
                   {platform.name}
                 </h3>
-                  <p className="text-sm font-bold text-zinc-500 uppercase tracking-wider">
+                  <p className="text-sm font-bold text-ink-tertiary uppercase tracking-wider">
                   {platform.handle}
                 </p>
-                <p className="text-zinc-500 text-sm font-medium">
+                <p className="text-ink-muted text-sm font-medium">
                   {platform.description[lang]}
                 </p>
               </div>
 
               <div className="flex items-center gap-6 mt-auto">
                 <div className="text-center">
-                  <span className="text-4xl font-black text-zinc-900 italic font-display">{platform.followers}</span>
-                    <p className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest leading-none mt-1">
+                  <span className="text-4xl font-black text-ink italic font-display">{platform.followers}</span>
+                    <p className="text-[9px] font-bold text-ink-tertiary uppercase tracking-widest leading-none mt-1">
                     {lang === 'fr' ? 'Abonnés' : 'متابع'}
                   </p>
                 </div>
               </div>
 
-              <div className="w-full mt-8 pt-6 border-t border-black/5 flex items-center justify-between group/btn">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 group-hover:text-brand transition-colors">
+              <div className="w-full mt-8 pt-6 border-t border-border-subtle flex items-center justify-between group/btn">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-ink-tertiary group-hover:text-brand transition-colors">
                   {lang === 'fr' ? 'Visiter' : 'زيارة'}
                 </span>
-                <ArrowUpRight size={16} className="text-zinc-300 group-hover:text-brand transition-all group-hover:-translate-y-1 group-hover:translate-x-1 duration-300" />
+                <ArrowUpRight size={16} className="text-ink-muted group-hover:text-brand transition-all group-hover:-translate-y-1 group-hover:translate-x-1 duration-300" />
               </div>
             </motion.a>
+            </RevealItem>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );

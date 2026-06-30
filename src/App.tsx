@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { I18N } from './constants';
 import type { Locale } from './constants';
 import { Navbar } from './components/Navbar';
@@ -15,14 +15,32 @@ import { Footer } from './components/Footer';
 import { StickyCTA } from './components/StickyCTA';
 
 export default function App() {
-  const [lang, setLang] = useState<Locale>('fr');
+  const [lang, setLang] = useState<Locale>('ar');
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('houati-dark');
+    if (saved === 'true') {
+      setDark(true);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleDark = () => {
+    setDark((prev) => {
+      const next = !prev;
+      localStorage.setItem('houati-dark', String(next));
+      document.documentElement.classList.toggle('dark', next);
+      return next;
+    });
+  };
 
   const t = I18N[lang];
   const isRtl = lang === 'ar';
 
   return (
     <div
-      className="min-h-screen bg-white text-zinc-900 selection:bg-brand selection:text-white font-sans"
+      className="min-h-screen text-ink selection:bg-brand selection:text-white font-sans"
       dir={t.dir}
     >
       <Navbar
@@ -30,6 +48,8 @@ export default function App() {
         lang={lang}
         setLang={setLang}
         isRtl={isRtl}
+        dark={dark}
+        toggleDark={toggleDark}
       />
 
       <main>

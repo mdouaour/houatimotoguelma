@@ -3,6 +3,8 @@ import { motion } from 'motion/react';
 import { Star, MessageCircle, Phone, ArrowUpRight, Facebook, Instagram } from 'lucide-react';
 import { CONFIG } from '../constants';
 import type { Locale } from '../constants';
+import { Trotinette3D } from './Trotinette3D';
+import { springs, motionTokens } from '../lib/motion-tokens';
 
 interface HeroProps {
   t: any;
@@ -11,7 +13,8 @@ interface HeroProps {
 
 export const Hero = ({ t, lang }: HeroProps) => {
   return (
-    <header className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-white">
+    <header className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-surface">
+      <Trotinette3D />
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="absolute inset-0 bg-dots pointer-events-none" />
@@ -71,7 +74,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
             </motion.a>
           </div>
 
-          <div className="flex items-center gap-10 pt-4 border-t border-zinc-100">
+          <div className="flex items-center gap-10 pt-4 border-t border-border-subtle">
             <div className="space-y-1 text-center">
               <div className="flex items-center gap-2 justify-center">
                 <Facebook size={16} className="text-[#1877F2]" />
@@ -117,7 +120,7 @@ export const Hero = ({ t, lang }: HeroProps) => {
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white font-display mix-blend-difference opacity-50">HOUATI_QUALITY_CO</span>
               </div>
 
-              <div className="absolute bottom-10 right-10 flex items-center justify-center w-20 h-20 glass rounded-full border border-black/5 group-hover:bg-brand group-hover:text-white transition-all duration-500 cursor-pointer shadow-xl">
+                <div className="absolute bottom-10 right-10 flex items-center justify-center w-20 h-20 glass rounded-full border border-border-subtle group-hover:bg-brand group-hover:text-white transition-all duration-500 cursor-pointer shadow-xl">
                 <ArrowUpRight size={32} />
               </div>
             </div>
