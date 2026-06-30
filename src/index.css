@@ -135,55 +135,46 @@
 
 @keyframes speed-line {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
     opacity: 0;
   }
-  20% {
+  8% {
     opacity: 1;
   }
-  80% {
-    opacity: 0.6;
+  85% {
+    opacity: 0.8;
   }
   100% {
-    transform: translateX(-400%);
+    transform: translateX(calc(-100vw - 200px));
     opacity: 0;
   }
 }
 
 @keyframes oil-drip {
   0% {
-    transform: translateY(0) scaleY(1);
+    transform: translateY(0) scale(0.3);
     opacity: 0;
-    height: 0;
   }
-  10% {
+  15% {
     opacity: 1;
-    height: 6px;
+    transform: translateY(0) scale(1);
   }
-  30% {
-    transform: translateY(0) scaleY(1.5);
-    height: 6px;
-  }
-  60% {
-    transform: translateY(20px) scaleY(0.8);
-    opacity: 1;
-    height: 6px;
+  50% {
+    transform: translateY(30px) scale(0.9);
+    opacity: 0.8;
   }
   100% {
-    transform: translateY(50px) scaleY(0.3);
+    transform: translateY(80px) scale(0.3);
     opacity: 0;
-    height: 6px;
   }
 }
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 0px var(--color-neon-glow);
-    opacity: 0.3;
+    box-shadow: 0 0 0px rgba(0, 255, 136, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px var(--color-neon);
-    opacity: 1;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
   }
 }
 

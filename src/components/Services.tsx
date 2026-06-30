@@ -123,21 +123,10 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
                   <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0deg,var(--color-brand)/0.08_60deg,transparent_120deg)] animate-radar-sweep" />
                   <div className="absolute top-6 right-6 w-16 h-16 rounded-full border border-brand/10 animate-radar-ping" />
                   <div className="absolute top-6 right-6 w-8 h-8 rounded-full bg-brand/10 animate-radar-ping" style={{ animationDelay: "0.5s" }} />
-                  <div
-                    className="absolute bottom-16 left-12 w-[3px] bg-neon rounded-full animate-oil-drip"
-                    style={{
-                      boxShadow: "0 0 6px #00FF88",
-                      filter: "blur(0.5px)",
-                    }}
-                  />
-                  <div
-                    className="absolute bottom-16 left-16 w-[2px] bg-neon rounded-full animate-oil-drip"
-                    style={{
-                      boxShadow: "0 0 6px #00FF88",
-                      animationDelay: "3s",
-                      filter: "blur(0.5px)",
-                    }}
-                  />
+                  <div className="absolute bottom-20 left-8 flex flex-col items-center gap-1">
+                    <div className="w-[6px] h-[6px] bg-neon rounded-full animate-oil-drip" />
+                    <div className="w-[4px] h-[4px] bg-neon rounded-full animate-oil-drip" style={{ animationDelay: "2.5s" }} />
+                  </div>
                 </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent group-hover:from-surface/10 group-hover:via-transparent transition-all duration-700" />

@@ -1,5 +1,4 @@
 import { motion } from "motion/react"
-import { springs } from "../lib/motion-tokens"
 import { shouldAnimate } from "../lib/motion-config"
 
 export function Trotinette3D() {
@@ -7,34 +6,6 @@ export function Trotinette3D() {
 
   return (
     <div className="absolute right-0 top-[10%] w-[280px] h-[260px] pointer-events-none overflow-visible z-[1]">
-      {/* Speed lines */}
-      <motion.div
-        className="absolute inset-0"
-        aria-hidden
-      >
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <motion.div
-            key={i}
-            className="absolute h-px bg-gradient-to-r from-transparent via-brand/20 to-transparent"
-            style={{
-              top: `${15 + i * 14}%`,
-              left: `${10 + (i % 3) * 15}%`,
-              width: `${60 + i * 20}px`,
-            }}
-            initial={{ x: -200, opacity: 0 }}
-            animate={{
-              x: [0, 800],
-              opacity: [0, 0.6, 0.8, 0.6, 0],
-            }}
-            transition={{
-              duration: 2.5 + i * 0.4,
-              repeat: Infinity,
-              delay: i * 0.6,
-              ease: "linear",
-            }}
-          />
-        ))}
-      </motion.div>
 
       {/* Trotinette 3D container */}
       <motion.div
@@ -321,41 +292,44 @@ export function Trotinette3D() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="drop-shadow-[0_0_6px_#00FF88]"
           />
+          {/* Rear wheel spark */}
           <Particle
-            cx={220}
-            cy={40}
-            size={6}
-            color="brand"
-            delay={0}
-            driftX={-60}
-            driftY={40}
-          />
-          <Particle
-            cx={-20}
-            cy={60}
-            size={4}
-            color="brand/60"
-            delay={0.8}
-            driftX={60}
-            driftY={-30}
-          />
-          <Particle
-            cx={240}
-            cy={120}
+            cx={55}
+            cy={145}
             size={5}
             color="neon"
-            delay={1.6}
-            driftX={-40}
-            driftY={-50}
+            delay={0}
+            driftX={-30}
+            driftY={-40}
           />
           <Particle
-            cx={0}
-            cy={160}
+            cx={55}
+            cy={145}
             size={3}
-            color="brand/40"
-            delay={2.4}
-            driftX={40}
-            driftY={-20}
+            color="neon"
+            delay={0.5}
+            driftX={-20}
+            driftY={-50}
+          />
+          {/* Front wheel spark */}
+          <Particle
+            cx={195}
+            cy={145}
+            size={4}
+            color="brand"
+            delay={1.2}
+            driftX={20}
+            driftY={-40}
+          />
+          {/* Battery spark */}
+          <Particle
+            cx={134}
+            cy={100}
+            size={4}
+            color="neon"
+            delay={2}
+            driftX={0}
+            driftY={-30}
           />
         </motion.div>
       </motion.div>
@@ -388,24 +362,24 @@ function Particle({
         top: `${(cy / 200) * 100}%`,
         width: size,
         height: size,
-        backgroundColor: color === "brand" || color === "brand/60" || color === "brand/40"
+        backgroundColor: color === "brand"
           ? "var(--color-brand)"
-          : color === "neon"
-            ? "#00FF88"
-            : "#F59E0B",
-        opacity: color.includes("60") ? 0.6 : color.includes("40") ? 0.4 : 1,
+          : "#00FF88",
+        boxShadow: color === "neon"
+          ? "0 0 6px #00FF88"
+          : "0 0 6px var(--color-brand)",
       }}
       animate={{
         x: [0, driftX, 0],
         y: [0, driftY, 0],
-        scale: [1, 1.5, 1],
-        opacity: [0.3, 0.7, 0.3],
+        scale: [1, 2, 0],
+        opacity: [1, 0.8, 0],
       }}
       transition={{
-        duration: 4,
+        duration: 2.5,
         delay,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeOut",
       }}
     />
   )
