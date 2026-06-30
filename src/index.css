@@ -221,6 +221,17 @@
   animation: radar-ping 2s ease-out infinite;
 }
 
+@keyframes grid-shift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-64px);
+  }
+}
+
+@keyframes grid-opacity {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+}
+
 @keyframes arc-float {
   0% {
     opacity: 0;
