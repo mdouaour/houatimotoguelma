@@ -58,7 +58,7 @@ export const Footer = ({ t, lang }: FooterProps) => {
                   {CONFIG.name}
                 </h3>
               </div>
-              <p className="text-sm md:text-base max-w-sm font-medium leading-relaxed uppercase tracking-tighter text-zinc-500 text-pretty">
+              <p className="text-sm md:text-base max-w-sm font-medium leading-relaxed uppercase tracking-tighter text-zinc-400 text-pretty">
                 {t.hero.sub}
               </p>
             </div>

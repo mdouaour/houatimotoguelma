@@ -96,7 +96,7 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
           <h2 className="text-4xl md:text-7xl font-extrabold tracking-tight font-display uppercase italic text-zinc-900 leading-[0.9]">
             {lang === 'fr' ? 'Rejoignez-nous' : 'انضم إلينا'}
           </h2>
-          <p className="text-zinc-400 text-[10px] font-bold uppercase tracking-[0.3em]">
+          <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em]">
             {lang === 'fr' ? 'Suivez-nous sur les réseaux sociaux' : 'تابعنا على مواقع التواصل الاجتماعي'}
           </p>
         </motion.div>
@@ -127,7 +127,7 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
                 <h3 className="text-3xl font-black text-zinc-900 font-display uppercase italic tracking-tight">
                   {platform.name}
                 </h3>
-                <p className="text-sm font-bold text-zinc-400 uppercase tracking-wider">
+                  <p className="text-sm font-bold text-zinc-500 uppercase tracking-wider">
                   {platform.handle}
                 </p>
                 <p className="text-zinc-500 text-sm font-medium">
@@ -138,14 +138,14 @@ export const SocialMediaSection = ({ t, lang }: SocialMediaSectionProps) => {
               <div className="flex items-center gap-6 mt-auto">
                 <div className="text-center">
                   <span className="text-4xl font-black text-zinc-900 italic font-display">{platform.followers}</span>
-                  <p className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-none mt-1">
+                    <p className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest leading-none mt-1">
                     {lang === 'fr' ? 'Abonnés' : 'متابع'}
                   </p>
                 </div>
               </div>
 
               <div className="w-full mt-8 pt-6 border-t border-black/5 flex items-center justify-between group/btn">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 group-hover:text-brand transition-colors">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 group-hover:text-brand transition-colors">
                   {lang === 'fr' ? 'Visiter' : 'زيارة'}
                 </span>
                 <ArrowUpRight size={16} className="text-zinc-300 group-hover:text-brand transition-all group-hover:-translate-y-1 group-hover:translate-x-1 duration-300" />

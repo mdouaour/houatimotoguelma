@@ -12,9 +12,9 @@
   --color-brand-subtle: rgba(227, 30, 36, 0.02);
 
   --color-ink: #18181B;
-  --color-ink-secondary: #71717A;
-  --color-ink-tertiary: #A1A1AA;
-  --color-ink-muted: #D4D4D8;
+  --color-ink-secondary: #52525B;
+  --color-ink-tertiary: #71717A;
+  --color-ink-muted: #A1A1AA;
 
   --color-border-subtle: rgba(0, 0, 0, 0.05);
   --color-border-medium: rgba(0, 0, 0, 0.08);
@@ -31,6 +31,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #FFFFFF;
+    overflow-y: scroll;
   }
 
   body {
@@ -40,6 +41,23 @@
   img {
     outline: 1px solid var(--color-border-subtle);
     outline-offset: -1px;
+  }
+}
+
+@layer components {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D4D4D8;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A1A1AA;
   }
 }
 

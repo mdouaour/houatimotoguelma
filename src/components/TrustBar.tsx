@@ -29,7 +29,7 @@ function TrustItem({ icon, text, label, delay }: { icon: React.ReactNode, text: 
       transition={{ delay }}
       className="flex items-center gap-6 justify-center md:justify-start group cursor-default"
     >
-      <div className="w-14 h-14 bg-zinc-50 rounded-2xl flex items-center justify-center text-zinc-400 group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-soft">
+      <div className="w-14 h-14 bg-zinc-50 rounded-2xl flex items-center justify-center text-zinc-500 group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-soft">
         {React.cloneElement(icon as React.ReactElement, { size: 24 })}
       </div>
       <div className="space-y-0.5">

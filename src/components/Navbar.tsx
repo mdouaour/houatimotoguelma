@@ -40,7 +40,7 @@ export const Navbar = ({ t, lang, setLang, isRtl }: NavbarProps) => {
             </div>
             <div className="flex flex-col">
               <span className="font-black text-zinc-900 italic text-xl uppercase tracking-tighter leading-none">{CONFIG.name}</span>
-              <span className="text-[9px] font-bold text-zinc-400 tracking-[0.4em] uppercase leading-none mt-1">Guelma Performance</span>
+              <span className="text-[9px] font-bold text-zinc-500 tracking-[0.4em] uppercase leading-none mt-1">Guelma Performance</span>
             </div>
           </a>
 
