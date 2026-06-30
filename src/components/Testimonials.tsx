@@ -32,6 +32,7 @@ const REVIEWS = [
 export const Testimonials = ({ t, lang }: TestimonialsProps) => {
   return (
     <section className="py-24 md:py-32 bg-surface-secondary relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/60 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <ScrollReveal className="flex flex-col items-center text-center space-y-6 mb-16 md:mb-24">
           <div className="flex items-center gap-3 text-brand">

@@ -13,7 +13,8 @@ export const MapSection = ({ lang }: MapSectionProps) => {
   const isRtl = lang === 'ar';
 
   return (
-    <section className="py-24 md:py-32 bg-surface-secondary overflow-hidden">
+    <section className="py-24 md:py-32 bg-surface-secondary relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4">

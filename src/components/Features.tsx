@@ -29,14 +29,15 @@ export const Features = ({ t }: FeaturesProps) => {
   ];
 
   return (
-    <section className="py-24 bg-surface">
+    <section className="py-24 bg-surface relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
       <div className="max-w-7xl mx-auto px-4">
         <StaggerReveal>
           <div className="grid md:grid-cols-3 gap-12">
             {items.map((item, i) => (
               <RevealItem key={i}>
-                <div className="group space-y-6">
-                  <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+                <div className="group space-y-6 p-8 rounded-3xl border border-transparent hover:border-brand/10 hover:bg-brand-subtle transition-all duration-500">
+                  <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ring-1 ring-brand/10 group-hover:ring-brand/30`}>
                     {React.cloneElement(item.icon as React.ReactElement, { size: 32 })}
                   </div>
                   <div className="space-y-3">

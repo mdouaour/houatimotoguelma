@@ -11,10 +11,10 @@
   --color-brand-glow: rgba(227, 30, 36, 0.08);
   --color-brand-subtle: rgba(227, 30, 36, 0.02);
 
-  --color-ink: #09090B;
-  --color-ink-secondary: #3F3F46;
-  --color-ink-tertiary: #52525B;
-  --color-ink-muted: #A1A1AA;
+    --color-ink: #09090B;
+    --color-ink-secondary: #18181B;
+    --color-ink-tertiary: #3F3F46;
+    --color-ink-muted: #A1A1AA;
 
   --color-border-subtle: rgba(0, 0, 0, 0.06);
   --color-border-medium: rgba(0, 0, 0, 0.1);
@@ -38,10 +38,10 @@
     --color-brand-glow: rgba(227, 30, 36, 0.12);
     --color-brand-subtle: rgba(227, 30, 36, 0.05);
 
-    --color-ink: #FAFAFA;
+    --color-ink: #F4F4F5;
     --color-ink-secondary: #D4D4D8;
     --color-ink-tertiary: #A1A1AA;
-    --color-ink-muted: #52525B;
+    --color-ink-muted: #71717A;
 
     --color-border-subtle: rgba(255, 255, 255, 0.06);
     --color-border-medium: rgba(255, 255, 255, 0.1);
@@ -68,11 +68,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: scroll;
-    background-color: #F8F8F8;
+    background-color: #FAFAFA;
   }
 
   .dark, .dark html, html.dark {
-    background-color: #09090B;
+    background-color: #0B0B0E;
   }
 
   body {
@@ -80,11 +80,11 @@
   }
 
   .dark .bg-surface {
-    background-color: #0A0A0B;
+    background-color: #121214;
   }
 
   .dark .bg-surface-secondary {
-    background-color: #18181B;
+    background-color: #1A1A1E;
   }
 
   img {

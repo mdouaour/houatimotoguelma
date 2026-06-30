@@ -46,6 +46,7 @@ export const Footer = ({ t, lang }: FooterProps) => {
 
   return (
     <footer className="bg-ink text-ink-tertiary py-24 relative overflow-hidden" id="footer">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
       <div className="absolute inset-0 bg-mesh opacity-5 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">

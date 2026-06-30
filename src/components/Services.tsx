@@ -79,6 +79,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
 
   return (
     <section id="services" className="py-24 md:py-32 bg-surface relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
       <div className="max-w-7xl mx-auto px-4">
         <ScrollReveal
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 md:mb-20"
@@ -113,7 +114,7 @@ export const Services = ({ t, isRtl }: ServicesProps) => {
                 className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-1000" 
                 alt={item.title} 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent group-hover:from-white/10 group-hover:via-transparent transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent group-hover:from-surface/10 group-hover:via-transparent transition-all duration-700" />
 
               <div className="relative h-full p-10 md:p-14 flex flex-col justify-between z-10">
                 <div className="w-14 h-14 glass rounded-2xl flex items-center justify-center text-ink border border-border-subtle group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-soft">

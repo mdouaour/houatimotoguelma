@@ -6,7 +6,7 @@ export function Trotinette3D() {
   if (!shouldAnimate()) return null
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[-1]">
+    <div className="absolute right-0 top-[10%] w-[280px] h-[260px] pointer-events-none overflow-visible z-[1]">
       {/* Speed lines */}
       <motion.div
         className="absolute inset-0"
@@ -67,12 +67,12 @@ export function Trotinette3D() {
         >
           {/* Glow behind */}
           <motion.div
-            className="absolute -inset-10 rounded-full opacity-20"
+            className="absolute -inset-12 rounded-full opacity-30"
             style={{
               background:
-                "radial-gradient(circle, rgba(227,30,36,0.3) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(227,30,36,0.4) 0%, transparent 60%)",
             }}
-            animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}
+            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
 
@@ -80,7 +80,7 @@ export function Trotinette3D() {
           <svg
             viewBox="0 0 240 180"
             fill="none"
-            className="w-full h-full drop-shadow-xl"
+            className="w-full h-full drop-shadow-2xl"
             aria-hidden
           >
             {/* Back wheel */}
@@ -89,9 +89,8 @@ export function Trotinette3D() {
                 cx="55"
                 cy="145"
                 r="28"
-                stroke="currentColor"
+                stroke="#E31E24"
                 strokeWidth="4.5"
-                className="text-ink"
                 animate={{ rotate: 360 }}
                 style={{ transformOrigin: "55px 145px" }}
                 transition={{
@@ -115,36 +114,36 @@ export function Trotinette3D() {
                   y1="117"
                   x2="55"
                   y2="173"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="2"
-                  className="text-ink/60"
+                  className="opacity-60"
                 />
                 <line
                   x1="27"
                   y1="145"
                   x2="83"
                   y2="145"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="2"
-                  className="text-ink/60"
+                  className="opacity-60"
                 />
                 <line
                   x1="35"
                   y1="125"
                   x2="75"
                   y2="165"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="1.5"
-                  className="text-ink/40"
+                  className="opacity-40"
                 />
                 <line
                   x1="75"
                   y1="125"
                   x2="35"
                   y2="165"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="1.5"
-                  className="text-ink/40"
+                  className="opacity-40"
                 />
               </motion.g>
             </g>
@@ -155,9 +154,8 @@ export function Trotinette3D() {
                 cx="195"
                 cy="145"
                 r="28"
-                stroke="currentColor"
+                stroke="#E31E24"
                 strokeWidth="4.5"
-                className="text-ink"
                 animate={{ rotate: -360 }}
                 style={{ transformOrigin: "195px 145px" }}
                 transition={{
@@ -181,36 +179,36 @@ export function Trotinette3D() {
                   y1="117"
                   x2="195"
                   y2="173"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="2"
-                  className="text-ink/60"
+                  className="opacity-60"
                 />
                 <line
                   x1="167"
                   y1="145"
                   x2="223"
                   y2="145"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="2"
-                  className="text-ink/60"
+                  className="opacity-60"
                 />
                 <line
                   x1="175"
                   y1="125"
                   x2="215"
                   y2="165"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="1.5"
-                  className="text-ink/40"
+                  className="opacity-40"
                 />
                 <line
                   x1="215"
                   y1="125"
                   x2="175"
                   y2="165"
-                  stroke="currentColor"
+                  stroke="#E31E24"
                   strokeWidth="1.5"
-                  className="text-ink/40"
+                  className="opacity-40"
                 />
               </motion.g>
             </g>
@@ -222,7 +220,8 @@ export function Trotinette3D() {
               width="100"
               height="10"
               rx="3"
-              className="fill-current text-ink"
+              fill="#E31E24"
+              className="opacity-90"
             />
             <rect
               x="42"
@@ -230,7 +229,8 @@ export function Trotinette3D() {
               width="100"
               height="3"
               rx="1.5"
-              fill="#E31E24"
+              fill="#FAFAFA"
+              className="dark:opacity-60"
             />
 
             {/* Battery/body block */}
@@ -240,7 +240,8 @@ export function Trotinette3D() {
               width="16"
               height="22"
               rx="4"
-              className="fill-current text-ink"
+              fill="#E31E24"
+              className="opacity-90"
             />
             <rect
               x="126"
@@ -248,7 +249,7 @@ export function Trotinette3D() {
               width="16"
               height="4"
               rx="2"
-              fill="#E31E24"
+              fill="#FAFAFA"
             />
 
             {/* Stem */}
@@ -258,7 +259,8 @@ export function Trotinette3D() {
               width="7"
               height="68"
               rx="3"
-              className="fill-current text-ink"
+              fill="#E31E24"
+              className="opacity-90"
             />
             <rect
               x="128"
@@ -266,8 +268,8 @@ export function Trotinette3D() {
               width="3"
               height="68"
               rx="1.5"
-              fill="#E31E24"
-              className="opacity-80"
+              fill="#FAFAFA"
+              className="opacity-50"
             />
 
             {/* Handlebars */}
@@ -277,7 +279,8 @@ export function Trotinette3D() {
               width="65"
               height="7"
               rx="3"
-              className="fill-current text-ink"
+              fill="#E31E24"
+              className="opacity-90"
             />
             {/* Handlebar grips */}
             <rect
@@ -286,7 +289,7 @@ export function Trotinette3D() {
               width="14"
               height="11"
               rx="3"
-              className="fill-current text-ink/80"
+              fill="#1A1A1E"
             />
             <rect
               x="151"
@@ -294,7 +297,7 @@ export function Trotinette3D() {
               width="14"
               height="11"
               rx="3"
-              className="fill-current text-ink/80"
+              fill="#1A1A1E"
             />
           </svg>
 
